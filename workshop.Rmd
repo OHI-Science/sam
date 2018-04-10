@@ -1,0 +1,55 @@
+---
+title: "OHI Samoa Opportunities Training Workshop"
+output: 
+  html_document:
+    include:
+      after_body: _footer.html
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!---
+<br>
+<img src="images/sb_banner.jpg">
+<br>
+--->
+<br>
+
+# Welcome
+
+Welcome to the **Ocean Health Index Samoa Opportunities Training Workshop** in Apia, Samoa, from May 21-23, 2018.  
+
+This training workshop will introduce you to open data science so you can work with data in an open, reproducible, and collaborative way.
+
+During the two-day workshop we will:
+
+1. Interpret global OHI scores for Samoa
+2. Discuss whether all 10 goals should be included, remove any goals if not relevant
+3. Identify which goals could be a priority to modify future work based on
+4. Modify the pressures and resilience measures included to better reflect Samoa
+
+[OHI Country Opportunities training materials](http://ohi-science.org/country-opportunities-training/) that we use to teach are online and available for you as a reference.
+
+
+## Workshop schedule 
+
+<!--- [Google drive folder](https://drive.google.com/drive/folders/1MeWy3qAr-2hZSd72PgLE-q0QGKaUTHEq) --->
+
+```{r, echo=FALSE, child="workshop-schedule.Rmd"}
+```
+
+<!--- 
+## Prerequisites
+
+Before the training, please make sure you have done the following. 
+
+Have up-to-date versions of `R` and RStudio and have RStudio configured with Git/GitHub: 
+
+1. Download and install R: https://cloud.r-project.org
+2. Download and install RStudio: http://www.rstudio.com/download 
+3. Create a GitHub account: https://github.com *Note! Shorter names that kind of identify you are better*
+
+
+--->

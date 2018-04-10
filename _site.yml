@@ -12,6 +12,8 @@ navbar:
 #     href: scores.html
     - text: "Who we are"
       href: who_we_are.html
+    - text: "Workshop"
+      href: workshop.html
 output_dir: "."
 output:
   html_document:
