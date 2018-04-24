@@ -1,5 +1,5 @@
 ---
-title: "Interpret: Samoa"
+title: "Interpret Scores: Samoa"
 author: "Julie"
 date: "4/18/2018"
 output: html_document
@@ -8,15 +8,22 @@ output: html_document
 
 ---
 
-```{r setup, message=FALSE, warning=FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning=FALSE)
+```
+
+
+```{r setup2, echo=FALSE}
+
 ## libraries
 library(tidyverse)
+library(knitr)
 
 ## filepaths
 raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
 ```
 
-```{r country}
+```{r country focus, echo=FALSE}
 ## country focus
 key <- 'sam'
 rgn_name <- 'Samoa'
@@ -24,25 +31,44 @@ rgn_name <- 'Samoa'
 
 
 
-```{r rgn info, echo=FALSE}
+```{r rgn info, echo=FALSE, message=FALSE}
 ## get global rgn_ids
 rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
   filter(label == rgn_name)
 ```
 
+## Introduction
 
+This workshop compliments <http://ohi-science.org/country-opportunities-training>.
 
-
-## Flower Plot
+## Explore oceanhealthindex.org
 
 Let's start off by looking at [oceanhealthindex.org/region-scores](http://www.oceanhealthindex.org/region-scores) and typing in the country of interest, for example: [Samoa](http://www.oceanhealthindex.org/region-scores/scores/samoa).
 
+![](../images/ohi-org-samoa.png)
 
-![](https://github.com/OHI-Science/sam/raw/master/global2017/Results/figures/FlowerPlots/flower_Samoa.png)
+You can see scores and ranks at a glance. In 2017, Samoa was ranked 52 out of 221 EEZs, with an overall score of 73/100. 
 
-(do this in R so can sub sam and Samoa)
+<!---draw this from scores.csv/analyses --->
 
-## Maps
+## Goals Assessed
 
-of region
+The flower plot shows that all 10 goals were assessed for Samoa. 
+
+![](../images/ohi-org-samoa-goals.png)
+
+<!---
+![](https://github.com/OHI-Science/sam/raw/master/global2017/Results/figures/FlowerPlots/flower_Samoa.png) 
+
+(do this in R so can sub sam and Samoa) --->
+
+## Pressures and resilience
+
+```{r}
+x <- read_csv('https://raw.githubusercontent.com/OHI-Science/sam/master/eez/conf/pressures_matrix.csv', na = character())
+
+knitr::kable(x)
+
+```
+
 

@@ -1,0 +1,56 @@
+---
+title: "Explore Data: Samoa"
+author: "Julie"
+date: "4/18/2018"
+output: html_document
+#params: 
+#  data: "Samoa" #rgn_name <- params$data
+
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+## libraries
+library(tidyverse)
+
+## filepaths
+raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+```
+
+```{r country}
+## country focus
+key <- 'sam'
+rgn_name <- 'Samoa'
+```
+
+
+
+```{r rgn info, echo=FALSE}
+## get global rgn_ids
+rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
+  filter(label == rgn_name)
+```
+
+## Introduction
+
+This workshop compliments <http://ohi-science.org/country-opportunities-training>.
+
+
+## Data for Samoa
+
+- Habitats
+- Fisheries
+- Iconic Species
+
+## Gapfilling data
+
+[pressure_matrix_CP_gapfill](https://github.com/OHI-Science/ohi-global/blob/draft/global2015/gapFilling/pressure_matrix_CP.csv)
+
+```{r}
+y <- read_csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/global2015/gapFilling/pressure_matrix_CP.csv") %>% 
+  filter(X1 == rgn_global$rgn_id)
+
+```
+
+
+
+
