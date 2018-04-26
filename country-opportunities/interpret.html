@@ -150,10 +150,11 @@ $(document).ready(function () {
 ![](https://github.com/OHI-Science/sam/raw/master/global2017/Results/figures/FlowerPlots/flower_Samoa.png) 
 
 (do this in R so can sub sam and Samoa) --->
+<p>Discuss: Are all of these relevant for Samoa? Remove if not relevant – not if not well represented (wording)</p>
 </div>
 <div id="pressures-and-resilience" class="section level2">
 <h2>Pressures and resilience</h2>
-<pre class="r"><code>x &lt;- read_csv('https://raw.githubusercontent.com/OHI-Science/sam/master/eez/conf/pressures_matrix.csv')#, na = character())
+<pre class="r"><code>x &lt;- read_csv('https://raw.githubusercontent.com/OHI-Science/sam/master/eez/conf/pressures_matrix.csv', na = character())
 
 knitr::kable(x)</code></pre>
 <table>
@@ -189,8 +190,8 @@ knitr::kable(x)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">AO</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -217,7 +218,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">CP</td>
 <td align="left">coral</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -244,7 +245,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">CP</td>
 <td align="left">mangrove</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -271,7 +272,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">CP</td>
 <td align="left">saltmarsh</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -298,7 +299,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">CP</td>
 <td align="left">seagrass</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">2</td>
 <td align="right">NA</td>
@@ -325,7 +326,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">CP</td>
 <td align="left">seaice_shoreline</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -352,7 +353,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">CS</td>
 <td align="left">mangrove</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -379,7 +380,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">CS</td>
 <td align="left">saltmarsh</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -406,7 +407,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">CS</td>
 <td align="left">seagrass</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">2</td>
 <td align="right">NA</td>
@@ -432,8 +433,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="even">
 <td align="left">CW</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">3</td>
 <td align="right">3</td>
@@ -621,8 +622,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">FIS</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">1</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -649,7 +650,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">HAB</td>
 <td align="left">coral</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -676,7 +677,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">HAB</td>
 <td align="left">mangrove</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -703,7 +704,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">HAB</td>
 <td align="left">saltmarsh</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">1</td>
 <td align="right">NA</td>
@@ -730,7 +731,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">HAB</td>
 <td align="left">seagrass</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">2</td>
 <td align="right">NA</td>
@@ -757,7 +758,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">HAB</td>
 <td align="left">seaice_edge</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -784,7 +785,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">HAB</td>
 <td align="left">soft_bottom</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">2</td>
 <td align="right">NA</td>
@@ -810,8 +811,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="even">
 <td align="left">ICO</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">3</td>
 <td align="right">NA</td>
@@ -1053,8 +1054,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">LSP</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">2</td>
 <td align="right">NA</td>
@@ -1080,8 +1081,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="even">
 <td align="left">MAR</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1108,7 +1109,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">NP</td>
 <td align="left">corals</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">1</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1135,7 +1136,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">NP</td>
 <td align="left">fish_oil</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1162,7 +1163,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">NP</td>
 <td align="left">ornamentals</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1189,7 +1190,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">NP</td>
 <td align="left">seaweeds</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1216,7 +1217,7 @@ knitr::kable(x)</code></pre>
 <tr class="odd">
 <td align="left">NP</td>
 <td align="left">shells</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1243,7 +1244,7 @@ knitr::kable(x)</code></pre>
 <tr class="even">
 <td align="left">NP</td>
 <td align="left">sponges</td>
-<td align="left">NA</td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1269,8 +1270,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="odd">
 <td align="left">SPP</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">2</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
@@ -1296,8 +1297,8 @@ knitr::kable(x)</code></pre>
 </tr>
 <tr class="even">
 <td align="left">TR</td>
-<td align="left">NA</td>
-<td align="left">NA</td>
+<td align="left"></td>
+<td align="left"></td>
 <td align="right">NA</td>
 <td align="right">3</td>
 <td align="right">3</td>
@@ -1323,6 +1324,7 @@ knitr::kable(x)</code></pre>
 </tr>
 </tbody>
 </table>
+<p>Discuss: Are all of these relevant for Samoa?</p>
 </div>
 
 

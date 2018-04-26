@@ -14,6 +14,9 @@ library(tidyverse)
 
 ## filepaths
 raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+
+scores_gf_csv <- read_csv(file.path(raw_prefix, "ohi-global/draft/global2015/gapFilling/scores.csv")) 
+scores_csv <- read_csv(file.path(raw_prefix, "sam/master/eez/scores.csv")) 
 ```
 
 ```{r country}
@@ -28,6 +31,7 @@ rgn_name <- 'Samoa'
 ## get global rgn_ids
 rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
   filter(label == rgn_name)
+# 152
 ```
 
 ## Introduction
@@ -37,20 +41,201 @@ This workshop compliments <http://ohi-science.org/country-opportunities-training
 
 ## Data for Samoa
 
-- Habitats
-- Fisheries
-- Iconic Species
+### Habitats
 
-## Gapfilling data
+### Fisheries
+These species from f_b_bmsy.csv:
+
+152,"Coryphaena_hippurus-77",2014,0.94531460898379
+152,"Chanos_chanos-77",2014,1.28634028434866
+152,"Acanthocybium_solandri-77",2014,0.596214642608504
+152,"Katsuwonus_pelamis-77",2014,1.65527272727272
+152,"Thunnus_alalunga-77",2014,1.54654545454545
+152,"Thunnus_albacares-77",2014,1.15018181818182
+152,"Thunnus_obesus-77",2014,0.845418181818197
+152,"Kajikia_audax-77",2014,0.747454545454545
+152,"Xiphias_gladius-77",2014,1.15940221072554
+152,"Selar_crumenophthalmus-77",2014,1.41018912240716
+152,"Carcharhinus_falciformis-77",2014,0.435076414679493
+152,"Carcharhinus_longimanus-77",2014,0.976992669001823
+152,"Prionace_glauca-77",2014,0.98193595892549
+152,"Thunnus_orientalis-77",2014,0.293735431235426
+
+From fis_meancatch.csv: 
+152,"Marine_fishes_not_identified-77_100039",2001,875.432932429903
+152,"Miscellaneous_aquatic_invertebrates-77_100077",2001,323.503281343301
+152,"Marine_pelagic_fishes_not_identified-77_100339",2001,22.7143720342314
+152,"Mollusca-77_190195",2001,13.3038530945942
+152,"Elasmobranchii-77_200004",2001,135.79556139432
+152,"Scombroidea-77_300036",2001,0.0013246685145957
+152,"Decapoda-77_390013",2001,1.46824403356404
+152,"Muraenidae-77_400056",2001,107.625692660142
+152,"Holocentridae-77_400243",2001,151.236390329276
+152,"Serranidae-77_400289",2001,186.64823848984
+152,"Carangidae-77_400314",2001,281.863460517806
+152,"Lutjanidae-77_400323",2001,86.7008430286946
+152,"Lethrinidae-77_400328",2001,913.868226819778
+152,"Mullidae-77_400332",2001,153.688017475432
+152,"Mugilidae-77_400359",2001,431.684868417033
+152,"Labridae-77_400362",2001,165.799099318859
+152,"Acanthuridae-77_400412",2001,146.931707524046
+152,"Siganidae-77_400413",2001,76.2474016948384
+152,"Scombridae-77_400416",2001,19.0189889874631
+152,"Istiophoridae-77_400419",2001,28.1931635399601
+152,"Scarus-77_500242",2001,321.633467289188
+152,"Sphyraena-77_500372",2001,50.2575801691799
+152,"Gymnothorax-77_500384",2001,107.624256116572
+152,"Naso-77_500480",2001,512.853614366418
+152,"Isurus-77_500638",2001,21.3013560547713
+152,"Alopias-77_500639",2001,2.75647577396958
+152,"Etelis-77_501116",2001,192.167031496799
+152,"Pristipomoides-77_502124",2001,192.010507745779
+152,"Octopus-77_590013",2001,1059.82566845974
+152,"Coryphaena_hippurus-77_600006",2001,68.9517044718571
+152,"Chanos_chanos-77_600080",2001,33.1924007307602
+152,"Aphareus_rutilans-77_600083",2001,58.7949527428785
+152,"Aprion_virescens-77_600084",2001,57.8998564173197
+152,"Acanthocybium_solandri-77_600089",2001,0.844205188321127
+152,"Alepisaurus_ferox-77_600099",2001,0.0526908003321361
+152,"Katsuwonus_pelamis-77_600107",2001,453.304326475305
+152,"Thunnus_alalunga-77_600142",2001,2629.90538195762
+152,"Thunnus_albacares-77_600143",2001,598.962492260102
+152,"Thunnus_obesus-77_600146",2001,113.074391998123
+152,"Lutjanus_kasmira-77_600156",2001,17.6415073400631
+152,"Istiompax_indica-77_600217",2001,12.8797782893439
+152,"Makaira_mazara-77_600218",2001,24.308046693226
+152,"Kajikia_audax-77_600223",2001,17.8190186818818
+152,"Xiphias_gladius-77_600226",2001,55.6741876378698
+152,"Lutjanus_gibbus-77_600265",2001,309.148628188037
+152,"Selar_crumenophthalmus-77_600387",2001,70.2670366388739
+152,"Elagatis_bipinnulata-77_600412",2001,0.392955061190062
+152,"Carcharhinus_falciformis-77_600868",2001,60.0334391545258
+152,"Carcharhinus_galapagensis-77_600870",2001,2.42246945455904
+152,"Carcharhinus_longimanus-77_600875",2001,15.2729271954
+152,"Carcharhinus_melanopterus-77_600877",2001,0.347212207020449
+152,"Prionace_glauca-77_600898",2001,181.359131536548
+152,"Lepidocybium_flavobrunneum-77_601042",2001,0.116826702465681
+152,"Ruvettus_pretiosus-77_601044",2001,1.29753807980051
+152,"Lampris_guttatus-77_601072",2001,0.274549281717437
+152,"Sphyraena_barracuda-77_601235",2001,7.74842040340665
+152,"Acanthurus_lineatus-77_601258",2001,168.073025972872
+152,"Ctenochaetus_striatus-77_601262",2001,168.101035915956
+152,"Naso_unicornis-77_601265",2001,167.835033710107
+152,"Lethrinus_olivaceus-77_601864",2001,234.425403214539
+152,"Alopias_superciliosus-77_602534",2001,3.34963693117321
+152,"Tetrapturus_angustirostris-77_603915",2001,3.25636616907225
+152,"Variola_louti-77_605354",2001,8.72835870177256
+152,"Scarus_ghobban-77_605548",2001,315.806174990178
+152,"Thunnus_orientalis-77_614290",2001,0.87427271337282
+152,"Tridacna_squamosa-77_690134",2001,18.0252082345237
+152,"Scylla_serrata-77_690190",2001,551.14206589276
+152,"Tridacna_maxima-77_690673",2001,326.70220263872
+152,"Panulirus_penicillatus-77_690801",2001,220.605168985249
+152,"Panulirus_versicolor-77_690802",2001,220.558977420209
+152,"Parribacus_caledonicus-77_690882",2001,17.6950605732389
+
+### MAR
+
+from mar_sustainability_score
+
+152,2012,"Bear paw clam_507",0.811764706
+152,2012,"Elongate giant clam_508",0.811764706
+152,2012,"Fluted giant clam_509",0.811764706
+152,2012,"Giant clam_510",0.811764706
+152,2012,"Smooth giant clam_511",0.811764706
+
+### Iconic Species
+
+## Gapfilling in Samoa
+
+Carpet plot for Samoa
+
+Let's have a look at the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
+
+AO, SPP, LSP, SP, ICO, and NP
+
+
+```{r, echo=FALSE}
+scores_gf <- scores_gf_csv %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(dimension == "score") %>%
+  select(goal, percent_gapfilled = score) %>%
+  arrange(percent_gapfilled) 
+
+scores_gf %>%
+  knitr::kable()
+```
+
+
+
+We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
+
+```{r, echo=FALSE}
+scores <- scores_csv %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(dimension == "score", 
+         year == max(year)) %>%
+  select(goal, score) %>%
+  arrange(goal) 
+
+scores_plot <- scores %>%
+  left_join(scores_gf, by = "goal") # this will remove LIV, ECO, LE because not tracked for gapfilling
+
+ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
+  geom_point() + 
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
+
+## can also assign above to p then:
+# ggplotly(p)
+```
+
+### Discussion
+
+Priorities for goals, based on gapfilled data alone: TR, HAB
+
+
+
+### Gapfilling Breakdown by goals
+
+https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/temp/FIS_summary_gf.csv
+
+152,"Marine_fishes_not_identified-77",100039,2017,875.432932429903,0.0832661810307309,"median"
+152,"Miscellaneous_aquatic_invertebrates-77",100077,2017,323.503281343301,0.0832661810307309,"median"
+152,"Marine_pelagic_fishes_not_identified-77",100339,2017,22.7143720342314,0.0832661810307309,"median"
+152,"Mollusca-77",190195,2017,13.3038530945942,0.0832661810307309,"median"
+152,"Echinodermata-77",190277,2017,7.81377974118321,0.0832661810307309,"median"
+152,"Elasmobranchii-77",200004,2017,135.79556139432,0.208165452576827,"median"
+152,"Scombroidea-77",300036,2017,0.0013246685145957,0.416330905153654,"median"
+152,"Decapoda-77",390013,2017,1.46824403356404,0.416330905153654,"median"
+152,"Muraenidae-77",400056,2017,107.625692660142,0.666129448245847,"median"
+152,"Holocentridae-77",400243,2017,151.236390329276,0.666129448245847,"median"
+152,"Serranidae-77",400289,2017,186.64823848984,0.666129448245847,"median"
+152,"Carangidae-77",400314,2017,281.863460517806,0.666129448245847,"median"
+152,"Lutjanidae-77",400323,2017,86.7008430286946,0.666129448245847,"median"
+152,"Lethrinidae-77",400328,2017,913.868226819778,0.666129448245847,"median"
+152,"Mullidae-77",400332,2017,153.688017475432,0.666129448245847,"median"
+152,"Mugilidae-77",400359,2017,431.684868417033,0.666129448245847,"median"
+152,"Labridae-77",400362,2017,165.799099318859,0.666129448245847,"median"
+152,"Acanthuridae-77",400412,2017,146.931707524046,0.666129448245847,"median"
+152,"Siganidae-77",400413,2017,76.2474016948384,0.666129448245847,"median"
+152,"Scombridae-77",400416,2017,19.0189889874631,0.666129448245847,"median"
+
+
+### Breakdown by pressures/resilience
 
 [pressure_matrix_CP_gapfill](https://github.com/OHI-Science/ohi-global/blob/draft/global2015/gapFilling/pressure_matrix_CP.csv)
 
 ```{r}
-y <- read_csv("https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/global2015/gapFilling/pressure_matrix_CP.csv") %>% 
+y <- read_csv(file.path(raw_prefix, "ohi-global/draft/global2015/gapFilling/pressure_matrix_CP.csv")) %>% 
   filter(X1 == rgn_global$rgn_id)
 
 ```
 
+## Data
 
+### HAB vs CP vs CS
+
+### TR
 
 

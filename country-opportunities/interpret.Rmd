@@ -49,6 +49,10 @@ Let's start off by looking at [oceanhealthindex.org/region-scores](http://www.oc
 
 You can see scores and ranks at a glance. In 2017, Samoa was ranked 52 out of 221 EEZs, with an overall score of 73/100. 
 
+Another way to look at this is on [ohi-science.org/ohi-global](http://ohi-science.org/ohi-global) and look at the [scores for Samoa](http://ohi-science.org/ohi-global/scores.html#samoa): this is a slightly different display because it shows the sub-goals of each goal as separate petals instead of combined. 
+
+This helps you see that the Mariculture is a very small contribution to the Food Provision goal, since it is weighted by overall tonnage along with Wild Caught Fisheries.
+
 <!---draw this from scores.csv/analyses --->
 
 ## Goals Assessed
@@ -62,6 +66,8 @@ The flower plot shows that all 10 goals were assessed for Samoa.
 
 (do this in R so can sub sam and Samoa) --->
 
+Discuss: Are all of these relevant for Samoa? Remove if not relevant -- not if not well represented (wording)
+
 ## Pressures and resilience
 
 ```{r}
@@ -71,4 +77,5 @@ knitr::kable(x)
 
 ```
 
+Discuss: Are all of these relevant for Samoa?
 

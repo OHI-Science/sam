@@ -1,9 +1,10 @@
 ---
 title: "OHI Samoa Opportunities Training Workshop"
-output: 
-  html_document:
-    include:
-      after_body: _footer.html
+output:
+  word_document: default
+#  html_document:
+#    include:
+#      after_body: _footer.html
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Welcome to the **Ocean Health Index Samoa Opportunities Training Workshop** in Apia, Samoa, from May 21-23, 2018.  
 
-This training workshop will introduce you to open data science so you can work with data in an open, reproducible, and collaborative way.
+In this workshop we will interpret and slightly tailor the OHI global input for Samoa. By the end of the workshop, we will also have some next steps for OHI Samoa. 
 
 During the two-day workshop we will:
 
@@ -36,6 +37,8 @@ During the two-day workshop we will:
 ## Workshop schedule 
 
 <!--- [Google drive folder](https://drive.google.com/drive/folders/1MeWy3qAr-2hZSd72PgLE-q0QGKaUTHEq) --->
+
+OHI team leads on Days 1 and 2; Samoa team leads on Day 3. 
 
 ```{r, echo=FALSE, child="workshop-schedule.Rmd"}
 ```
