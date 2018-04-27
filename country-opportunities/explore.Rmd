@@ -71,6 +71,17 @@ Let's look at the species list that is include in Samoa's FIS model.
 
 By "local data", we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.
 
+What fisheries data do you have? Is the catch represented in EEZ ie fished in the EEZ? 
+
+Depending on the format, we'd be able to update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
+Cannot add new species to meancatch because need b_bmsy estimates! 
+Or we
+
+
+**Questions about local data**
+
+By "local data", we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.
+
 What fisheries data do you have? The criteria we need is: 
 
 - species list
