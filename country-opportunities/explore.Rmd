@@ -12,27 +12,27 @@ output: html_document
 ## libraries
 library(tidyverse)
 
-## filepaths
-raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
-
-scores_gf_csv <- read_csv(file.path(raw_prefix, "ohi-global/draft/global2015/gapFilling/scores.csv")) 
-scores_csv <- read_csv(file.path(raw_prefix, "sam/master/eez/scores.csv")) 
-```
-
-```{r country}
 ## country focus
 key <- 'sam'
 rgn_name <- 'Samoa'
-```
+
+## filepaths
+raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key, "master")
 
 
+## read in data from web (minimize how often pull from web) ----
 
-```{r rgn info, echo=FALSE}
-## get global rgn_ids
+scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores.csv")) 
+scores_csv <- read_csv(file.path(rawkey_prefix, "eez/scores.csv")) 
+fis_meancatch_csv <- read_csv(file.path(rawkey_prefix, "/eez/layers/fis_meancatch.csv"))
+fis_b_bmsy_csv <- read_csv(file.path(rawkey_prefix, "/eez/layers/fis_b_bmsy.csv"))
+
+## get global rgn_id
 rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
-  filter(label == rgn_name)
-# 152
+  filter(label == rgn_name) # 152
 ```
+
 
 ## Introduction
 
@@ -66,18 +66,6 @@ We can also look at an interactive visualization of [Samoa fishing around the wo
 
 Let's look at the species list that is include in Samoa's FIS model. 
 
-
-**Questions about local data**
-
-By "local data", we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.
-
-What fisheries data do you have? Is the catch represented in EEZ ie fished in the EEZ? 
-
-Depending on the format, we'd be able to update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
-Cannot add new species to meancatch because need b_bmsy estimates! 
-Or we
-
-
 **Questions about local data**
 
 By "local data", we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.
@@ -92,9 +80,52 @@ Depending on the format, we'd be able to update data for those species, recalcul
 
 *Note*: we cannot add new species in this workshop. That will take more attention and time than we can give. We would need to add meancatch values, as well as matching b_bmsy estimates.
 
-```{r}
+Let's look at the list of species that are represented in the FIS model (this is the [fis_meancatch](https://raw.githubusercontent.com/OHI-Science/sam/master//eez/layers/fis_meancatch.csv) layer:
 
+```{r fis_meancatch list, echo=FALSE}
+fis_meancatch <- fis_meancatch_csv %>%
+  filter(rgn_id == rgn_global$rgn_id) 
+
+fis_meancatch %>%
+  distinct(stock_id_taxonkey) %>%
+  knitr::kable()
 ```
+
+
+```{r}
+## these values don't change through time
+#ggplot(data = fis_meancatch, aes(x = year, y = mean_catch)) +
+#         geom_line(aes(color = stock_id_taxonkey)) +
+#  theme(legend.position="none")
+```
+
+Let's also look at data from a single species, a red snapper (*Xiphias_gladius-77_600226*). The values are all the same: this is the mean catch throughout the period. 
+
+```{r fis_meancatch sp, echo=FALSE}
+fis_meancatch %>%
+  filter(stock_id_taxonkey == "Xiphias_gladius-77_600226") %>%
+  knitr::kable()
+```
+
+Now let's look at b_bmsy:
+
+```{r fis_b_bmsy list, echo=FALSE}
+fis_b_bmsy <- fis_b_bmsy_csv %>%
+  filter(rgn_id == rgn_global$rgn_id) 
+
+fis_b_bmsy %>%
+  distinct(stock_id) %>%
+  knitr::kable()
+```
+
+and a single species (*Xiphias_gladius-77*)
+
+```{r fis_b_bmsy sp, echo=FALSE}
+fis_b_bmsy %>%
+  filter(stock_id == "Xiphias_gladius-77") %>%
+  knitr::kable()
+```
+
 
 
 These species from f_b_bmsy.csv:
@@ -285,7 +316,7 @@ https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/temp/FIS_summ
 [pressure_matrix_CP_gapfill](https://github.com/OHI-Science/ohi-global/blob/draft/global2015/gapFilling/pressure_matrix_CP.csv)
 
 ```{r}
-y <- read_csv(file.path(raw_prefix, "ohi-global/draft/global2015/gapFilling/pressure_matrix_CP.csv")) %>% 
+y <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/pressure_matrix_CP.csv")) %>% 
   filter(X1 == rgn_global$rgn_id)
 
 ```
