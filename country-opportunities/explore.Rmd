@@ -48,13 +48,32 @@ This workshop compliments <http://ohi-science.org/country-opportunities-training
 
 The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ. Our models need catch for at least 10 years (20 is better). Ideally, we would also have status (at least B/BMSY, bonus is F/FMSY). 
 
-What we can do in this workshop:
+Data are from the [Sea Around Us Project](http://www.seaaroundus.org).
+
+We can look at an interactive visualization of [fish caught in Samoa's EEZ](http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20):
+
+![](../images/saup-samoa-eezfishing.png)
+
+We can also look at an interactive visualization of [Samoa fishing around the world](http://www.seaaroundus.org/data/#/spatial-catch?entities=192) (mostly high seas and agreements with other countries):
+
+![](../images/saup-samoa-worldfishing.png)
+
+#### Workshop discussion:
 - remove species 
-- improve meancatch estimates 
+- improve meancatch estimates, especially for catch that is grouped instead of by species.
 
-(no matter what we're not calcluting b_bmsy) But what we could do is improve the parrot fishes every year
+**Remove species**
 
-Look at the list. Do you have it? Is the catch represented in EEZ ie fished in the EEZ? Update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
+Let's look at the species list that is include in Samoa's FIS model. 
+
+
+**Questions about local data**
+
+By "local data", we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.
+
+What fisheries data do you have? Is the catch represented in EEZ ie fished in the EEZ? 
+
+Depending on the format, we'd be able to update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
 Cannot add new species to meancatch because need b_bmsy estimates! 
 Or we
 
@@ -62,15 +81,7 @@ We will discuss whether the data you have is representative of that.
 
 Get a list of species, years, and whether it's caught within EE
 
-Sea Around Us
-Caught in EEZ:
-http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20
 
-Samoa fishing aroudn the world
-
-http://www.seaaroundus.org/data/#/spatial-catch?entities=192
-
-![](../images/saup-samoa-worldfishing.png)
 
 These species from f_b_bmsy.csv:
 
