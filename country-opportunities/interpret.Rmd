@@ -70,6 +70,8 @@ Discuss: Are all of these relevant for Samoa? Remove if not relevant -- not if n
 
 ## Pressures and resilience
 
+Res: Think about this quantitatively. Not just when a law goes into effect. Let's think about how to change these things into quantitative, with a reference point. 
+
 ```{r}
 x <- read_csv('https://raw.githubusercontent.com/OHI-Science/sam/master/eez/conf/pressures_matrix.csv', na = character())
 

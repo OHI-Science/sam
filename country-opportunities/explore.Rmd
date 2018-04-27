@@ -41,9 +41,37 @@ This workshop compliments <http://ohi-science.org/country-opportunities-training
 
 ## Data for Samoa
 
+
 ### Habitats
 
 ### Fisheries
+
+The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ. Our models need catch for at least 10 years (20 is better). Ideally, we would also have status (at least B/BMSY, bonus is F/FMSY). 
+
+What we can do in this workshop:
+- remove species 
+- improve meancatch estimates 
+
+(no matter what we're not calcluting b_bmsy) But what we could do is improve the parrot fishes every year
+
+Look at the list. Do you have it? Is the catch represented in EEZ ie fished in the EEZ? Update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
+Cannot add new species to meancatch because need b_bmsy estimates! 
+Or we
+
+We will discuss whether the data you have is representative of that. 
+
+Get a list of species, years, and whether it's caught within EE
+
+Sea Around Us
+Caught in EEZ:
+http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20
+
+Samoa fishing aroudn the world
+
+http://www.seaaroundus.org/data/#/spatial-catch?entities=192
+
+![](../images/saup-samoa-worldfishing.png)
+
 These species from f_b_bmsy.csv:
 
 152,"Coryphaena_hippurus-77",2014,0.94531460898379
@@ -62,6 +90,7 @@ These species from f_b_bmsy.csv:
 152,"Thunnus_orientalis-77",2014,0.293735431235426
 
 From fis_meancatch.csv: 
+(these are just families). If you have species catch for these, that would be an improvement!
 152,"Marine_fishes_not_identified-77_100039",2001,875.432932429903
 152,"Miscellaneous_aquatic_invertebrates-77_100077",2001,323.503281343301
 152,"Marine_pelagic_fishes_not_identified-77_100339",2001,22.7143720342314
@@ -91,6 +120,7 @@ From fis_meancatch.csv:
 152,"Etelis-77_501116",2001,192.167031496799
 152,"Pristipomoides-77_502124",2001,192.010507745779
 152,"Octopus-77_590013",2001,1059.82566845974
+Species, which are way better
 152,"Coryphaena_hippurus-77_600006",2001,68.9517044718571
 152,"Chanos_chanos-77_600080",2001,33.1924007307602
 152,"Aphareus_rutilans-77_600083",2001,58.7949527428785
@@ -174,10 +204,13 @@ We can actually compare the percent gapfilling by goal to the scores per goal. I
 scores <- scores_csv %>% 
   filter(region_id == rgn_global$rgn_id) %>% 
   filter(region_id == rgn_global$rgn_id) %>% 
-  filter(dimension == "score", 
+  filter(dimension == "status",  
          year == max(year)) %>%
   select(goal, score) %>%
   arrange(goal) 
+
+scores %>% 
+  knitr::kable()
 
 scores_plot <- scores %>%
   left_join(scores_gf, by = "goal") # this will remove LIV, ECO, LE because not tracked for gapfilling
