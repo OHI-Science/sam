@@ -39,6 +39,58 @@ rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv
 This workshop compliments <http://ohi-science.org/country-opportunities-training>.
 
 
+## Gapfilling in Samoa
+
+To help focus our attention, let's begin by looking at gapfilling: 
+
+Carpet plot for Samoa
+
+Let's have a look at the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
+
+AO, SPP, LSP, SP, ICO, and NP
+
+
+```{r, echo=FALSE}
+scores_gf <- scores_gf_csv %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(dimension == "score") %>%
+  select(goal, percent_gapfilled = score) %>%
+  arrange(percent_gapfilled) 
+
+scores_gf %>%
+  knitr::kable()
+```
+
+
+
+We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
+
+```{r, echo=FALSE}
+scores <- scores_csv %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(region_id == rgn_global$rgn_id) %>% 
+  filter(dimension == "status",  
+         year == max(year)) %>%
+  select(goal, score) %>%
+  arrange(goal) 
+
+scores %>% 
+  knitr::kable()
+
+scores_plot <- scores %>%
+  left_join(scores_gf, by = "goal") # this will remove LIV, ECO, LE because not tracked for gapfilling
+
+ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
+  geom_point() + 
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
+
+## can also assign above to p then:
+# ggplotly(p)
+```
+
+
+
+
 ## Data for Samoa
 
 
@@ -232,52 +284,6 @@ from mar_sustainability_score
 
 ### Iconic Species
 
-## Gapfilling in Samoa
-
-Carpet plot for Samoa
-
-Let's have a look at the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
-
-AO, SPP, LSP, SP, ICO, and NP
-
-
-```{r, echo=FALSE}
-scores_gf <- scores_gf_csv %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(dimension == "score") %>%
-  select(goal, percent_gapfilled = score) %>%
-  arrange(percent_gapfilled) 
-
-scores_gf %>%
-  knitr::kable()
-```
-
-
-
-We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
-
-```{r, echo=FALSE}
-scores <- scores_csv %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(dimension == "status",  
-         year == max(year)) %>%
-  select(goal, score) %>%
-  arrange(goal) 
-
-scores %>% 
-  knitr::kable()
-
-scores_plot <- scores %>%
-  left_join(scores_gf, by = "goal") # this will remove LIV, ECO, LE because not tracked for gapfilling
-
-ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
-  geom_point() + 
-  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
-
-## can also assign above to p then:
-# ggplotly(p)
-```
 
 ### Discussion
 

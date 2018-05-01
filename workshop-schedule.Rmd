@@ -1,16 +1,6 @@
 |Time       |      Day 1: OHI Samoa Opportunities Workshop|      Day 2: Review Workshop Results and Develop Communication Plan|      Day 3: Present Workshop Results and Next Steps|
 |:----------|----------:|----------:|----------:|
-|9-10:30 | Welcome; OHI Overview  | Explore Samoa Data  | Intro to OHI Toolbox |
+|9-10:30 | Welcome; [OHI Overview](http://ohi-science.org/country-opportunities-training/overview.html)  | Explore Samoa Data  | Intro to OHI Toolbox |
 |11-12:30 | Alignment with SDGs | Explore Samoa Data |  Intro to OHI Toolbox |
-|13:30-15:00 | Interpret Scores | Explore Samoa Data |  Discuss Opportunities and Next Steps |
-|15:30-17:00 | Explore Global Data | Explore Samoa Data |  Workshop Report |
-
-<!---
-|9-10:30    |  Welcome and goals of the workshop (CRESCYNT); [Motivation for data science and coral reefs](http://ohi-science.org/data-science-training/overview.html) (NCEAS - JL) |   [Data wrangling: `dplyr`](http://ohi-science.org/data-science-training/dplyr.html#dplyr) (NCEAS - JB) | Kaneohe Bay Workathon (all day) | Kaneohe Bay Workathon (all day)  | 
-|break      |  | | | |
-|11-12:30   | [R, RStudio & RMarkdown](http://ohi-science.org/data-science-training/rstudio.html#rstudio) (NCEAS - JL) |   [Data wrangling: `tidyr`](http://ohi-science.org/data-science-training/tidyr) (NCEAS - JB) |  | |
-|lunch      |  || | |
-|13:30-15:00 |  [GitHub](http://ohi-science.org/data-science-training/github.html) (NCEAS - JL) |  [Collaborating with GitHub](http://ohi-science.org/data-science-training/collaborating.html) (NCEAS - JL) | Imagery/ interpolation breakout group (CRESCYNT) | Group Discussion/ Wrapup |
-|break      |  |  | | |
-|15:30-17:00 | [Visualization (ggplot2)](http://ohi-science.org/data-science-training/ggplot2) (NCEAS - JC) |   [Data integration: tidy coral example](https://nceas.github.io/crescynt-training/tidy_coral) (NCEAS - JC)  | Imagery/ interpolation breakout group (CRESCYNT)  | Group Discussion/ Wrapup |
---->
+|13:30-15:00 | [Interpret Scores](http://ohi-science.org/country-opportunities-training/interpret.html) | Explore Samoa Data |  Discuss Opportunities and Next Steps |
+|15:30-17:00 | [Explore Global Data](http://ohi-science.org/country-opportunities-training/explore.html) | Explore Samoa Data |  Workshop Report |
