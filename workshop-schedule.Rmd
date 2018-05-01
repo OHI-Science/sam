@@ -1,9 +1,9 @@
 |Time       |      Day 1: OHI Samoa Opportunities Workshop|      Day 2: Review Workshop Results and Develop Communication Plan|      Day 3: Present Workshop Results and Next Steps|
 |:----------|----------:|----------:|----------:|
-|9-10:30 | OHI Overview  |   |  Review Results
-|11-12:30 | Interpret Scores |   |  Discuss Opportunities
-|13:30-15:00 | Explore Data  |   |  Develop Communication Plan
-|15:30-17:00 | Discussion |   |  Develop Communication Plan
+|9-10:30 | Welcome; OHI Overview  | Explore Samoa Data  | Intro to OHI Toolbox |
+|11-12:30 | Alignment with SDGs | Explore Samoa Data |  Intro to OHI Toolbox |
+|13:30-15:00 | Interpret Scores | Explore Samoa Data |  Discuss Opportunities and Next Steps |
+|15:30-17:00 | Explore Global Data | Explore Samoa Data |  Workshop Report |
 
 <!---
 |9-10:30    |  Welcome and goals of the workshop (CRESCYNT); [Motivation for data science and coral reefs](http://ohi-science.org/data-science-training/overview.html) (NCEAS - JL) |   [Data wrangling: `dplyr`](http://ohi-science.org/data-science-training/dplyr.html#dplyr) (NCEAS - JB) | Kaneohe Bay Workathon (all day) | Kaneohe Bay Workathon (all day)  | 
