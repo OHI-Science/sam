@@ -80,7 +80,7 @@ Depending on the format, we'd be able to update data for those species, recalcul
 
 *Note*: we cannot add new species in this workshop. That will take more attention and time than we can give. We would need to add meancatch values, as well as matching b_bmsy estimates.
 
-Let's look at the list of species that are represented in the FIS model (this is the [fis_meancatch](https://raw.githubusercontent.com/OHI-Science/sam/master//eez/layers/fis_meancatch.csv) layer:
+Let's look at the list of species that are represented in the FIS model (this is the [fis_meancatch](https://raw.githubusercontent.com/OHI-Science/sam/master//eez/layers/fis_meancatch.csv) layer):
 
 ```{r fis_meancatch list, echo=FALSE}
 fis_meancatch <- fis_meancatch_csv %>%
