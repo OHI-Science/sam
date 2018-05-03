@@ -68,6 +68,7 @@ The flower plot shows that all 10 goals were assessed for Samoa.
 
 Discuss: Are all of these relevant for Samoa? Remove if not relevant -- not if not well represented (wording)
 
+<!---
 ## Pressures and resilience
 
 Res: Think about this quantitatively. Not just when a law goes into effect. Let's think about how to change these things into quantitative, with a reference point. 
@@ -80,4 +81,6 @@ knitr::kable(x)
 ```
 
 Discuss: Are all of these relevant for Samoa?
+
+--->
 

@@ -1,6 +1,5 @@
 |Time       |      Day 1: OHI Samoa Opportunities Workshop|      Day 2: Review Workshop Results and Develop Communication Plan|      Day 3: Present Workshop Results and Next Steps|
 |:----------|----------:|----------:|----------:|
-|9-10:30 | Welcome; [OHI Overview](http://ohi-science.org/country-opportunities-training/overview.html)  | Explore Samoa Data  | Intro to OHI Toolbox |
-|11-12:30 | Alignment with SDGs | Explore Samoa Data |  Intro to OHI Toolbox |
-|13:30-15:00 | [Interpret Scores](http://ohi-science.org/country-opportunities-training/interpret.html) | Explore Samoa Data |  Discuss Opportunities and Next Steps |
-|15:30-17:00 | [Explore Global Data](http://ohi-science.org/country-opportunities-training/explore.html) | Explore Samoa Data |  Workshop Report |
+|9-10:30 | [Workshop Overview](http://ohi-science.org/country-opportunities-training/overview.html); [OHI Framework](http://ohi-science.org/country-opportunities-training/framework.html)  | Explore Samoa Data  | Intro to OHI Toolbox |
+|11-12:30 | [Explore Global Data](http://ohi-science.org/country-opportunities-training/explore.html) | Explore Samoa Data |  Intro to OHI Toolbox |
+|13:30-15:00 | Alignment with SDGs  | Explore Samoa Data |  Discuss/Report Opportunities and Next Steps |

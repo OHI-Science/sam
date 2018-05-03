@@ -1,14 +1,12 @@
 ---
 title: "Explore Data: Samoa"
-author: "Julie"
-date: "4/18/2018"
-output: html_document
-#params: 
-#  data: "Samoa" #rgn_name <- params$data
-
+output:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
-```{r setup, message=FALSE, warning=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 ## libraries
 library(tidyverse)
 
@@ -33,19 +31,32 @@ rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv
   filter(label == rgn_name) # 152
 ```
 
+## Objectives and Resources
 
-## Introduction
+Today we'll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. This workshop compliments <http://ohi-science.org/country-opportunities-training>.
 
-This workshop compliments <http://ohi-science.org/country-opportunities-training>.
+**Objectives**
+
+**Resources**
 
 
 ## Gapfilling in Samoa
 
-To help focus our attention, let's begin by looking at gapfilling: 
+Yesterday we discussed some of the data sources that go into global assessments, and gapfilling. 
 
-Carpet plot for Samoa
+Let's look at Samoa in the gapfilling "carpet plot". This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal (labeled on top), split into four years of assessments (2012-2015). In these plots, blues mean the most amounts of gapfilling, and reds are the least amount. 
 
-Let's have a look at the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
+![](images/carpetPlot_gapfilling2015_samoa1.png)
+
+<br>
+
+We can zoom in on Samoa: 
+
+![](images/carpetPlot_gapfilling2015_samoa2.png)
+
+From this, it seems that goals involving habitat data (HAB, CP, CS), as well as SPP and NP are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In red, this figure shows that LIV, MAR, and LSP have the least amount of gapfilling and are most representative of data.
+
+Let's look a bit deeper to see numerically the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
 
 AO, SPP, LSP, SP, ICO, and NP
 
@@ -104,11 +115,11 @@ Data are from the [Sea Around Us Project](http://www.seaaroundus.org).
 
 We can look at an interactive visualization of [fish caught in Samoa's EEZ](http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20):
 
-![](../images/saup-samoa-eezfishing.png)
+![](images/saup-samoa-eezfishing.png)
 
 We can also look at an interactive visualization of [Samoa fishing around the world](http://www.seaaroundus.org/data/#/spatial-catch?entities=192) (mostly high seas and agreements with other countries):
 
-![](../images/saup-samoa-worldfishing.png)
+![](images/saup-samoa-worldfishing.png)
 
 #### Workshop discussion:
 - remove species 

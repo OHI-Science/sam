@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Explore Data: Samoa</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="_sass/main.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="faq.html">Frequently Asked Questions</a>
+</li>
+<li>
+  <a href="who_we_are.html">Who we are</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Explore Data: Samoa</h1>
+
+</div>
+
+
+<div id="objectives-and-resources" class="section level2">
+<h2>Objectives and Resources</h2>
+<p>Today we’ll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. This workshop compliments <a href="http://ohi-science.org/country-opportunities-training" class="uri">http://ohi-science.org/country-opportunities-training</a>.</p>
+<p><strong>Objectives</strong></p>
+<p><strong>Resources</strong></p>
+</div>
+<div id="gapfilling-in-samoa" class="section level2">
+<h2>Gapfilling in Samoa</h2>
+<p>Yesterday we discussed some of the data sources that go into global assessments, and gapfilling.</p>
+<p>Let’s look at Samoa in the gapfilling “carpet plot”. This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal (labeled on top), split into four years of assessments (2012-2015). In these plots, blues mean the most amounts of gapfilling, and reds are the least amount.</p>
+<div class="figure">
+<img src="images/carpetPlot_gapfilling2015_samoa1.png" />
+
+</div>
+<p><br></p>
+<p>We can zoom in on Samoa:</p>
+<div class="figure">
+<img src="images/carpetPlot_gapfilling2015_samoa2.png" />
+
+</div>
+<p>From this, it seems that goals involving habitat data (HAB, CP, CS), as well as SPP and NP are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In red, this figure shows that LIV, MAR, and LSP have the least amount of gapfilling and are most representative of data.</p>
+<p>Let’s look a bit deeper to see numerically the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved:</p>
+<p>AO, SPP, LSP, SP, ICO, and NP</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">goal</th>
+<th align="right">percent_gapfilled</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="even">
+<td align="left">SPP</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="odd">
+<td align="left">LSP</td>
+<td align="right">0.07</td>
+</tr>
+<tr class="even">
+<td align="left">SP</td>
+<td align="right">0.10</td>
+</tr>
+<tr class="odd">
+<td align="left">ICO</td>
+<td align="right">0.12</td>
+</tr>
+<tr class="even">
+<td align="left">NP</td>
+<td align="right">1.80</td>
+</tr>
+<tr class="odd">
+<td align="left">CW</td>
+<td align="right">10.59</td>
+</tr>
+<tr class="even">
+<td align="left">Index</td>
+<td align="right">32.61</td>
+</tr>
+<tr class="odd">
+<td align="left">BD</td>
+<td align="right">41.74</td>
+</tr>
+<tr class="even">
+<td align="left">CP</td>
+<td align="right">42.81</td>
+</tr>
+<tr class="odd">
+<td align="left">CS</td>
+<td align="right">45.93</td>
+</tr>
+<tr class="even">
+<td align="left">MAR</td>
+<td align="right">46.04</td>
+</tr>
+<tr class="odd">
+<td align="left">FP</td>
+<td align="right">58.74</td>
+</tr>
+<tr class="even">
+<td align="left">FIS</td>
+<td align="right">58.74</td>
+</tr>
+<tr class="odd">
+<td align="left">HAB</td>
+<td align="right">83.42</td>
+</tr>
+<tr class="even">
+<td align="left">TR</td>
+<td align="right">91.77</td>
+</tr>
+</tbody>
+</table>
+<p>We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">goal</th>
+<th align="right">score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AO</td>
+<td align="right">69.12</td>
+</tr>
+<tr class="even">
+<td align="left">BD</td>
+<td align="right">92.00</td>
+</tr>
+<tr class="odd">
+<td align="left">CP</td>
+<td align="right">90.92</td>
+</tr>
+<tr class="even">
+<td align="left">CS</td>
+<td align="right">85.51</td>
+</tr>
+<tr class="odd">
+<td align="left">CW</td>
+<td align="right">82.78</td>
+</tr>
+<tr class="even">
+<td align="left">ECO</td>
+<td align="right">76.41</td>
+</tr>
+<tr class="odd">
+<td align="left">FIS</td>
+<td align="right">61.50</td>
+</tr>
+<tr class="even">
+<td align="left">FP</td>
+<td align="right">61.50</td>
+</tr>
+<tr class="odd">
+<td align="left">HAB</td>
+<td align="right">92.76</td>
+</tr>
+<tr class="even">
+<td align="left">ICO</td>
+<td align="right">64.00</td>
+</tr>
+<tr class="odd">
+<td align="left">LE</td>
+<td align="right">39.88</td>
+</tr>
+<tr class="even">
+<td align="left">LIV</td>
+<td align="right">3.34</td>
+</tr>
+<tr class="odd">
+<td align="left">LSP</td>
+<td align="right">1.02</td>
+</tr>
+<tr class="even">
+<td align="left">MAR</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">NP</td>
+<td align="right">48.42</td>
+</tr>
+<tr class="even">
+<td align="left">SP</td>
+<td align="right">32.51</td>
+</tr>
+<tr class="odd">
+<td align="left">SPP</td>
+<td align="right">91.24</td>
+</tr>
+<tr class="even">
+<td align="left">TR</td>
+<td align="right">65.19</td>
+</tr>
+</tbody>
+</table>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_text).</code></pre>
+<p><img src="workshop-explore_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="data-for-samoa" class="section level2">
+<h2>Data for Samoa</h2>
+<div id="habitats" class="section level3">
+<h3>Habitats</h3>
+</div>
+<div id="fisheries" class="section level3">
+<h3>Fisheries</h3>
+<p>The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ. Our models need catch for at least 10 years (20 is better). Ideally, we would also have status (at least B/BMSY, bonus is F/FMSY).</p>
+<p>Data are from the <a href="http://www.seaaroundus.org">Sea Around Us Project</a>.</p>
+<p>We can look at an interactive visualization of <a href="http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&amp;dimension=taxon&amp;measure=tonnage&amp;limit=20">fish caught in Samoa’s EEZ</a>:</p>
+<div class="figure">
+<img src="images/saup-samoa-eezfishing.png" />
+
+</div>
+<p>We can also look at an interactive visualization of <a href="http://www.seaaroundus.org/data/#/spatial-catch?entities=192">Samoa fishing around the world</a> (mostly high seas and agreements with other countries):</p>
+<div class="figure">
+<img src="images/saup-samoa-worldfishing.png" />
+
+</div>
+<div id="workshop-discussion" class="section level4">
+<h4>Workshop discussion:</h4>
+<ul>
+<li>remove species</li>
+<li>improve meancatch estimates, especially for catch that is grouped instead of by species.</li>
+</ul>
+<p><strong>Remove species</strong></p>
+<p>Let’s look at the species list that is include in Samoa’s FIS model.</p>
+<p><strong>Questions about local data</strong></p>
+<p>By “local data”, we mean your data in Samoa. We want to talk about how it differs from the global data we have in our models for Samoa.</p>
+<p>What fisheries data do you have? The criteria we need is:</p>
+<ul>
+<li>species list</li>
+<li>catch by species: only what is fished within Samoa’s EEZ</li>
+<li>years: at least 10 years of data (preferably 20)</li>
+</ul>
+<p>Depending on the format, we’d be able to update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.</p>
+<p><em>Note</em>: we cannot add new species in this workshop. That will take more attention and time than we can give. We would need to add meancatch values, as well as matching b_bmsy estimates.</p>
+<p>Let’s look at the list of species that are represented in the FIS model (this is the <a href="https://raw.githubusercontent.com/OHI-Science/sam/master//eez/layers/fis_meancatch.csv">fis_meancatch</a> layer):</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">stock_id_taxonkey</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Marine_fishes_not_identified-77_100039</td>
+</tr>
+<tr class="even">
+<td align="left">Miscellaneous_aquatic_invertebrates-77_100077</td>
+</tr>
+<tr class="odd">
+<td align="left">Marine_pelagic_fishes_not_identified-77_100339</td>
+</tr>
+<tr class="even">
+<td align="left">Mollusca-77_190195</td>
+</tr>
+<tr class="odd">
+<td align="left">Elasmobranchii-77_200004</td>
+</tr>
+<tr class="even">
+<td align="left">Scombroidea-77_300036</td>
+</tr>
+<tr class="odd">
+<td align="left">Decapoda-77_390013</td>
+</tr>
+<tr class="even">
+<td align="left">Muraenidae-77_400056</td>
+</tr>
+<tr class="odd">
+<td align="left">Holocentridae-77_400243</td>
+</tr>
+<tr class="even">
+<td align="left">Serranidae-77_400289</td>
+</tr>
+<tr class="odd">
+<td align="left">Carangidae-77_400314</td>
+</tr>
+<tr class="even">
+<td align="left">Lutjanidae-77_400323</td>
+</tr>
+<tr class="odd">
+<td align="left">Lethrinidae-77_400328</td>
+</tr>
+<tr class="even">
+<td align="left">Mullidae-77_400332</td>
+</tr>
+<tr class="odd">
+<td align="left">Mugilidae-77_400359</td>
+</tr>
+<tr class="even">
+<td align="left">Labridae-77_400362</td>
+</tr>
+<tr class="odd">
+<td align="left">Acanthuridae-77_400412</td>
+</tr>
+<tr class="even">
+<td align="left">Siganidae-77_400413</td>
+</tr>
+<tr class="odd">
+<td align="left">Scombridae-77_400416</td>
+</tr>
+<tr class="even">
+<td align="left">Istiophoridae-77_400419</td>
+</tr>
+<tr class="odd">
+<td align="left">Scarus-77_500242</td>
+</tr>
+<tr class="even">
+<td align="left">Sphyraena-77_500372</td>
+</tr>
+<tr class="odd">
+<td align="left">Gymnothorax-77_500384</td>
+</tr>
+<tr class="even">
+<td align="left">Naso-77_500480</td>
+</tr>
+<tr class="odd">
+<td align="left">Isurus-77_500638</td>
+</tr>
+<tr class="even">
+<td align="left">Alopias-77_500639</td>
+</tr>
+<tr class="odd">
+<td align="left">Etelis-77_501116</td>
+</tr>
+<tr class="even">
+<td align="left">Pristipomoides-77_502124</td>
+</tr>
+<tr class="odd">
+<td align="left">Octopus-77_590013</td>
+</tr>
+<tr class="even">
+<td align="left">Coryphaena_hippurus-77_600006</td>
+</tr>
+<tr class="odd">
+<td align="left">Chanos_chanos-77_600080</td>
+</tr>
+<tr class="even">
+<td align="left">Aphareus_rutilans-77_600083</td>
+</tr>
+<tr class="odd">
+<td align="left">Aprion_virescens-77_600084</td>
+</tr>
+<tr class="even">
+<td align="left">Acanthocybium_solandri-77_600089</td>
+</tr>
+<tr class="odd">
+<td align="left">Alepisaurus_ferox-77_600099</td>
+</tr>
+<tr class="even">
+<td align="left">Katsuwonus_pelamis-77_600107</td>
+</tr>
+<tr class="odd">
+<td align="left">Thunnus_alalunga-77_600142</td>
+</tr>
+<tr class="even">
+<td align="left">Thunnus_albacares-77_600143</td>
+</tr>
+<tr class="odd">
+<td align="left">Thunnus_obesus-77_600146</td>
+</tr>
+<tr class="even">
+<td align="left">Lutjanus_kasmira-77_600156</td>
+</tr>
+<tr class="odd">
+<td align="left">Istiompax_indica-77_600217</td>
+</tr>
+<tr class="even">
+<td align="left">Makaira_mazara-77_600218</td>
+</tr>
+<tr class="odd">
+<td align="left">Kajikia_audax-77_600223</td>
+</tr>
+<tr class="even">
+<td align="left">Xiphias_gladius-77_600226</td>
+</tr>
+<tr class="odd">
+<td align="left">Lutjanus_gibbus-77_600265</td>
+</tr>
+<tr class="even">
+<td align="left">Selar_crumenophthalmus-77_600387</td>
+</tr>
+<tr class="odd">
+<td align="left">Elagatis_bipinnulata-77_600412</td>
+</tr>
+<tr class="even">
+<td align="left">Carcharhinus_falciformis-77_600868</td>
+</tr>
+<tr class="odd">
+<td align="left">Carcharhinus_galapagensis-77_600870</td>
+</tr>
+<tr class="even">
+<td align="left">Carcharhinus_longimanus-77_600875</td>
+</tr>
+<tr class="odd">
+<td align="left">Carcharhinus_melanopterus-77_600877</td>
+</tr>
+<tr class="even">
+<td align="left">Prionace_glauca-77_600898</td>
+</tr>
+<tr class="odd">
+<td align="left">Lepidocybium_flavobrunneum-77_601042</td>
+</tr>
+<tr class="even">
+<td align="left">Ruvettus_pretiosus-77_601044</td>
+</tr>
+<tr class="odd">
+<td align="left">Lampris_guttatus-77_601072</td>
+</tr>
+<tr class="even">
+<td align="left">Sphyraena_barracuda-77_601235</td>
+</tr>
+<tr class="odd">
+<td align="left">Acanthurus_lineatus-77_601258</td>
+</tr>
+<tr class="even">
+<td align="left">Ctenochaetus_striatus-77_601262</td>
+</tr>
+<tr class="odd">
+<td align="left">Naso_unicornis-77_601265</td>
+</tr>
+<tr class="even">
+<td align="left">Lethrinus_olivaceus-77_601864</td>
+</tr>
+<tr class="odd">
+<td align="left">Alopias_superciliosus-77_602534</td>
+</tr>
+<tr class="even">
+<td align="left">Tetrapturus_angustirostris-77_603915</td>
+</tr>
+<tr class="odd">
+<td align="left">Variola_louti-77_605354</td>
+</tr>
+<tr class="even">
+<td align="left">Scarus_ghobban-77_605548</td>
+</tr>
+<tr class="odd">
+<td align="left">Thunnus_orientalis-77_614290</td>
+</tr>
+<tr class="even">
+<td align="left">Tridacna_squamosa-77_690134</td>
+</tr>
+<tr class="odd">
+<td align="left">Scylla_serrata-77_690190</td>
+</tr>
+<tr class="even">
+<td align="left">Tridacna_maxima-77_690673</td>
+</tr>
+<tr class="odd">
+<td align="left">Panulirus_penicillatus-77_690801</td>
+</tr>
+<tr class="even">
+<td align="left">Panulirus_versicolor-77_690802</td>
+</tr>
+<tr class="odd">
+<td align="left">Parribacus_caledonicus-77_690882</td>
+</tr>
+<tr class="even">
+<td align="left">Echinodermata-77_190277</td>
+</tr>
+<tr class="odd">
+<td align="left">Sphyrna-77_500693</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>## these values don&#39;t change through time
+#ggplot(data = fis_meancatch, aes(x = year, y = mean_catch)) +
+#         geom_line(aes(color = stock_id_taxonkey)) +
+#  theme(legend.position=&quot;none&quot;)</code></pre>
+<p>Let’s also look at data from a single species, a red snapper (<em>Xiphias_gladius-77_600226</em>). The values are all the same: this is the mean catch throughout the period.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">rgn_id</th>
+<th align="left">stock_id_taxonkey</th>
+<th align="right">year</th>
+<th align="right">mean_catch</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2001</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2002</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2003</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2004</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2005</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2006</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2007</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2008</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2009</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2010</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2011</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2012</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2013</td>
+<td align="right">55.67419</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77_600226</td>
+<td align="right">2014</td>
+<td align="right">55.67419</td>
+</tr>
+</tbody>
+</table>
+<p>Now let’s look at b_bmsy:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">stock_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coryphaena_hippurus-77</td>
+</tr>
+<tr class="even">
+<td align="left">Chanos_chanos-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Acanthocybium_solandri-77</td>
+</tr>
+<tr class="even">
+<td align="left">Katsuwonus_pelamis-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Thunnus_alalunga-77</td>
+</tr>
+<tr class="even">
+<td align="left">Thunnus_albacares-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Thunnus_obesus-77</td>
+</tr>
+<tr class="even">
+<td align="left">Kajikia_audax-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Xiphias_gladius-77</td>
+</tr>
+<tr class="even">
+<td align="left">Selar_crumenophthalmus-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Carcharhinus_falciformis-77</td>
+</tr>
+<tr class="even">
+<td align="left">Carcharhinus_longimanus-77</td>
+</tr>
+<tr class="odd">
+<td align="left">Prionace_glauca-77</td>
+</tr>
+<tr class="even">
+<td align="left">Thunnus_orientalis-77</td>
+</tr>
+</tbody>
+</table>
+<p>and a single species (<em>Xiphias_gladius-77</em>)</p>
+<table>
+<thead>
+<tr class="header">
+<th align="right">rgn_id</th>
+<th align="left">stock_id</th>
+<th align="right">year</th>
+<th align="right">bbmsy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2001</td>
+<td align="right">1.468611</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2002</td>
+<td align="right">1.413867</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2003</td>
+<td align="right">1.344380</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2004</td>
+<td align="right">1.270593</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2005</td>
+<td align="right">1.225540</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2006</td>
+<td align="right">1.209736</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2007</td>
+<td align="right">1.213713</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2008</td>
+<td align="right">1.239015</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2009</td>
+<td align="right">1.276003</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2010</td>
+<td align="right">1.287259</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2011</td>
+<td align="right">1.286469</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2012</td>
+<td align="right">1.261431</td>
+</tr>
+<tr class="odd">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2013</td>
+<td align="right">1.220107</td>
+</tr>
+<tr class="even">
+<td align="right">152</td>
+<td align="left">Xiphias_gladius-77</td>
+<td align="right">2014</td>
+<td align="right">1.159402</td>
+</tr>
+</tbody>
+</table>
+<p>These species from f_b_bmsy.csv:</p>
+<p>152,“Coryphaena_hippurus-77”,2014,0.94531460898379 152,“Chanos_chanos-77”,2014,1.28634028434866 152,“Acanthocybium_solandri-77”,2014,0.596214642608504 152,“Katsuwonus_pelamis-77”,2014,1.65527272727272 152,“Thunnus_alalunga-77”,2014,1.54654545454545 152,“Thunnus_albacares-77”,2014,1.15018181818182 152,“Thunnus_obesus-77”,2014,0.845418181818197 152,“Kajikia_audax-77”,2014,0.747454545454545 152,“Xiphias_gladius-77”,2014,1.15940221072554 152,“Selar_crumenophthalmus-77”,2014,1.41018912240716 152,“Carcharhinus_falciformis-77”,2014,0.435076414679493 152,“Carcharhinus_longimanus-77”,2014,0.976992669001823 152,“Prionace_glauca-77”,2014,0.98193595892549 152,“Thunnus_orientalis-77”,2014,0.293735431235426</p>
+<p>From fis_meancatch.csv: (these are just families). If you have species catch for these, that would be an improvement! 152,“Marine_fishes_not_identified-77_100039”,2001,875.432932429903 152,“Miscellaneous_aquatic_invertebrates-77_100077”,2001,323.503281343301 152,“Marine_pelagic_fishes_not_identified-77_100339”,2001,22.7143720342314 152,“Mollusca-77_190195”,2001,13.3038530945942 152,“Elasmobranchii-77_200004”,2001,135.79556139432 152,“Scombroidea-77_300036”,2001,0.0013246685145957 152,“Decapoda-77_390013”,2001,1.46824403356404 152,“Muraenidae-77_400056”,2001,107.625692660142 152,“Holocentridae-77_400243”,2001,151.236390329276 152,“Serranidae-77_400289”,2001,186.64823848984 152,“Carangidae-77_400314”,2001,281.863460517806 152,“Lutjanidae-77_400323”,2001,86.7008430286946 152,“Lethrinidae-77_400328”,2001,913.868226819778 152,“Mullidae-77_400332”,2001,153.688017475432 152,“Mugilidae-77_400359”,2001,431.684868417033 152,“Labridae-77_400362”,2001,165.799099318859 152,“Acanthuridae-77_400412”,2001,146.931707524046 152,“Siganidae-77_400413”,2001,76.2474016948384 152,“Scombridae-77_400416”,2001,19.0189889874631 152,“Istiophoridae-77_400419”,2001,28.1931635399601 152,“Scarus-77_500242”,2001,321.633467289188 152,“Sphyraena-77_500372”,2001,50.2575801691799 152,“Gymnothorax-77_500384”,2001,107.624256116572 152,“Naso-77_500480”,2001,512.853614366418 152,“Isurus-77_500638”,2001,21.3013560547713 152,“Alopias-77_500639”,2001,2.75647577396958 152,“Etelis-77_501116”,2001,192.167031496799 152,“Pristipomoides-77_502124”,2001,192.010507745779 152,“Octopus-77_590013”,2001,1059.82566845974 Species, which are way better 152,“Coryphaena_hippurus-77_600006”,2001,68.9517044718571 152,“Chanos_chanos-77_600080”,2001,33.1924007307602 152,“Aphareus_rutilans-77_600083”,2001,58.7949527428785 152,“Aprion_virescens-77_600084”,2001,57.8998564173197 152,“Acanthocybium_solandri-77_600089”,2001,0.844205188321127 152,“Alepisaurus_ferox-77_600099”,2001,0.0526908003321361 152,“Katsuwonus_pelamis-77_600107”,2001,453.304326475305 152,“Thunnus_alalunga-77_600142”,2001,2629.90538195762 152,“Thunnus_albacares-77_600143”,2001,598.962492260102 152,“Thunnus_obesus-77_600146”,2001,113.074391998123 152,“Lutjanus_kasmira-77_600156”,2001,17.6415073400631 152,“Istiompax_indica-77_600217”,2001,12.8797782893439 152,“Makaira_mazara-77_600218”,2001,24.308046693226 152,“Kajikia_audax-77_600223”,2001,17.8190186818818 152,“Xiphias_gladius-77_600226”,2001,55.6741876378698 152,“Lutjanus_gibbus-77_600265”,2001,309.148628188037 152,“Selar_crumenophthalmus-77_600387”,2001,70.2670366388739 152,“Elagatis_bipinnulata-77_600412”,2001,0.392955061190062 152,“Carcharhinus_falciformis-77_600868”,2001,60.0334391545258 152,“Carcharhinus_galapagensis-77_600870”,2001,2.42246945455904 152,“Carcharhinus_longimanus-77_600875”,2001,15.2729271954 152,“Carcharhinus_melanopterus-77_600877”,2001,0.347212207020449 152,“Prionace_glauca-77_600898”,2001,181.359131536548 152,“Lepidocybium_flavobrunneum-77_601042”,2001,0.116826702465681 152,“Ruvettus_pretiosus-77_601044”,2001,1.29753807980051 152,“Lampris_guttatus-77_601072”,2001,0.274549281717437 152,“Sphyraena_barracuda-77_601235”,2001,7.74842040340665 152,“Acanthurus_lineatus-77_601258”,2001,168.073025972872 152,“Ctenochaetus_striatus-77_601262”,2001,168.101035915956 152,“Naso_unicornis-77_601265”,2001,167.835033710107 152,“Lethrinus_olivaceus-77_601864”,2001,234.425403214539 152,“Alopias_superciliosus-77_602534”,2001,3.34963693117321 152,“Tetrapturus_angustirostris-77_603915”,2001,3.25636616907225 152,“Variola_louti-77_605354”,2001,8.72835870177256 152,“Scarus_ghobban-77_605548”,2001,315.806174990178 152,“Thunnus_orientalis-77_614290”,2001,0.87427271337282 152,“Tridacna_squamosa-77_690134”,2001,18.0252082345237 152,“Scylla_serrata-77_690190”,2001,551.14206589276 152,“Tridacna_maxima-77_690673”,2001,326.70220263872 152,“Panulirus_penicillatus-77_690801”,2001,220.605168985249 152,“Panulirus_versicolor-77_690802”,2001,220.558977420209 152,“Parribacus_caledonicus-77_690882”,2001,17.6950605732389</p>
+</div>
+</div>
+<div id="mar" class="section level3">
+<h3>MAR</h3>
+<p>from mar_sustainability_score</p>
+<p>152,2012,“Bear paw clam_507”,0.811764706 152,2012,“Elongate giant clam_508”,0.811764706 152,2012,“Fluted giant clam_509”,0.811764706 152,2012,“Giant clam_510”,0.811764706 152,2012,“Smooth giant clam_511”,0.811764706</p>
+</div>
+<div id="iconic-species" class="section level3">
+<h3>Iconic Species</h3>
+</div>
+<div id="discussion" class="section level3">
+<h3>Discussion</h3>
+<p>Priorities for goals, based on gapfilled data alone: TR, HAB</p>
+</div>
+<div id="gapfilling-breakdown-by-goals" class="section level3">
+<h3>Gapfilling Breakdown by goals</h3>
+<p><a href="https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/temp/FIS_summary_gf.csv" class="uri">https://raw.githubusercontent.com/OHI-Science/ohi-global/draft/eez/temp/FIS_summary_gf.csv</a></p>
+<p>152,“Marine_fishes_not_identified-77”,100039,2017,875.432932429903,0.0832661810307309,“median” 152,“Miscellaneous_aquatic_invertebrates-77”,100077,2017,323.503281343301,0.0832661810307309,“median” 152,“Marine_pelagic_fishes_not_identified-77”,100339,2017,22.7143720342314,0.0832661810307309,“median” 152,“Mollusca-77”,190195,2017,13.3038530945942,0.0832661810307309,“median” 152,“Echinodermata-77”,190277,2017,7.81377974118321,0.0832661810307309,“median” 152,“Elasmobranchii-77”,200004,2017,135.79556139432,0.208165452576827,“median” 152,“Scombroidea-77”,300036,2017,0.0013246685145957,0.416330905153654,“median” 152,“Decapoda-77”,390013,2017,1.46824403356404,0.416330905153654,“median” 152,“Muraenidae-77”,400056,2017,107.625692660142,0.666129448245847,“median” 152,“Holocentridae-77”,400243,2017,151.236390329276,0.666129448245847,“median” 152,“Serranidae-77”,400289,2017,186.64823848984,0.666129448245847,“median” 152,“Carangidae-77”,400314,2017,281.863460517806,0.666129448245847,“median” 152,“Lutjanidae-77”,400323,2017,86.7008430286946,0.666129448245847,“median” 152,“Lethrinidae-77”,400328,2017,913.868226819778,0.666129448245847,“median” 152,“Mullidae-77”,400332,2017,153.688017475432,0.666129448245847,“median” 152,“Mugilidae-77”,400359,2017,431.684868417033,0.666129448245847,“median” 152,“Labridae-77”,400362,2017,165.799099318859,0.666129448245847,“median” 152,“Acanthuridae-77”,400412,2017,146.931707524046,0.666129448245847,“median” 152,“Siganidae-77”,400413,2017,76.2474016948384,0.666129448245847,“median” 152,“Scombridae-77”,400416,2017,19.0189889874631,0.666129448245847,“median”</p>
+</div>
+<div id="breakdown-by-pressuresresilience" class="section level3">
+<h3>Breakdown by pressures/resilience</h3>
+<p><a href="https://github.com/OHI-Science/ohi-global/blob/draft/global2015/gapFilling/pressure_matrix_CP.csv">pressure_matrix_CP_gapfill</a></p>
+<pre class="r"><code>y &lt;- read_csv(file.path(rawkey_prefix, &quot;global2015/gapFilling/pressure_matrix_CP.csv&quot;)) %&gt;% 
+  filter(X1 == rgn_global$rgn_id)</code></pre>
+<pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_integer(),
+##   cc_acid = col_double(),
+##   cc_slr = col_double(),
+##   cc_sst = col_double(),
+##   cc_uv = col_double(),
+##   hd_intertidal = col_double(),
+##   hd_subtidal_hb = col_double(),
+##   po_chemicals_3nm = col_double(),
+##   po_nutrients_3nm = col_double(),
+##   sp_alien = col_double()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+</div>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<div id="hab-vs-cp-vs-cs" class="section level3">
+<h3>HAB vs CP vs CS</h3>
+</div>
+<div id="tr" class="section level3">
+<h3>TR</h3>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
