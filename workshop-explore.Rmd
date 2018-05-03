@@ -1,14 +1,18 @@
 ---
-title: "Explore Data: Samoa"
+title: "Explore Data for Samoa"
 output:
   html_document:
     toc: true
     toc_float: true
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
 
-```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+```{r setup sam, echo=FALSE, message=FALSE, warning=FALSE}
 ## libraries
 library(tidyverse)
+library(DT)
 
 ## country focus
 key <- 'sam'
@@ -33,73 +37,11 @@ rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv
 
 ## Objectives and Resources
 
-Today we'll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. This workshop compliments <http://ohi-science.org/country-opportunities-training>.
+Here we'll discuss the data for Samoa from the Global Assessments, as well as data that are available in Samoa. To avoid confusion, we'll call data for Samoa from the global assessments "global data" and data for Samoa available at the workshop "local data".
 
 **Objectives**
 
 **Resources**
-
-
-## Gapfilling in Samoa
-
-Yesterday we discussed some of the data sources that go into global assessments, and gapfilling. 
-
-Let's look at Samoa in the gapfilling "carpet plot". This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal (labeled on top), split into four years of assessments (2012-2015). In these plots, blues mean the most amounts of gapfilling, and reds are the least amount. 
-
-![](images/carpetPlot_gapfilling2015_samoa1.png)
-
-<br>
-
-We can zoom in on Samoa: 
-
-![](images/carpetPlot_gapfilling2015_samoa2.png)
-
-From this, it seems that goals involving habitat data (HAB, CP, CS), as well as SPP and NP are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In red, this figure shows that LIV, MAR, and LSP have the least amount of gapfilling and are most representative of data.
-
-Let's look a bit deeper to see numerically the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved: 
-
-AO, SPP, LSP, SP, ICO, and NP
-
-
-```{r, echo=FALSE}
-scores_gf <- scores_gf_csv %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(dimension == "score") %>%
-  select(goal, percent_gapfilled = score) %>%
-  arrange(percent_gapfilled) 
-
-scores_gf %>%
-  knitr::kable()
-```
-
-
-
-We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
-
-```{r, echo=FALSE}
-scores <- scores_csv %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(region_id == rgn_global$rgn_id) %>% 
-  filter(dimension == "status",  
-         year == max(year)) %>%
-  select(goal, score) %>%
-  arrange(goal) 
-
-scores %>% 
-  knitr::kable()
-
-scores_plot <- scores %>%
-  left_join(scores_gf, by = "goal") # this will remove LIV, ECO, LE because not tracked for gapfilling
-
-ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
-  geom_point() + 
-  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
-
-## can also assign above to p then:
-# ggplotly(p)
-```
-
-
 
 
 ## Data for Samoa
@@ -340,8 +282,8 @@ y <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/pressure_matrix_CP
 
 ## Data
 
-### HAB vs CP vs CS
 
-### TR
+## Discussion and Next Steps
 
+- we will capture the discussion we have, in particular about FP, TR, Habitat-based goals.
 

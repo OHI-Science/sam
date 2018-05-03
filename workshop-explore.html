@@ -11,9 +11,9 @@
 
 
 
-<title>Explore Data: Samoa</title>
+<title>Explore Global Data for Samoa</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -25,6 +25,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.4/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -297,194 +305,89 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Explore Data: Samoa</h1>
+<h1 class="title toc-ignore">Explore Global Data for Samoa</h1>
 
 </div>
 
 
 <div id="objectives-and-resources" class="section level2">
 <h2>Objectives and Resources</h2>
-<p>Today we’ll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. This workshop compliments <a href="http://ohi-science.org/country-opportunities-training" class="uri">http://ohi-science.org/country-opportunities-training</a>.</p>
+<p>Today we’ll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention.</p>
 <p><strong>Objectives</strong></p>
 <p><strong>Resources</strong></p>
 </div>
 <div id="gapfilling-in-samoa" class="section level2">
 <h2>Gapfilling in Samoa</h2>
 <p>Yesterday we discussed some of the data sources that go into global assessments, and gapfilling.</p>
-<p>Let’s look at Samoa in the gapfilling “carpet plot”. This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal (labeled on top), split into four years of assessments (2012-2015). In these plots, blues mean the most amounts of gapfilling, and reds are the least amount.</p>
+<p>Let’s look at Samoa in the gapfilling “carpet plot”. This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal. In these plots, reds mean the highest amounts of gapfilling, yellows are the least, and grey means not applicable.</p>
 <div class="figure">
-<img src="images/carpetPlot_gapfilling2015_samoa1.png" />
+<img src="images/carpetPlot_gapfillingFrazierS2Fig_sam1.TIFF" />
 
 </div>
 <p><br></p>
+<div id="figure-carpetplot-for-samoa" class="section level3">
+<h3>Figure: Carpetplot for Samoa</h3>
 <p>We can zoom in on Samoa:</p>
 <div class="figure">
-<img src="images/carpetPlot_gapfilling2015_samoa2.png" />
+<img src="images/carpetPlot_gapfillingFrazierS2Fig_sam2.png" />
 
 </div>
-<p>From this, it seems that goals involving habitat data (HAB, CP, CS), as well as SPP and NP are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In red, this figure shows that LIV, MAR, and LSP have the least amount of gapfilling and are most representative of data.</p>
-<p>Let’s look a bit deeper to see numerically the percent gapfilling by goal. This shows that there are several goals that have very little gapfilling in terms of the data involved:</p>
-<p>AO, SPP, LSP, SP, ICO, and NP</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">goal</th>
-<th align="right">percent_gapfilled</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AO</td>
-<td align="right">0.04</td>
-</tr>
-<tr class="even">
-<td align="left">SPP</td>
-<td align="right">0.06</td>
-</tr>
-<tr class="odd">
-<td align="left">LSP</td>
-<td align="right">0.07</td>
-</tr>
-<tr class="even">
-<td align="left">SP</td>
-<td align="right">0.10</td>
-</tr>
-<tr class="odd">
-<td align="left">ICO</td>
-<td align="right">0.12</td>
-</tr>
-<tr class="even">
-<td align="left">NP</td>
-<td align="right">1.80</td>
-</tr>
-<tr class="odd">
-<td align="left">CW</td>
-<td align="right">10.59</td>
-</tr>
-<tr class="even">
-<td align="left">Index</td>
-<td align="right">32.61</td>
-</tr>
-<tr class="odd">
-<td align="left">BD</td>
-<td align="right">41.74</td>
-</tr>
-<tr class="even">
-<td align="left">CP</td>
-<td align="right">42.81</td>
-</tr>
-<tr class="odd">
-<td align="left">CS</td>
-<td align="right">45.93</td>
-</tr>
-<tr class="even">
-<td align="left">MAR</td>
-<td align="right">46.04</td>
-</tr>
-<tr class="odd">
-<td align="left">FP</td>
-<td align="right">58.74</td>
-</tr>
-<tr class="even">
-<td align="left">FIS</td>
-<td align="right">58.74</td>
-</tr>
-<tr class="odd">
-<td align="left">HAB</td>
-<td align="right">83.42</td>
-</tr>
-<tr class="even">
-<td align="left">TR</td>
-<td align="right">91.77</td>
-</tr>
-</tbody>
-</table>
-<p>We can actually compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">goal</th>
-<th align="right">score</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AO</td>
-<td align="right">69.12</td>
-</tr>
-<tr class="even">
-<td align="left">BD</td>
-<td align="right">92.00</td>
-</tr>
-<tr class="odd">
-<td align="left">CP</td>
-<td align="right">90.92</td>
-</tr>
-<tr class="even">
-<td align="left">CS</td>
-<td align="right">85.51</td>
-</tr>
-<tr class="odd">
-<td align="left">CW</td>
-<td align="right">82.78</td>
-</tr>
-<tr class="even">
-<td align="left">ECO</td>
-<td align="right">76.41</td>
-</tr>
-<tr class="odd">
-<td align="left">FIS</td>
-<td align="right">61.50</td>
-</tr>
-<tr class="even">
-<td align="left">FP</td>
-<td align="right">61.50</td>
-</tr>
-<tr class="odd">
-<td align="left">HAB</td>
-<td align="right">92.76</td>
-</tr>
-<tr class="even">
-<td align="left">ICO</td>
-<td align="right">64.00</td>
-</tr>
-<tr class="odd">
-<td align="left">LE</td>
-<td align="right">39.88</td>
-</tr>
-<tr class="even">
-<td align="left">LIV</td>
-<td align="right">3.34</td>
-</tr>
-<tr class="odd">
-<td align="left">LSP</td>
-<td align="right">1.02</td>
-</tr>
-<tr class="even">
-<td align="left">MAR</td>
-<td align="right">0.00</td>
-</tr>
-<tr class="odd">
-<td align="left">NP</td>
-<td align="right">48.42</td>
-</tr>
-<tr class="even">
-<td align="left">SP</td>
-<td align="right">32.51</td>
-</tr>
-<tr class="odd">
-<td align="left">SPP</td>
-<td align="right">91.24</td>
-</tr>
-<tr class="even">
-<td align="left">TR</td>
-<td align="right">65.19</td>
-</tr>
-</tbody>
-</table>
-<pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
-<pre><code>## Warning: Removed 3 rows containing missing values (geom_text).</code></pre>
-<p><img src="workshop-explore_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Looking at the red goals, it seems that goals involving habitat data (HAB, CP, CS), as well as Food Provision (FIS and MAR) and Tourism &amp; Recreation are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In yellow, this figure shows that AO, SPP, CW, NP, and SP (LSP, SPP) have the least amount of gapfilling and are most representative of data.</p>
+<p>Let’s look a bit deeper to see numerically the percent gapfilling by goal. This confirms what we saw above but with more information. We can pull directly from the data from the Frazier et al. publication:</p>
+<div id="htmlwidget-f81e0f53637e203eafea" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f81e0f53637e203eafea">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],["AO","SPP","LSP","SP","ICO","NP","CW","Index","BD","CP","CS","MAR","FP","FIS","HAB","TR"],[0.04,0.06,0.07,0.1,0.12,1.8,10.59,32.61,41.74,42.81,45.93,46.04,58.74,58.74,83.42,91.77]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>goal<\/th>\n      <th>percent_gapfilled<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>What is very interesting is to compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling.</p>
+</div>
+<div id="table-gapfilled-vs.scores" class="section level3">
+<h3>Table: % Gapfilled vs. Scores</h3>
+<p>We can see this as a table. Here it is arranged by percent gapfilled, but we can also arrange by score.</p>
+<div id="htmlwidget-d3871df9ad48ac8a838a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d3871df9ad48ac8a838a">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],["AO","SPP","LSP","SP","ICO","NP","CW","BD","CP","CS","MAR","FIS","FP","HAB","TR","ECO","LE","LIV"],[69.12,91.24,1.02,32.51,64,48.42,82.78,92,90.92,85.51,0,61.5,61.5,92.76,65.19,76.41,39.88,3.34],[0.04,0.06,0.07,0.1,0.12,1.8,10.59,41.74,42.81,45.93,46.04,58.74,58.74,83.42,91.77,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>goal<\/th>\n      <th>score<\/th>\n      <th>percent_gapfilled<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="figure-gapfilled-vs.scores" class="section level3">
+<h3>Figure: % Gapfilled vs. Scores</h3>
+<p>But it can also be nice to see it as a figure:</p>
+<p><img src="workshop-explore_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>There are a lot of things we can talk about from this figure. This is what I focus on first:</p>
+<p><br></p>
+</div>
+<div id="overall" class="section level3">
+<h3>Overall</h3>
+<ul>
+<li>Samoa has a lot of goals (~11) with scores over 50 (on the x-axis)</li>
+<li>There are ~7 goals where % gapfilling is under 12.5% (on the y-axis)</li>
+<li>Some high-scoring goals have high % gapfilling, some have low</li>
+</ul>
+</div>
+<div id="tourism-and-recreation-tr" class="section level3">
+<h3>Tourism and Recreation (TR)</h3>
+<p><strong>Observations:</strong></p>
+<ul>
+<li>TR has the highest amount of gapfilling compared to any goal.</li>
+</ul>
+<p><strong>Discussion:</strong></p>
+<ul>
+<li>What would be better ways to model TR for Samoa? What is important to capture?</li>
+<li>What data are available locally in Samoa?</li>
+</ul>
+</div>
+<div id="food-provision-fp" class="section level3">
+<h3>Food Provision (FP)</h3>
+<p><strong>Observations:</strong></p>
+<ul>
+<li>FP and FIS are plotted on top of each other, which means that the FP score is the same as FIS (we can also see this from the table above). This means that MAR contributes nothing to the FP score, and in fact the MAR score is 0.</li>
+</ul>
+<p><strong>Discussion:</strong></p>
+<ul>
+<li>Why is the MAR score 0?</li>
+</ul>
+</div>
+<div id="habitat-based-goals-hab-cs-cp" class="section level3">
+<h3>Habitat-based goals (HAB, CS, CP)</h3>
+<ul>
+<li></li>
+</ul>
+</div>
 </div>
 <div id="data-for-samoa" class="section level2">
 <h2>Data for Samoa</h2>
@@ -1029,7 +932,6 @@ div.tocify {
 <p><a href="https://github.com/OHI-Science/ohi-global/blob/draft/global2015/gapFilling/pressure_matrix_CP.csv">pressure_matrix_CP_gapfill</a></p>
 <pre class="r"><code>y &lt;- read_csv(file.path(rawkey_prefix, &quot;global2015/gapFilling/pressure_matrix_CP.csv&quot;)) %&gt;% 
   filter(X1 == rgn_global$rgn_id)</code></pre>
-<pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_integer(),
