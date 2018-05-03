@@ -39,17 +39,23 @@ rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv
 
 Here we'll discuss the data for Samoa from the Global Assessments, as well as data that are available in Samoa. To avoid confusion, we'll call data for Samoa from the global assessments "global data" and data for Samoa available at the workshop "local data".
 
+Let's dive into the questions we had from before the break.
+
 **Objectives**
 
 **Resources**
 
 
-## Data for Samoa
 
 
-### Habitats
 
-### Fisheries
+
+## Food Provision: Fisheries
+
+```{r, child="goal-questions/FIS.Rmd"}
+```
+
+### Global Data
 
 The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ. Our models need catch for at least 10 years (20 is better). Ideally, we would also have status (at least B/BMSY, bonus is F/FMSY). 
 
@@ -64,6 +70,7 @@ We can also look at an interactive visualization of [Samoa fishing around the wo
 ![](images/saup-samoa-worldfishing.png)
 
 #### Workshop discussion:
+
 - remove species 
 - improve meancatch estimates, especially for catch that is grouped instead of by species.
 
@@ -225,7 +232,15 @@ Species, which are way better
 152,"Panulirus_versicolor-77_690802",2001,220.558977420209
 152,"Parribacus_caledonicus-77_690882",2001,17.6950605732389
 
-### MAR
+### Gapfilling
+
+How much of FIS species are gapfilled?
+
+/Users/julialowndes/github/ohi-global/global2017/gapfilling/layers/fis_b_bmsy.csv
+
+<br>
+
+## Food Provision: Mariculture
 
 from mar_sustainability_score
 
@@ -235,7 +250,20 @@ from mar_sustainability_score
 152,2012,"Giant clam_510",0.811764706
 152,2012,"Smooth giant clam_511",0.811764706
 
-### Iconic Species
+
+<br>
+
+## Habitat-based goals
+
+```{r, child="goal-questions/HAB.Rmd"}
+```
+
+## Tourism & Recreation
+
+```{r, child="goal-questions/TR.Rmd"}
+```
+
+
 
 
 ### Discussion

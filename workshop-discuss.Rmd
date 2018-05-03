@@ -122,67 +122,66 @@ There are a lot of things we can talk about from this figure. What do you see? L
 <br>
 
 ### Overall 
-
-**Observations:**
-
-- Two goals are 100% gapfilled (TR, HAB)
-- Samoa has a lot of goals (~11) with scores over 50 (on the x-axis)
-- There are ~7 goals where % gapfilling is under 12.5% (on the y-axis)
-- Some high-scoring goals have high % gapfilling, some have low
-
-**Discussion:**
-
-- What should we explore now that could help inform Tier 2 or OHI+?
+```{r, child="goal-questions/Overall.Rmd"}
+```
 
 <br>
 
 ### Tourism and Recreation (TR)
-
-**Observations:**
-
-- TR has the highest amount of gapfilling compared to any goal. 
-
-**Discussion:**
-
-- What would be better ways to model TR for Samoa? What is important to capture?
-- What data are available locally in Samoa?
+```{r, child="goal-questions/TR.Rmd"}
+```
 
 <br>
 
 ### Food Provision (FP)
 
-**Observations:**
-
-- FP and FIS are plotted on top of each other, which means that the FP score is the same as FIS (we can also see this from the table above). This means that MAR contributes nothing to the FP score, and in fact the MAR score is 0. 
-
-**Discussion:**
-
-- Why is the MAR score 0?
-- FIS has quite a bit of gapfilling (`r x <- scores_gf %>% filter(goal == "FIS"); x$percent_gapfilled`%), which data or species are gapfilled?
-
 <br>
 
 ### Habitat-based goals (HAB, CS, CP)
-
-**Observations**:
-
-- HAB is the goal with the highest amount of gapfilling and highest score
-- CP, CS, and HAB rely on much of the same data. 
-
-**Discussion:**
-
-- Which habitats are heavily gapfilled in HAB? (Or, which are not gapfilled in CP, CS?)
+```{r, child="goal-questions/HAB.Rmd"}
+```
 
 <br>
 
 ### Livelihoods and Economies (LE, LIV, ECO)
+```{r, child="goal-questions/LE.Rmd"}
+```
 
-**Observations**:
-
-- The LE goal is not on the figure. We didn't include them in our gapfilling analyses because our models rely on old data (pre-2012). 
-
-**Discussion:**
-
-- LE, LIV, ECO would be a good choice for improving.
 
 <br>
+
+## Discussion
+
+Any other observations? Which topics should we dive into first? 
+
+## Other information
+
+We can also look at the gapfilling plot above along with the global average. 
+
+```{r, echo=FALSE}
+scores_gf_compare <- scores_gf_csv %>% 
+  filter(region_id %in% c(rgn_global$rgn_id, 0),
+         dimension == "status") %>%
+  select(goal, region_id, percent_gapfilled = score) %>%
+  arrange(region_id, percent_gapfilled) 
+
+scores_compare <- scores_csv %>% 
+  filter(region_id %in% c(rgn_global$rgn_id, 0),
+         dimension == "status",  
+         year == max(year)) %>%
+  select(goal, region_id, score) %>%
+  arrange(region_id) 
+
+scores_plot_compare <- scores_compare %>%
+  left_join(scores_gf_compare, by = c("goal", "region_id")) %>% 
+  arrange(percent_gapfilled) %>%
+  mutate(region_name = region_id) %>%
+  mutate(region_name = str_replace_all(region_name, "152", "Samoa")) %>%
+  mutate(region_name = str_replace_all(region_name, "0", "Global"))
+
+ggplot(data = scores_plot_compare, aes(x = score, y = percent_gapfilled, label = goal, color = region_name)) + 
+  geom_point() + 
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
+```
+
+
