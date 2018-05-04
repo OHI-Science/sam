@@ -1,5 +1,11 @@
 |Time       |      Day 1|      Day 2|      Day 3|
 |:----------|----------:|----------:|----------:|
-|9-10:30 | [Workshop Overview](http://ohi-science.org/country-opportunities-training/overview.html); [OHI Framework: Global](http://ohi-science.org/country-opportunities-training/framework.html)  | [Discuss Global Data for Samoa]()  | Intro to OHI Toolbox |
-|11-12:30 | [Data and Goal Models: Global](http://ohi-science.org/country-opportunities-training/explore.html) | [Explore Data for Samoa]() |  Intro to OHI Toolbox |
-|13:30-15:00 | Alignment with SDGs  | Explore Samoa Data |  Discuss/Report Opportunities and Next Steps |
+|9-10:30 | [Welcome](); [Workshop Overview](http://ohi-science.org/country-opportunities-training/overview.html); [OHI Program Overview](https://docs.google.com/presentation/d/1kpKiCrdLHFwgysgskFzei8RaAfgS2rNg_cypS54JOkg/edit#slide=id.g390ee9ea07_0_16) | [Data and Goal Models: Global](http://ohi-science.org/country-opportunities-training/data-goal-models.html)  | Intro to OHI Toolbox |
+|11-12:30 | [OHI Framework: Global](http://ohi-science.org/country-opportunities-training/ohi-framework.html); [Interpret Samoa's scores]() | [Explore Samoa Global Data](http://ohi-science.org/sam/workshop-explore) |  Intro to OHI Toolbox |
+|13:30-15:00 | Alignment with SDGs  | Work with Samoa Data |  Discuss/Report Opportunities and Next Steps |
+
+
+TODO: chat with Erin
+
+- Welcome activity? Intro everyone?
+- Update OHI Overview talk and schedule link

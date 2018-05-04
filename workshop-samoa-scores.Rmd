@@ -1,5 +1,5 @@
 ---
-title: "Overview: Samoa"
+title: "Global Assessment: Samoa Scores"
 author: "Julie"
 date: "4/18/2018"
 output: html_document
@@ -8,3 +8,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+- carpet plot
+- oceanhealthindex.org 
+
+- are all goals relevant?

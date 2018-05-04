@@ -1,15 +1,7 @@
 name: The Ocean Health Index for Samoa
 navbar:
   title: Home
-  left:
-  - text: About
-    href: about.html
-  - text: Frequently Asked Questions
-    href: faq.html
-  - text: Who we are
-    href: who_we_are.html
-#  - text: Workshop
-#    href: workshop.html
+  left: ~
 output_dir: '.'
 output:
   html_document:

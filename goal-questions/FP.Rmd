@@ -5,4 +5,4 @@
 **Discussion:**
 
 - Why is the MAR score 0?
-- FIS has quite a bit of gapfilling (`r x <- scores_gf %>% filter(goal == "FIS"); x$percent_gapfilled`%), which data or species are gapfilled?
+- FIS has quite a bit of gapfilling (64%), which data or species are gapfilled?

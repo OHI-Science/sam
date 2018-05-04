@@ -27,8 +27,6 @@ rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key,
 
 scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores.csv")) 
 scores_csv <- read_csv(file.path(rawkey_prefix, "eez/scores.csv")) 
-fis_meancatch_csv <- read_csv(file.path(rawkey_prefix, "/eez/layers/fis_meancatch.csv"))
-fis_b_bmsy_csv <- read_csv(file.path(rawkey_prefix, "/eez/layers/fis_b_bmsy.csv"))
 
 ## get global rgn_id
 rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
