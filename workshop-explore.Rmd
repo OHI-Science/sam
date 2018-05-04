@@ -262,7 +262,7 @@ mar_harvest_tonnes %>%
 
 Let's have a look at the data included for Samoa:
 
-```{r hab data, echo=FALSE}
+```{r hab data, echo=FALSE, message=FALSE, warning=FALSE}
 hab_mangrove_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_mangrove_extent.csv")
 
 hab_seagrass_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_seagrass_extent.csv")
@@ -334,6 +334,26 @@ Is there data available to represent:
 
 - Percent direct employment in tourism (tr_jobs_pct_tourism): Percent direct employment in tourism?
 
+## Natural Products
+
+Which Natural Products are included for Samoa?
+
+```{r np, echo=FALSE, warning=FALSE, message=FALSE}
+np_harvest_tonnes_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/global2017/gapfilling/layers/np_harvest_tonnes.csv")
+
+np_harvest_tonnes <- np_harvest_tonnes_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+np_harvest_tonnes %>%
+  distinct(commodity, product) %>%
+  DT::datatable()
+
+## shows gapfilling too
+# np_harvest_tonnes 
+
+```
+
+So there are two products here.
 
 ## Discussion and Next Steps
 

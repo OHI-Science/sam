@@ -152,6 +152,7 @@ There are a lot of things we can talk about from this figure. What do you see? L
 
 Any other observations? Which topics should we dive into first? 
 
+
 ## Other information
 
 We can also look at the gapfilling plot above along with the global average. 
