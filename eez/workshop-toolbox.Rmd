@@ -56,10 +56,10 @@ setwd('eez')
 ## install OHI's `ohicore` package
 ## first we need to install the devtools package. Note the different install functions.
 ## don't worry about the warnings. But ensure there are no errors!
-install.packages('devtools') # do this just one time!
+# install.packages('devtools') # do this just one time!
 library(devtools) # do this every time you begin
 
-devtools::install_github("ohi-science/ohicore@dev") # do this just one time!
+# devtools::install_github("ohi-science/ohicore@dev") # do this just one time!
 library(ohicore) # do this every time you begin
 
 ## source the function to make flower plots; this won't do anything yet, but it makes it available to us.
