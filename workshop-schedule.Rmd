@@ -1,7 +1,7 @@
 |Time       |      Day 1|      Day 2|      Day 3|
 |:----------|----------:|----------:|----------:|
 |9-10:30 | [Welcome](); [Workshop Overview](http://ohi-science.org/country-opportunities-training/overview.html); [OHI Program Overview](https://docs.google.com/presentation/d/1kpKiCrdLHFwgysgskFzei8RaAfgS2rNg_cypS54JOkg/edit#slide=id.g390ee9ea07_0_16) | [Data and Goal Models: Global](http://ohi-science.org/country-opportunities-training/data-goal-models.html)  | Intro to OHI Toolbox |
-|11-12:30 | [OHI Framework: Global](http://ohi-science.org/country-opportunities-training/ohi-framework.html); [Interpret Samoa's scores]() | [Explore Samoa Global Data](http://ohi-science.org/sam/workshop-explore) |  Intro to OHI Toolbox |
+|11-12:30 | [OHI Framework: Global](http://ohi-science.org/country-opportunities-training/ohi-framework.html); [Interpret Samoa's scores]() | [Explore Samoa Global Data](http://ohi-science.org/sam/workshop-explore) |  [Hands-on with the OHI Toolbox](https://rawgit.com/OHI-Science/sam/master/eez/workshop-toolbox.html) |
 |13:30-15:00 | Alignment with SDGs  | Work with Samoa Data |  Discuss/Report Opportunities and Next Steps |
 
 <!----
