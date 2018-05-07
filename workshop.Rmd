@@ -29,7 +29,8 @@ During the two-day workshop we will:
 1. Interpret global OHI scores for Samoa
 2. Discuss whether all 10 goals should be included, remove any goals if not relevant
 3. Identify which goals could be a priority to modify future work based on
-4. Modify the pressures and resilience measures included to better reflect Samoa
+4. Explore data for OHI Samoa
+5. Hands-on with the Toolbox
 
 [OHI Country Opportunities training materials](http://ohi-science.org/country-opportunities-training/) that we use to teach are online and available for you as a reference.
 

@@ -4,8 +4,9 @@
 |11-12:30 | [OHI Framework: Global](http://ohi-science.org/country-opportunities-training/ohi-framework.html); [Interpret Samoa's scores]() | [Explore Samoa Global Data](http://ohi-science.org/sam/workshop-explore) |  Intro to OHI Toolbox |
 |13:30-15:00 | Alignment with SDGs  | Work with Samoa Data |  Discuss/Report Opportunities and Next Steps |
 
-
+<!----
 TODO: chat with Erin
 
 - Welcome activity? Intro everyone?
 - Update OHI Overview talk and schedule link
+--->
