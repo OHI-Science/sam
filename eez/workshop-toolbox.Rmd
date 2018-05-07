@@ -13,8 +13,9 @@ The Ocean Health Index (OHI) framework measures the health of coupled human-ocea
 
 Assessments using the OHI framework results in scores for each goal as well as in a single score for overall ocean health, which is a weighted-average of each goal's score. Each goal's score is calculated compared to a target called a **reference point**, and thus the score represents how close the goal is to meeting that target, on a scale from 0-100. Scores can be represented on a flower plot, where the center value is the overall OHI score. Each petal of the flower plot represents a goal; the length is the score of that particular goal and the width is its **weight**: contribution to the overall score.
 
+<!---
 ![**Ocean Health Index goals can be represented as a flower plot**](fig/goal_icons_recolored_labeled.png)
-
+--->
 
 # Overview
 
