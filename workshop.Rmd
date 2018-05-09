@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Welcome
 
-Welcome to the **Ocean Health Index Samoa Opportunities Training Workshop** in Apia, Samoa, from May 21-23, 2018.  
+Welcome to the **Ocean Health Index Samoa Opportunities Training Workshop** in Apia, Samoa, from May 23-25, 2018.  
 
 In this workshop we will interpret and play with the OHI global input for Samoa. By the end of the workshop, we will also have some next steps for OHI Samoa. 
 
