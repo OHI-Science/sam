@@ -1,0 +1,9 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message=FALSE)
+```
+
+```{r setup sam, echo=FALSE}
+## libraries
+library(tidyverse)
+head(cars)
+```

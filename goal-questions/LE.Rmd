@@ -1,7 +1,0 @@
-**Observations**:
-
-- The LE goal is not on the figure. We didn't include them in our gapfilling analyses because our models rely on old data (pre-2012). 
-
-**Discussion:**
-
-- LE, LIV, ECO would be a good choice for improving.

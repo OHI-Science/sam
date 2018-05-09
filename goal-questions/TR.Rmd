@@ -1,8 +1,0 @@
-**Observations:**
-
-- TR has the highest amount of gapfilling compared to any goal. 
-
-**Discussion:**
-
-- What would be better ways to model TR for Samoa? What is important to capture?
-- What data are available locally in Samoa?

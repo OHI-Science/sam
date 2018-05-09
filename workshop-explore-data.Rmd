@@ -1,15 +1,15 @@
 ---
-title: "Explore Data for Samoa"
+title: "Explore OHI Global Data & Data Gaps for Samoa"
 output:
   html_document:
     toc: true
     toc_float: true
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(warning = FALSE, message=FALSE)
 ```
 
-```{r setup sam, echo=FALSE, message=FALSE, warning=FALSE}
+```{r setup sam, echo=FALSE}
 ## libraries
 library(tidyverse)
 library(DT)
@@ -36,27 +36,32 @@ fis_b_bmsy_gf_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-templat
 # fis_b_bmsy_gf_csv <- read_csv(rawkey_prefix, "global2017/gapfilling/layers/fis_bbmsy.csv")
 
 mar_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/mar_harvest_tonnes.csv"))
+np_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/np_harvest_tonnes.csv"))
 
+
+## HABs
+hab_mangrove_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_extent.csv"))
+hab_seagrass_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seagrass_extent.csv"))
+hab_saltmarsh_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_saltmarsh_extent.csv"))
+hab_coral_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_coral_extent.csv"))
+hab_seaice_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seaice_extent.csv"))
+hab_softbottom_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_softbottom_extent.csv"))
+
+lsp_prot_area_inland1km_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_inland1km.csv"))                  
+lsp_prot_area_offshore3nm_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_offshore3nm.csv"))                  
 
 ## get global rgn_id
 rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
   filter(label == rgn_name) # 152
 ```
 
-## Objectives and Resources
+## Objectives
 
-Here we'll discuss the data for Samoa from the Global Assessments, as well as data that are available in Samoa. To help avoid confusion, we'll call data for Samoa from the global assessments **"global data"** and data for Samoa available at the workshop **"local data"**.
+Following the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g37b2a5357d_0_288) about OHI Global data and data gaps, let's explore the OHI Global data for Samoa. We will continue with gapfilling to focus our attention. 
 
-Today we'll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. 
-
-
-**Objectives**
-
-**Resources**
-
+<!---
+This is now covered in the presentation: https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g37b2a5357d_0_254
 ## Gapfilling in Samoa
-
-Yesterday we discussed some of the data sources that go into global assessments, and gapfilling. 
 
 Let's look at Samoa in the gapfilling "carpet plot". This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal. In these plots, reds mean the highest amounts of gapfilling, yellows are the least, and grey means not applicable. 
 
@@ -72,9 +77,13 @@ We can zoom in on Samoa:
 
 Looking at the red goals, it seems that goals involving habitat data (HAB, CP, CS), as well as Food Provision (FIS and MAR) and Tourism & Recreation are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In yellow, this figure shows that AO, SPP, CW, NP, and SP (LSP, SPP) have the least amount of gapfilling and are most representative of data.
 
-Let's look a bit deeper to see numerically the percent gapfilling by goal. This confirms what we saw above but with more information. We can pull directly from the data from the Frazier et al. publication:
+--->
 
-```{r, echo=FALSE}
+## Gapfilling in Samoa
+
+Let's look a bit deeper to see numerically the percent gapfilling by goal. This confirms what we saw above but with more information. We can pull directly from the data from the [Frazier et al. 2015](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0160377) publication:
+
+```{r scores_gf samoa, echo=FALSE}
 scores_gf <- scores_gf_csv %>% 
   filter(region_id == rgn_global$rgn_id,
          dimension == "status") %>%
@@ -87,7 +96,7 @@ scores_gf %>%
 
 <br>
 
-What is very interesting is to compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
+It's also interesting to compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
 
 ### Table: % Gapfilled vs. Scores
 
@@ -125,63 +134,87 @@ ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) 
 ```
 
 
-## Gapfilling Discussion
+## Gapfilling Observations
 
-There are a lot of things we can talk about from this figure. What do you see? Let's list potential topics and then we will dive further into each of them. 
-Any other observations? Which topics should we dive into first? 
+There are a lot of things we can talk about from this figure. What do you see? 
+
+Let's list potential topics and then we will dive further into each of them. 
 
 ### Overall 
-```{r, child="goal-questions/Overall.Rmd"}
-```
+
+**Observations:**
+
+- Two goals are 100% gapfilled (TR, HAB)
+- Samoa has a lot of goals (~11) with scores over 50 (on the x-axis)
+- There are ~7 goals where % gapfilling is under 12.5% (on the y-axis)
+- Some high-scoring goals have high % gapfilling, some have low
 
 <br>
 
 ### Tourism and Recreation (TR)
-```{r, child="goal-questions/TR.Rmd"}
-```
+
+**Observations:**
+
+- TR has the highest amount of gapfilling compared to any goal. 
+
+<br>
+
+### Habitat-based goals (HAB, CS, CP)
+
+**Observations**:
+
+- HAB is the goal with the highest amount of gapfilling and highest score
+- CP, CS, and HAB rely on much of the same data. 
 
 <br>
 
 ### Food Provision (FP)
 
-<br>
+**Observations**:
 
-### Habitat-based goals (HAB, CS, CP)
-```{r, child="goal-questions/HAB.Rmd"}
-```
+- FP and FIS are plotted on top of each other, which means that the FP score is the same as FIS (we can also see this from the table above). This means that MAR contributes nothing to the FP score, and in fact the MAR score is 0. 
 
 <br>
+
+### Lasting Special Places (LSP)
+
+**Observations**:
+
+- LSP has a very low score, and is not gapfilled. 
 
 ### Livelihoods and Economies (LE, LIV, ECO)
-```{r, child="goal-questions/LE.Rmd"}
-```
 
+**Observations**:
+
+- The LE goal is not on the figure. We didn't include them in our gapfilling analyses because our models rely on old data (pre-2012). 
+
+
+What order should we discuss these?
 
 ----
 
+## Data discussion: deep dive
 
-## Food Provision: Fisheries
+### [Food Provision: Fisheries](http://ohi-science.org/ohi-global/goals.html#food_provision:_fisheries)
 
-```{r, child="goal-questions/FP.Rmd"}
-```
+**Questions:**
+
+- FIS has quite a bit of gapfilling (64%), which data or species are gapfilled?
 
 <br>
 
-### Global Model
+<!----
+#### Global Model
 
 To refresh our minds, we can look at [ohi-science.org/ohi-global/goals](http://ohi-science.org/ohi-global/goals#food_provision:_fisheries)
 
 > "The model assess the amount of wild-caught seafood that can be sustainably harvested, with sustainability based on multi-species yield, and with penalties assigned for both over- and under-harvesting. Each taxa landed within each FAO major fishing area is assessed separately based on B/BMSY (maxium sustainable yield) and weighted by its relative contribution to overall catch. The goal status score for each reporting region in each year was calculated as the geometric mean of the all stock status scores."
 
-<br>
-
-### Global Data
-
 The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ (if your country fishes outside the EEZ and lands that catch in your country, that is not included). Our models need catch for at least 10 years (20 is better). Ideally, we would also have status of each species stock (at least B/BMSY, bonus is F/FMSY). We use both catch and B/BMSY information when we have it, but for some species we only have catch data. 
 
 Global data are from the [Sea Around Us Project](http://www.seaaroundus.org).
 
-<!---
+<  !---
 The criteria we use for our fisheries model is data that has:
 
 - catch by species: only what is fished within Samoa's EEZ
@@ -193,6 +226,8 @@ Depending on the format, we'd be able to update data for those species, recalcul
 
 --->
 
+#### Global Data
+
 We can look on their website at an interactive visualization of [fish caught in Samoa's EEZ](http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20):
 
 ![](images/saup-samoa-eezfishing.png)
@@ -201,9 +236,9 @@ We can also look at an interactive visualization of [Samoa fishing around the wo
 
 ![](images/saup-samoa-worldfishing.png)
 
-### Explore Global Data
+<br>
 
-First, we will look through the species listed and see if there are any included that don't represent Samoa's fisheries within the EEZ; we can remove them (but we won't be adding additional species in this workshop). 
+Let's look through the species listed and see if there are any included that don't represent Samoa's fisheries within the EEZ; we can remove them (but we won't be adding additional species in this workshop). 
 
 Then, we can look at the mean catch estimates for certain species, especially for catch that is grouped instead of by species. If better local data are available, we can try to substitute these data.
 
@@ -228,14 +263,14 @@ fis_meancatch_lookup <- left_join(
 ## display as interactive DT table
 fis_meancatch_lookup %>%
   DT::datatable()
+
+## save as csv: 
+fis_meancatch_lookup %>% write_csv("data/fis_meancatch_lookup_sam.csv")
 ```
 
 There are `r fis_meancatch_lookup %>% nrow()` species in the [fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv) layer for Samoa.
 
-**To discuss:** 
-
-- Are there any species that don't seem right?
-- There are many categories that we only have information at the genus or family levels. Do you have information for species level?
+We can look at this another way in the presentation.
 
 <!---
 If we want to look up a single species, like red snapper (*Xiphias_gladius*): The values are all the same: this is the mean catch throughout the period. 
@@ -245,6 +280,11 @@ fis_meancatch %>%
   filter(stock_name == "Xiphias_gladius") %>%
   knitr::kable()
 ```
+
+Q: Should I be able to show full catch? -- look on mazu:
+stock_catch_by_rgn
+that might let you filter for Samoa
+
 --->
 
 #### B/Bmsy
@@ -268,6 +308,9 @@ fis_b_bmsy_lookup <- left_join(
 ## display as interactive DT table
 fis_b_bmsy_lookup %>%
   DT::datatable()
+
+## save as csv:
+fis_b_bmsy_lookup %>% write_csv("data/fis_b_bmsy_lookup_sam.csv")
 ```
 
 There are only `r fis_b_bmsy_lookup %>% nrow()` species in the [fis_b_bmsy](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_b_bmsy.csv) layer for Samoa.
@@ -309,9 +352,23 @@ All b_bmsy values are gapfilled.
 We don't have information on the catch that is gapfilled.
 --->
 
+#### Discussion
+
+- Are there any species that don't seem right and we should remove, for meancatch or B/Bmsy?
+- There are many categories that we only have information at the genus or family levels. Do you have information for species level?
+
+
 <br>
 
-## Food Provision: Mariculture
+## [Food Provision: Mariculture](http://ohi-science.org/ohi-global/goals.html#food_provision:_mariculture)
+
+**Questions:**
+
+- Why is the MAR score 0?
+
+### Global Data 
+
+#### Tonnes of Harvest
 
 Let's look at the list of species that are represented in the MAR model as tonnes of harvest: (the [mar_harvest_tonnes](https://github.com/OHI-Science/sam/blob/master/eez/layers/mar_harvest_tonnes.csv) layer):
 
@@ -340,45 +397,34 @@ mar_harvest_tonnes %>%
             total_tonnes = sum(tonnes),
             mean_tonnes  = mean(tonnes)) %>%
   DT::datatable()
-
 ```
 
-**Discussion**:
+#### Discussion
 
 - are better data available for these species?
 - are there other species that should be represented in Samoa?
-
 
 <br>
 
 ## Habitat-based goals
 
-```{r, child="goal-questions/HAB.Rmd"}
-```
+**Questions:**
 
+- Which habitats are heavily gapfilled in HAB? (Or, which are not gapfilled in CP, CS?)
 
-**Carbon storage**: 3 coastal habitats: mangroves, seagrasses, and salt marshes
+### Global Data
 
-**Coastal Protection**: 5 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, and sea ice (although not in Samoa!)
+**[Carbon Storage](http://ohi-science.org/ohi-global/goals.html#carbon_storage)**: 3 coastal habitats: mangroves, seagrasses, and salt marshes
 
-**Habitats sub-goal**: 6 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, sea ice, and subtidal soft-bottom habitats
+**[Coastal Protection](http://ohi-science.org/ohi-global/goals.html#coastal_protection)**: 5 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, and sea ice (although not in Samoa!)
 
+**[Habitats (BD sub-goal)](http://ohi-science.org/ohi-global/goals.html#biodiversity:_habitats)**: 6 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, sea ice, and subtidal soft-bottom habitats
+
+#### Habitat extent
 
 Let's have a look at the data included for Samoa:
 
 ```{r hab data, echo=FALSE, message=FALSE, warning=FALSE}
-hab_mangrove_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_mangrove_extent.csv")
-
-hab_seagrass_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_seagrass_extent.csv")
-
-hab_saltmarsh_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_saltmarsh_extent.csv")
-
-hab_coral_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_coral_extent.csv")
-
-hab_seaice_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_seaice_extent.csv")
-
-hab_softbottom_extent_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/eez/layers/hab_softbottom_extent.csv")
-
 
 ## extract Samoa
 hab_mangrove_extent <- hab_mangrove_extent_csv %>%
@@ -420,44 +466,81 @@ So there is not a lot of data available for Samoa. This means that the goals are
 
 **Habitats sub-goal**: 3 coastal habitats: mangroves (but the data is 0), seagrasses, coral reefs
 
-**Discussion**:
+#### Discussion
 
 - Are there better data available? 
 - Should we look into the gapfilling question more?
 
-## Tourism & Recreation
+## [Tourism & Recreation](http://ohi-science.org/ohi-global/goals.html#tourism__recreation)
 
-```{r, child="goal-questions/TR.Rmd"}
-```
+TR is 100% gapfilled for Samoa.
 
-**Discussion**:
+**Questions:**
 
-Remember that TR was 100% gapfilled. 
-
-Is there data available to represent: 
-
-- Percent direct employment in tourism (tr_jobs_pct_tourism): Percent direct employment in tourism?
+- What would be better ways to model TR for Samoa? What is important to capture?
+- What data are available locally in Samoa?
+- Is there local data to represent percent direct employment in tourism (tr_jobs_pct_tourism): Percent direct employment in tourism?
 
 ## Natural Products
 
+### Global Data
+
 Which Natural Products are included for Samoa?
 
-```{r np, echo=FALSE, warning=FALSE, message=FALSE}
-np_harvest_tonnes_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/global2017/gapfilling/layers/np_harvest_tonnes.csv")
-
+```{r np, echo=FALSE}
 np_harvest_tonnes <- np_harvest_tonnes_csv %>%
   filter(rgn_id == rgn_global$rgn_id)
 
 np_harvest_tonnes %>%
   distinct(commodity, product) %>%
   DT::datatable()
-
-## shows gapfilling too
-# np_harvest_tonnes 
-
 ```
 
 So there are two products here.
+
+We can also look at how much of this was gapfilled:
+```{r np_gf, echo=FALSE}
+## shows gapfilling too
+np_harvest_tonnes %>%
+  DT::datatable()
+
+```
+
+#### Discussion
+
+- are there other products that should be included?
+- is this a goal that represents Samoa well?
+
+## [Lasting Special Places](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_lasting_special_places)
+
+
+
+### Global Data
+
+The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage. 
+
+```{r lsp, echo=FALSE}
+lsp_prot_area_inland1km <- lsp_prot_area_inland1km_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_prot_area_offshore3nm <- lsp_prot_area_offshore3nm_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_combo <- left_join(
+  lsp_prot_area_inland1km,
+  lsp_prot_area_offshore3nm, 
+  by = c("rgn_id", "year")) %>%
+  select(-rgn_id)
+  
+lsp_combo %>%
+  DT::datatable()
+
+```
+
+#### Discussion
+
+- are there coastal or marine parks that are not accounted for?
+
 
 ## Discussion and Next Steps
 
@@ -469,6 +552,15 @@ So there are two products here.
 
 ## Pressures and Resilience!
 
+2017 report: 
+
+- It has been suggested to not use bycatch data for OHI assessment.
+- pollution
+
+2016 report:
+
+- crown of thorns
+- coastal development
 
 We can also look at the gapfilling plot above along with the global average. 
 

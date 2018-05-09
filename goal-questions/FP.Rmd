@@ -1,8 +1,0 @@
-**Observations:**
-
-- FP and FIS are plotted on top of each other, which means that the FP score is the same as FIS (we can also see this from the table above). This means that MAR contributes nothing to the FP score, and in fact the MAR score is 0. 
-
-**Discussion:**
-
-- Why is the MAR score 0?
-- FIS has quite a bit of gapfilling (64%), which data or species are gapfilled?

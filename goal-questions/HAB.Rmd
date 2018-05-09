@@ -1,8 +1,0 @@
-**Observations**:
-
-- HAB is the goal with the highest amount of gapfilling and highest score
-- CP, CS, and HAB rely on much of the same data. 
-
-**Discussion:**
-
-- Which habitats are heavily gapfilled in HAB? (Or, which are not gapfilled in CP, CS?)
