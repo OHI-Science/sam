@@ -24,6 +24,8 @@ rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key,
 
 
 ## read in data from web (minimize how often pull from web) ----
+scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores.csv")) 
+scores_csv <- read_csv(file.path(rawkey_prefix, "eez/scores.csv")) 
 
 fis_meancatch_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_meancatch.csv"))
 fis_b_bmsy_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_b_bmsy.csv"))
@@ -45,15 +47,117 @@ rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv
 
 Here we'll discuss the data for Samoa from the Global Assessments, as well as data that are available in Samoa. To help avoid confusion, we'll call data for Samoa from the global assessments **"global data"** and data for Samoa available at the workshop **"local data"**.
 
-Let's dive into the questions we had from before the break.
+Today we'll be looking at the data for Samoa from the Global Assessments. We will start off looking at gapfilling to focus our attention. 
+
 
 **Objectives**
 
 **Resources**
 
+## Gapfilling in Samoa
+
+Yesterday we discussed some of the data sources that go into global assessments, and gapfilling. 
+
+Let's look at Samoa in the gapfilling "carpet plot". This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal. In these plots, reds mean the highest amounts of gapfilling, yellows are the least, and grey means not applicable. 
+
+![](images/carpetPlot_gapfillingFrazierS2Fig_sam1.TIFF)
+
+<br>
+
+### Figure: Carpetplot
+
+We can zoom in on Samoa: 
+
+![](images/carpetPlot_gapfillingFrazierS2Fig_sam2.png)
+
+Looking at the red goals, it seems that goals involving habitat data (HAB, CP, CS), as well as Food Provision (FIS and MAR) and Tourism & Recreation are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In yellow, this figure shows that AO, SPP, CW, NP, and SP (LSP, SPP) have the least amount of gapfilling and are most representative of data.
+
+Let's look a bit deeper to see numerically the percent gapfilling by goal. This confirms what we saw above but with more information. We can pull directly from the data from the Frazier et al. publication:
+
+```{r, echo=FALSE}
+scores_gf <- scores_gf_csv %>% 
+  filter(region_id == rgn_global$rgn_id,
+         dimension == "status") %>%
+  select(goal, percent_gapfilled = score) %>%
+  arrange(percent_gapfilled) 
+
+scores_gf %>%
+  DT::datatable()
+```
+
+<br>
+
+What is very interesting is to compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
+
+### Table: % Gapfilled vs. Scores
+
+We can see this as a table. Here it is arranged by percent gapfilled, but we can also arrange by score.
+
+```{r, echo=FALSE}
+scores <- scores_csv %>% 
+  filter(region_id == rgn_global$rgn_id,
+         dimension == "status",  
+         year == max(year)) %>%
+  select(goal, score) %>%
+  arrange(goal) 
+
+scores_plot <- scores %>%
+  left_join(scores_gf, by = "goal") %>% 
+  arrange(percent_gapfilled)
+
+scores_plot %>% 
+  DT::datatable()
+```
+
+<br>
+
+### Figure: % Gapfilled vs. Scores
+
+But it can also be nice to see it as a figure:
+
+```{r, echo=FALSE, warning=FALSE}
+ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
+  geom_point() + 
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
+
+## can also assign above to p then:
+# ggplotly(p)
+```
 
 
+## Gapfilling Discussion
 
+There are a lot of things we can talk about from this figure. What do you see? Let's list potential topics and then we will dive further into each of them. 
+Any other observations? Which topics should we dive into first? 
+
+### Overall 
+```{r, child="goal-questions/Overall.Rmd"}
+```
+
+<br>
+
+### Tourism and Recreation (TR)
+```{r, child="goal-questions/TR.Rmd"}
+```
+
+<br>
+
+### Food Provision (FP)
+
+<br>
+
+### Habitat-based goals (HAB, CS, CP)
+```{r, child="goal-questions/HAB.Rmd"}
+```
+
+<br>
+
+### Livelihoods and Economies (LE, LIV, ECO)
+```{r, child="goal-questions/LE.Rmd"}
+```
+
+
+----
 
 
 ## Food Provision: Fisheries
@@ -359,4 +463,39 @@ So there are two products here.
 
 - We'll explore the "local" data you have for fisheries and other goals and see if we can incorporate this into the Toolbox. 
 - we will capture the discussion we have, in particular about FP, TR, Habitat-based goals.
+
+
+## Other topics (parking lot)
+
+## Pressures and Resilience!
+
+
+We can also look at the gapfilling plot above along with the global average. 
+
+```{r, echo=FALSE}
+scores_gf_compare <- scores_gf_csv %>% 
+  filter(region_id %in% c(rgn_global$rgn_id, 0),
+         dimension == "status") %>%
+  select(goal, region_id, percent_gapfilled = score) %>%
+  arrange(region_id, percent_gapfilled) 
+
+scores_compare <- scores_csv %>% 
+  filter(region_id %in% c(rgn_global$rgn_id, 0),
+         dimension == "status",  
+         year == max(year)) %>%
+  select(goal, region_id, score) %>%
+  arrange(region_id) 
+
+scores_plot_compare <- scores_compare %>%
+  left_join(scores_gf_compare, by = c("goal", "region_id")) %>% 
+  arrange(percent_gapfilled) %>%
+  mutate(region_name = region_id) %>%
+  mutate(region_name = str_replace_all(region_name, "152", "Samoa")) %>%
+  mutate(region_name = str_replace_all(region_name, "0", "Global"))
+
+ggplot(data = scores_plot_compare, aes(x = score, y = percent_gapfilled, label = goal, color = region_name)) + 
+  geom_point() + 
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
+```
+
 
