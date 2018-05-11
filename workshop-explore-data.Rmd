@@ -9,37 +9,50 @@ output:
 knitr::opts_chunk$set(warning = FALSE, message=FALSE)
 ```
 
-```{r setup sam, echo=FALSE}
+```{r setup for country focus, echo=FALSE}
+## country focus: edit this for your country.
+## make sure the rgn_name matches exactly: https://github.com/OHI-Science/ohirepos-log/blob/master/rgn_global.csv
+key <- 'sam'
+rgn_name <- 'Samoa'
+```
+
+```{r setup files, echo=FALSE}
 ## libraries
 library(tidyverse)
 library(DT)
 
-## country focus
-key <- 'sam'
-rgn_name <- 'Samoa'
 
-## filepaths
+## to build filepaths
 raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
 rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key, "master")
 
 
 ## read in data from web (minimize how often pull from web) ----
-scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores.csv")) 
-scores_csv <- read_csv(file.path(rawkey_prefix, "eez/scores.csv")) 
 
+## get global rgn_id
+rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
+  filter(label == rgn_name) # sam is 152
+
+## scores, gapfilling
+scores_csv <- read_csv(file.path(rawkey_prefix, "eez/scores.csv")) 
+scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores.csv")) 
+
+## FP
 fis_meancatch_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_meancatch.csv"))
 fis_b_bmsy_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_b_bmsy.csv"))
 taxon_lookup_csv <- read_csv(file.path(raw_prefix, "ohiprep/master/globalprep/fis/v2017/data/taxon_resilience_lookup.csv"))
-
-## fix later
-fis_b_bmsy_gf_csv <- read_csv("/Users/julialowndes/github/ohi-global2017-template/global2017/gapfilling/layers/fis_b_bmsy.csv")
-# fis_b_bmsy_gf_csv <- read_csv(rawkey_prefix, "global2017/gapfilling/layers/fis_bbmsy.csv")
-
+fis_b_bmsy_gf_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/fis_b_bmsy.csv"))
 mar_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/mar_harvest_tonnes.csv"))
+
+## NP
 np_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/np_harvest_tonnes.csv"))
 
+## Species goals
+ico_spp_cat_csv <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/int/ico_spp_cat.csv"))
+ico_spp_rgn_prepped_csv <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/int/ico_spp_rgn_prepped.csv"))
+risk_code_lookup <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/raw/risk_code_lookup.csv"))
 
-## HABs
+## Habitat goals
 hab_mangrove_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_extent.csv"))
 hab_seagrass_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seagrass_extent.csv"))
 hab_saltmarsh_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_saltmarsh_extent.csv"))
@@ -47,12 +60,9 @@ hab_coral_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_coral_
 hab_seaice_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seaice_extent.csv"))
 hab_softbottom_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_softbottom_extent.csv"))
 
-lsp_prot_area_inland1km_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_inland1km.csv"))                  
-lsp_prot_area_offshore3nm_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_offshore3nm.csv"))                  
-
-## get global rgn_id
-rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
-  filter(label == rgn_name) # 152
+## LSP
+lsp_prot_area_inland1km_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_inland1km.csv"))
+lsp_prot_area_offshore3nm_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_offshore3nm.csv"))       
 ```
 
 ## Objectives
@@ -182,6 +192,12 @@ Let's list potential topics and then we will dive further into each of them.
 
 - LSP has a very low score, and is not gapfilled. 
 
+
+### Species-based goals (ICO, SPP)
+
+- these scores are quite high and are not gapfilled (0). 
+
+
 ### Livelihoods and Economies (LE, LIV, ECO)
 
 **Observations**:
@@ -281,11 +297,22 @@ fis_meancatch %>%
   knitr::kable()
 ```
 
-Q: Should I be able to show full catch? -- look on mazu:
-stock_catch_by_rgn
-that might let you filter for Samoa
-
 --->
+#### Raw catch data
+
+To understand mean catch, dive into catch by species. This might be best to view from within RStudio.
+
+<!--- downloaded from Mazu git-annex/globalprep/fis/v2017/int/stock_catch_by_rgn.csv, filtered for sam and saved locally in sam/data --->
+
+```{r stock_catch_by_rgn.csv}
+
+stock_sam <- readr::read_csv("data/stock_catch_by_rgn_sam.csv")
+# View(stock_sam)
+
+```
+
+
+
 
 #### B/Bmsy
 
@@ -540,6 +567,32 @@ lsp_combo %>%
 #### Discussion
 
 - are there coastal or marine parks that are not accounted for?
+
+
+## Species-based goals
+
+### Global data
+
+These are the species included: 
+
+```{r ico_spp, echo=FALSE}
+ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+ico_spp_code <- ico_spp_rgn_prepped %>%
+  left_join(risk_code_lookup %>%
+              select(cat_code = code,
+                     category, 
+                     cat_score) %>%
+              distinct(), 
+            by = "cat_code")
+
+## display
+ico_spp_code %>%
+  select(comname, sciname, cat_code) %>%
+  DT::datatable()
+```
+
 
 
 ## Discussion and Next Steps
