@@ -17,6 +17,10 @@
 # if(length(packages_check)) install.packages(packages_check)
 # packages_installed <- sapply(packages_required, FUN = function(x) library(x, character.only = TRUE))
 
+library(ohicore)
+library(tidyverse)
+library(stringr)
+library(zoo)
 
 ## load scenario configuration
 conf = ohicore::Conf('conf')
