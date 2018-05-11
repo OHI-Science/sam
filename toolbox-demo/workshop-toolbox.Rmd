@@ -1,0 +1,220 @@
+---
+title: "Toolbox Demo: Samoa"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+---
+
+# Introduction
+
+The Ocean Health Index (OHI) framework measures the health of coupled human-ocean ecosystems in different contexts by accommodating differences in local environmental characteristics, cultural priorities, and information availability and quality. The OHI framework assesses a suite of benefits the ocean provides humans - called 'goals' - using the best information available. It distills complex socio-ecological relationships and context-specific targets into scores that can be repeated so that management can track and respond through time. 
+
+Assessments using the OHI framework results in scores for each goal as well as in a single score for overall ocean health, which is a weighted-average of each goal's score. Each goal's score is calculated compared to a target called a **reference point**, and thus the score represents how close the goal is to meeting that target, on a scale from 0-100. Scores can be represented on a flower plot, where the center value is the overall OHI score. Each petal of the flower plot represents a goal; the length is the score of that particular goal and the width is its **weight**: contribution to the overall score.
+
+<!---
+![**Ocean Health Index goals can be represented as a flower plot**](fig/goal_icons_recolored_labeled.png)
+--->
+
+# Overview
+
+To get some hands-on experience with the Toolbox, we will explore how Ocean Health Index (OHI) scores respond when you change the following: 
+
+1. remove the NP goal 
+
+You will be using the OHI Toolbox software to do this, and follow the instructions here ([`workshop-toolbox.Rmd`](http://ohi-science.org/sam/workshop-toolbox)). Walk through line-by-line and execute the code in R; the order does matter so be sure to proceed line-by-line. 
+
+Your final figures will be saved as .pngs within the `sam` folder you downloaded: `sam/eez/reports/figures`. 
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Get the `sam` repository
+
+We'll be playing with the Toolbox for the global OHI assessments; we calculate scores each year for 220 coastal nations and territories. We have copied this into a GitHub repository called `sam` for Samoa. Let's get it on your computer.
+
+1. Go to [github.com/OHI-Science/sam](https://github.com/OHI-Science/sam). This is the `sam` repository (called 'repo'). 
+2. Click on the <span style="color:green">green</span> 'clone or download' button. 
+3. Clone or download somewhere you can find on your computer. If you are familiar with GitHub, clone this repository. Otherwise click 'Download ZIP'.
+4. Navigate to where you saved the `sam` repo on your computer and double-click the `sam.Rproj` file. This will open [RStudio](https://www.rstudio.com/) (which is how you should always interface with R). 
+5. Within the RStudio file directory pane (bottom right), navigate to the `eez` folder. Inside is a mix of `.R` scripts and `.csv` files. We will just focus on a few of them.
+
+
+## Setup
+
+Since we're in RStudio with a `.Rproj` file, our current working directory is `wherever/you/saved/it/sam`. All of our work in the Toolbox happens in the `eez` folder within the `sam` folder. (Even [these instructions](https://github.com/OHI-Science/sam/blob/master/eez/workshop-toolbox.Rmd) are within the `eez` folder!) But we need to let R know that we want to be inside the `eez` folder. Let's change the working directory to the `eez` folder, and install the packages we need to get going. 
+
+**Troubleshooting: If you have any problems**, check that R and RStudio are up-to-date. If needed, update R [here](Find the latest version at http://cran.r-project.org) and RStudio [here](http://www.rstudio.com/products/rstudio/download). 
+
+Run the following code:
+```{r ohicore, eval=FALSE, message=FALSE, results='hide'}
+## set working directory to sam/eez with setwd()
+setwd('eez')
+
+## install OHI's `ohicore` package
+## first we need to install the devtools package. Note the different install functions.
+## don't worry about the warnings. But ensure there are no errors!
+# install.packages('devtools') # do this just one time!
+library(devtools) # do this every time you begin
+
+# devtools::install_github("ohi-science/ohicore@dev") # do this just one time!
+library(ohicore) # do this every time you begin
+
+## source the function to make flower plots; this won't do anything yet, but it makes it available to us.
+source('plot_flower_local.r')
+```
+
+
+## Calculate scores
+
+We can calculate OHI scores by sourcing `calculate_scores.r` (below). This uses the following files, which are all in our current working directory, `sam/eez`: 
+
+- input data layers in the `layers` folder
+- goal models and reference points in `conf/functions.r`
+- goal weights in `conf/goals.csv`
+- calculated scores for all goals and all 220 regions are saved in `scores.csv`. 
+
+Note: because the Toolbox relies on these file names for calculation and for visualizing, we'll be overwriting some of these files (after saving the originals) to use in each of the steps as we go forward. 
+
+
+```{r calculate scores, eval=FALSE, message=FALSE}
+
+## Before we do anything, let's save copies of original files
+file.copy('scores.csv','scores_orig.csv', overwrite = TRUE)
+file.copy('conf/goals.csv',   'conf/goals_orig.csv', overwrite = TRUE)
+file.copy('conf/functions.r', 'conf/functions_orig.r', overwrite = TRUE)
+file.copy('conf/pressures_matrix.csv', 'conf/pressures_matrix_orig.csv', overwrite = TRUE)
+file.copy('conf/resilience_matrix.csv', 'conf/resilience_matrix_orig.csv', overwrite = TRUE)
+
+## Calculate scores. The Toolbox will describe each step as it checks all the data layers and then calculates the OHI components. It will save all this in scores.csv.
+source('calculate_scores.r')
+
+```
+
+## Visualize OHI scores for Samoa
+
+We just calculated scores for all 220 regions in the global assessment. But now let's just inspect one region, Samoa. Each region has a unique numeric identifier. You can run this to view the full list of regions and find their numeric region identifier called a `rgn_id`: `View(read_csv('layers/rgn_global.csv'))`. Use use the search bar in the top right of the View pane to find your country and note its `rgn_id`. (Or, you can trust me that the **`rgn_id` for Samoa is 152**.)
+
+You'll assign it in R now as `my_rgn`: 
+```{r assign rgn_id, eval=FALSE}
+## assign your rgn_id
+my_rgn <-  152 # Samoa
+```
+
+## Flower plot for your region
+
+Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/eez/reports/figures` and displaying them in the RStudio Viewer (they will look a bit cut-off in the Viewer but that is just a vizualization glitch; the .pngs are fine).  
+
+Run the following -- it will save a file with your region's name, for example `sam/eez/reports/figures/flower_orig/Samoa.png.`. The `PlotFlower()` function will use the scores.csv file that was saved from `calculate_scores.R` 
+
+```{r plot original, eval=FALSE, message=FALSE}
+
+## now, create a flower plot for Samoa
+PlotFlower(region_plot = my_rgn,
+           assessment_name = "Samoa",
+           dir_fig_save    = "reports/figures/flower_orig")
+```
+
+## Remove a Goal
+
+Now let's remove a goal that might not represent Samoa: Natural Products. 
+
+<!---
+Refer to the Introduction above to see the list of goals. We can identify the 2- or 3- letter code for the goal or sub-goal we want to change by viewing `View(conf_orig %>% dplyr::select(goal, name))`.
+--->
+
+```{r, eval=FALSE, message=FALSE}
+## assign goal to remove
+goal_remove <- "NP" # the 2- or 3- letter code must be in quotes. 
+
+## remove the goal that we want to exclude and save in the goals.csv file 
+read_csv("conf/goals_orig.csv") %>%
+  filter(goal != goal_remove) %>% 
+  write_csv('conf/goals.csv') 
+
+## also from the pressures_matrix file 
+read_csv("conf/pressures_matrix_orig.csv") %>%
+  filter(goal != goal_remove) %>% 
+  write_csv('conf/pressures_matrix.csv') 
+
+## also from the resilience_matrix file 
+read_csv("conf/resilience_matrix_orig.csv") %>%
+  filter(goal != goal_remove) %>% 
+  write_csv('conf/resilience_matrix.csv') 
+
+
+## re-calculate scores with goal removed, this will overwrite scores.csv
+source('calculate_scores.r')
+
+## now, create a flower plot for Samoa
+PlotFlower(region_plot = my_rgn,
+           assessment_name = "Samoa",
+           dir_fig_save    = "reports/figures/flower_new")
+```
+
+Let's have look and compare. 
+
+## Change reference point
+
+The **Lasting Special Places** sub-goal represents geographic locations that hold particular value for aesthetic, spiritual, cultural, recreational or existence reasons, and assesses how well they are protected. In global assessments, we model this with the proportion of the offshore area that is a marine protected area (MPAs), with the reference point set to 30%. 
+
+You can see this by navigating to `conf/functions.r`, and looking at line 1578: you can also search for `LSP = `. Right now it's set to 30% of waters should be in MPAs. What if we altered that? The example below changes it to 100%. 
+
+Go ahead and change it and run the following. It will save a file with your region's name, for example `ohi-global/ESM_270/reports/figures/flower_ref_new_United_States.png.`
+
+```{r, eval=FALSE, message=FALSE}
+## set a new reference point
+ref_pct_new <- 40 # change this with your reference point
+
+## run this to insert your new reference point into conf/functions.r
+readLines('conf/functions.r') %>%
+  str_replace("LSP = .*", sprintf("LSP = function(layers, ref_pct_cmpa=%s, ref_pct_cp=%s, status_year){", 
+                                  ref_pct_new, ref_pct_new)) %>%
+  writeLines('conf/functions.r')
+
+## reset original conf/goals.csv file
+write_csv(conf_orig, 'conf/goals.csv') # use original conf
+
+## re-calculate scores with new reference point
+source('calculate_scores.r')
+scores_new_ref <- read_csv('scores.csv')
+
+## parameter for the flower plot -- new reference point
+name_fig_ref <- 'reports/figures/flower_ref_new'
+
+PlotFlowerMulti(scores       = scores_new_ref, 
+                rgns_to_plot = my_rgn, 
+                conf         = conf_orig, 
+                name_fig     = name_fig_ref)
+```
+
+How does the new reference point flower plot compare with the original? How much would you have expected the overall score to change? And how would you communicate this using the flower plots? 
+
+Run this to compare how much the LSP goal score changed vs. the overall Index score (displayed in the middle of the flower plot): 
+```{r, eval=FALSE, message=FALSE}
+
+## investigate the LSP scores: 
+scores_orig %>%
+  filter(region_id == my_rgn, 
+         goal == 'LSP', 
+         dimension == 'score')
+
+scores_new_ref %>%
+  filter(region_id == my_rgn, 
+         goal == 'LSP', 
+         dimension == 'score')
+
+## investigate the overall Index scores 
+scores_orig %>%
+  filter(region_id == my_rgn, 
+         goal == 'Index', 
+         dimension == 'score')
+
+scores_new_ref %>%
+  filter(region_id == my_rgn, 
+         goal == 'Index', 
+         dimension == 'score')
+```

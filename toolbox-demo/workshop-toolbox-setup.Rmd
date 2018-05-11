@@ -1,0 +1,12 @@
+---
+title: "Toolbox Setup"
+author: "Julie"
+date: "5/4/2018"
+output: html_document
+---
+
+Day 3 morning: 
+
+- download and install RStudio
+
+- do we get into GitHub?
