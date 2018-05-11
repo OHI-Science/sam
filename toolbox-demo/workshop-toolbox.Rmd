@@ -25,7 +25,7 @@ To get some hands-on experience with the Toolbox, we will explore how Ocean Heal
 
 You will be using the OHI Toolbox software to do this, and follow the instructions here ([`workshop-toolbox.Rmd`](http://ohi-science.org/sam/workshop-toolbox)). Walk through line-by-line and execute the code in R; the order does matter so be sure to proceed line-by-line. 
 
-Your final figures will be saved as .pngs within the `sam` folder you downloaded: `sam/eez/reports/figures`. 
+Your final figures will be saved as .pngs within the `sam` folder you downloaded: `sam/toolbox-demo/reports/figures`. 
 
 
 ```{r setup, include=FALSE}
@@ -40,19 +40,19 @@ We'll be playing with the Toolbox for the global OHI assessments; we calculate s
 2. Click on the <span style="color:green">green</span> 'clone or download' button. 
 3. Clone or download somewhere you can find on your computer. If you are familiar with GitHub, clone this repository. Otherwise click 'Download ZIP'.
 4. Navigate to where you saved the `sam` repo on your computer and double-click the `sam.Rproj` file. This will open [RStudio](https://www.rstudio.com/) (which is how you should always interface with R). 
-5. Within the RStudio file directory pane (bottom right), navigate to the `eez` folder. Inside is a mix of `.R` scripts and `.csv` files. We will just focus on a few of them.
+5. Within the RStudio file directory pane (bottom right), navigate to the `toolbox-demo` folder. Inside is a mix of `.R` scripts and `.csv` files. We will just focus on a few of them.
 
 
 ## Setup
 
-Since we're in RStudio with a `.Rproj` file, our current working directory is `wherever/you/saved/it/sam`. All of our work in the Toolbox happens in the `eez` folder within the `sam` folder. (Even [these instructions](https://github.com/OHI-Science/sam/blob/master/eez/workshop-toolbox.Rmd) are within the `eez` folder!) But we need to let R know that we want to be inside the `eez` folder. Let's change the working directory to the `eez` folder, and install the packages we need to get going. 
+Since we're in RStudio with a `.Rproj` file, our current working directory is `wherever/you/saved/it/sam`. All of our work in the Toolbox happens in the `toolbox-demo` folder within the `sam` folder. (Even [these instructions](https://github.com/OHI-Science/sam/blob/master/toolbox-demo/workshop-toolbox.Rmd) are within the `toolbox-demo` folder!) But we need to let R know that we want to be inside the `toolbox-demo` folder. Let's change the working directory to the `toolbox-demo` folder, and install the packages we need to get going. 
 
 **Troubleshooting: If you have any problems**, check that R and RStudio are up-to-date. If needed, update R [here](Find the latest version at http://cran.r-project.org) and RStudio [here](http://www.rstudio.com/products/rstudio/download). 
 
 Run the following code:
 ```{r ohicore, eval=FALSE, message=FALSE, results='hide'}
-## set working directory to sam/eez with setwd()
-setwd('eez')
+## set working directory to sam/toolbox-demo with setwd()
+setwd('toolbox-demo')
 
 ## install OHI's `ohicore` package
 ## first we need to install the devtools package. Note the different install functions.
@@ -70,7 +70,7 @@ source('plot_flower_local.r')
 
 ## Calculate scores
 
-We can calculate OHI scores by sourcing `calculate_scores.r` (below). This uses the following files, which are all in our current working directory, `sam/eez`: 
+We can calculate OHI scores by sourcing `calculate_scores.r` (below). This uses the following files, which are all in our current working directory, `sam/toolbox-demo`: 
 
 - input data layers in the `layers` folder
 - goal models and reference points in `conf/functions.r`
@@ -91,7 +91,6 @@ file.copy('conf/resilience_matrix.csv', 'conf/resilience_matrix_orig.csv', overw
 
 ## Calculate scores. The Toolbox will describe each step as it checks all the data layers and then calculates the OHI components. It will save all this in scores.csv.
 source('calculate_scores.r')
-
 ```
 
 ## Visualize OHI scores for Samoa
@@ -106,9 +105,9 @@ my_rgn <-  152 # Samoa
 
 ## Flower plot for your region
 
-Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/eez/reports/figures` and displaying them in the RStudio Viewer (they will look a bit cut-off in the Viewer but that is just a vizualization glitch; the .pngs are fine).  
+Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/toolbox-demo/reports/figures` and displaying them in the RStudio Viewer (they will look a bit cut-off in the Viewer but that is just a vizualization glitch; the .pngs are fine).  
 
-Run the following -- it will save a file with your region's name, for example `sam/eez/reports/figures/flower_orig/Samoa.png.`. The `PlotFlower()` function will use the scores.csv file that was saved from `calculate_scores.R` 
+Run the following -- it will save a file with your region's name, for example `sam/toolbox-demo/reports/figures/flower_orig/Samoa.png.`. The `PlotFlower()` function will use the scores.csv file that was saved from `calculate_scores.R` 
 
 ```{r plot original, eval=FALSE, message=FALSE}
 
@@ -131,19 +130,19 @@ Refer to the Introduction above to see the list of goals. We can identify the 2-
 goal_remove <- "NP" # the 2- or 3- letter code must be in quotes. 
 
 ## remove the goal that we want to exclude and save in the goals.csv file 
-read_csv("conf/goals_orig.csv") %>%
-  filter(goal != goal_remove) %>% 
-  write_csv('conf/goals.csv') 
+read.csv("conf/goals_orig.csv") %>%
+  filter(goal != goal_remove) %>%
+  write.csv('conf/goals.csv', na='', row.names = FALSE) 
 
 ## also from the pressures_matrix file 
-read_csv("conf/pressures_matrix_orig.csv") %>%
-  filter(goal != goal_remove) %>% 
-  write_csv('conf/pressures_matrix.csv') 
+read.csv("conf/pressures_matrix_orig.csv") %>%
+  filter(goal != goal_remove) %>%
+  write.csv('conf/pressures_matrix.csv', na='', row.names = FALSE) 
 
 ## also from the resilience_matrix file 
-read_csv("conf/resilience_matrix_orig.csv") %>%
-  filter(goal != goal_remove) %>% 
-  write_csv('conf/resilience_matrix.csv') 
+read.csv("conf/resilience_matrix_orig.csv") %>%
+  filter(goal != goal_remove) %>%
+  write.csv('conf/resilience_matrix.csv', na='', row.names = FALSE) 
 
 
 ## re-calculate scores with goal removed, this will overwrite scores.csv
