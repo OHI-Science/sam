@@ -133,7 +133,7 @@ scores_plot %>%
 
 <br>
 
-### Figure: % Gapfilled vs. Scores
+### Figure: % Gapfilled vs. Status Scores
 
 But it can also be nice to see it as a figure:
 
@@ -265,6 +265,9 @@ Then, we can look at the mean catch estimates for certain species, especially fo
 
 Let's look at the list of species that are represented in the FIS model as mean catch: (the [fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv) layer):
 
+TODO
+mean_catch is rather a historic list because some things may not be caught any more. If it was a big catch in the past but now is 0, it will still average. it keeps things in the dataset. 
+
 ```{r fis_meancatch list, echo=FALSE}
 fis_meancatch <- fis_meancatch_csv %>%
   filter(rgn_id == rgn_global$rgn_id) %>%
@@ -314,7 +317,8 @@ stock_sam <- readr::read_csv("data/stock_catch_by_rgn_sam.csv")
 
 ```
 
-
+TODO:
+"We would have to look at this more carefully and this is where it would occur"
 
 
 #### B/Bmsy
@@ -451,12 +455,15 @@ mar_harvest_tonnes %>%
 **[Habitats (BD sub-goal)](http://ohi-science.org/ohi-global/goals.html#biodiversity:_habitats)**: 6 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, sea ice, and subtidal soft-bottom habitats
 
 #### Habitat extent
+TODO condition. extent is not gapfilled. but Condition is almost always gapfilled. extent is ~half of the calculation. For status. 
+
+HAB is entirely condition, which is all gapfilled for most places. One of our worst data sets.
+CP, CS goes down by ~50% because extent is ~1/2 of the score and extent is not gapfilled. (also mangrove trend is not gapfilled
 
 Let's have a look at the data included for Samoa:
 
 ```{r hab data, echo=FALSE, message=FALSE, warning=FALSE}
-
-## extract Samoa
+## extract
 hab_mangrove_extent <- hab_mangrove_extent_csv %>%
   filter(rgn_id == rgn_global$rgn_id)
 
@@ -485,7 +492,6 @@ hab_extent_samoa <- rbind(
 
 hab_extent_samoa %>%
   DT::datatable()
-  
 ```
 
 So there is not a lot of data available for Samoa. This means that the goals are actually represented by this: 
@@ -495,6 +501,9 @@ So there is not a lot of data available for Samoa. This means that the goals are
 **Coastal Protection**: 3 coastal habitats: mangroves (but the data is 0), seagrasses, coral reefs
 
 **Habitats sub-goal**: 3 coastal habitats: mangroves (but the data is 0), seagrasses, coral reefs
+
+
+
 
 #### Discussion
 
