@@ -90,8 +90,7 @@ scores_gf <- scores_gf_csv %>%
   select(goal, percent_gapfilled = score) %>%
   arrange(percent_gapfilled) 
 
-scores_gf %>%
-  DT::datatable()
+
 ```
 
 <br>
@@ -113,6 +112,10 @@ scores <- scores_csv %>%
 scores_plot <- scores %>%
   left_join(scores_gf, by = "goal") %>% 
   arrange(percent_gapfilled)
+
+##TODO: default arrangement by goal/subgoal, and then 
+
+##Talk to Mel about species synonyms (to know about it)
 
 scores_plot %>% 
   DT::datatable()
@@ -564,7 +567,7 @@ lsp_combo %>%
 
 We can also look at the gapfilling plot above along with the global average. 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 scores_gf_compare <- scores_gf_csv %>% 
   filter(region_id %in% c(rgn_global$rgn_id, 0),
          dimension == "status") %>%
