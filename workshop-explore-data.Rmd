@@ -320,6 +320,9 @@ stock_sam <- readr::read_csv("data/stock_catch_by_rgn_sam.csv")
 TODO:
 "We would have to look at this more carefully and this is where it would occur"
 
+TODO: note to self:
+If wanted to add new species data, don't add it to mean_catch; add it to the raw and then recalculate using this.
+https://github.com/OHI-Science/ohiprep_v2018/blob/master/globalprep/fis/v2017/catch_data_prep.Rmd
 
 #### B/Bmsy
 
@@ -585,7 +588,7 @@ lsp_combo %>%
 
 ### Global data
 
-These are the species included: 
+These are the species included in the Species goal: 
 
 ```{r ico_spp, echo=FALSE}
 ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
@@ -605,7 +608,7 @@ ico_spp_code %>%
   DT::datatable()
 ```
 
-
+And for Iconic Species:
 
 ## Discussion and Next Steps
 
