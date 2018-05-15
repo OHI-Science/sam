@@ -22,15 +22,20 @@ library(tidyverse)
 library(DT)
 
 
-## to build filepaths
+## to build filepaths ----
+##local!
 raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
-rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key, "master")
-
+rawkey_prefix <- "~/github/sam_master"
+rawprep_prefix <- "~/github/ohiprep_v2017"
+## remote!!
+# raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+# rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key, "master")
+# rawprep_prefix <- "https://raw.githubusercontent.com/OHI-Science/ohiprep_v2017/master/"
 
 ## read in data from web (minimize how often pull from web) ----
 
 ## get global rgn_id
-rgn_global <- read_csv(file.path(raw_prefix, 'ohirepos-log/master/rgn_global.csv')) %>%
+rgn_global <- read_csv(file.path(rawkey_prefix, 'eez/layers/rgn_global.csv')) %>%
   filter(label == rgn_name) # sam is 152
 
 ## scores, gapfilling
@@ -40,17 +45,19 @@ scores_gf_csv <- read_csv(file.path(rawkey_prefix, "global2015/gapFilling/scores
 ## FP
 fis_meancatch_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_meancatch.csv"))
 fis_b_bmsy_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/fis_b_bmsy.csv"))
-taxon_lookup_csv <- read_csv(file.path(raw_prefix, "ohiprep/master/globalprep/fis/v2017/data/taxon_resilience_lookup.csv"))
 fis_b_bmsy_gf_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/fis_b_bmsy.csv"))
 mar_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/mar_harvest_tonnes.csv"))
+taxon_lookup_csv <- read_csv(file.path(rawprep_prefix, "globalprep/fis/v2017/data/taxon_resilience_lookup.csv"))
+
+
 
 ## NP
 np_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/np_harvest_tonnes.csv"))
 
-## Species goals
-ico_spp_cat_csv <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/int/ico_spp_cat.csv"))
-ico_spp_rgn_prepped_csv <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/int/ico_spp_rgn_prepped.csv"))
-risk_code_lookup <- read_csv(file.path(raw_prefix, "ohiprep_v2017/master/globalprep/spp_ico/v2017/raw/risk_code_lookup.csv"))
+## Species goals local
+ico_spp_cat_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_cat.csv"))
+ico_spp_rgn_prepped_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_rgn_prepped.csv"))
+risk_code_lookup <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/raw/risk_code_lookup.csv"))
 
 ## Habitat goals
 hab_mangrove_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_extent.csv"))
