@@ -23,14 +23,13 @@ library(DT)
 
 
 ## to build filepaths ----
-##local!
-raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+##local! - comment these out if preferred remote
 rawkey_prefix <- "~/github/sam_master"
 rawprep_prefix <- "~/github/ohiprep_v2017"
-## remote!!
-# raw_prefix <- 'https://raw.githubusercontent.com/OHI-Science'
+## remote!! - comment these out if you have cloned locally
 # rawkey_prefix <- file.path('https://raw.githubusercontent.com/OHI-Science', key, "master")
 # rawprep_prefix <- "https://raw.githubusercontent.com/OHI-Science/ohiprep_v2017/master/"
+
 
 ## read in data from web (minimize how often pull from web) ----
 
@@ -50,14 +49,17 @@ mar_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/mar_harv
 taxon_lookup_csv <- read_csv(file.path(rawprep_prefix, "globalprep/fis/v2017/data/taxon_resilience_lookup.csv"))
 
 
-
 ## NP
 np_harvest_tonnes_csv <- read_csv(file.path(rawkey_prefix, "global2017/gapfilling/layers/np_harvest_tonnes.csv"))
 
-## Species goals local
-ico_spp_cat_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_cat.csv"))
-ico_spp_rgn_prepped_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_rgn_prepped.csv"))
+## Species goals
+ico_spp_cat_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_cat.csv")) ## maybe don't need
+ico_spp_rgn_prepped_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_spp_rgn_prepped.csv")) ## maybe don't need
 risk_code_lookup <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/raw/risk_code_lookup.csv"))
+rgn_spp_gl_csv <- read_csv("~/github/ohi-global2017-template/mazu_local/rgn_spp_gl.csv") # this filepath will depend on where you saved this locally
+ico_spp_iucn_status_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/output/ico_spp_iucn_status.csv"))
+ico_global_list <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_global_list.csv"))
+
 
 ## Habitat goals
 hab_mangrove_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_extent.csv"))
@@ -595,19 +597,37 @@ lsp_combo %>%
 
 ### Global data
 
-These are the species included in the Species goal: 
+SPP: 
 
-```{r ico_spp, echo=FALSE}
-ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
-  filter(rgn_id == rgn_global$rgn_id)
+```{r spp list, echo=FALSE}
+## filter and join species name
+rgn_spp_gl <- rgn_spp_gl_csv %>%
+  filter(rgn_id == rgn_global$rgn_id) %>%
+  left_join(ico_global_list %>%
+              select(sciname, comname), 
+            by = "sciname") %>%
+  select(sciname, comname, iucn_sid, cat_score) # n_spp_rgn; this = n_rows: 1467 for samoa
 
-ico_spp_code <- ico_spp_rgn_prepped %>%
+## join iucn category language THIS ISN"T RIGHT
+spp_code <- rgn_spp_gl %>%
   left_join(risk_code_lookup %>%
               select(cat_code = code,
-                     category, 
+                     category,
                      cat_score) %>%
               distinct(), 
-            by = "cat_code")
+            by = "cat_score")
+
+# ### old pre-casey, not right, just 11 variables.
+# ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
+#   filter(rgn_id == rgn_global$rgn_id)
+# 
+# ico_spp_code2 <- ico_spp_rgn_prepped %>%
+#   left_join(risk_code_lookup %>%
+#               select(cat_code = code,
+#                      category,
+#                      cat_score) %>%
+#               distinct(),
+#             by = "cat_code")
 
 ## display
 ico_spp_code %>%
@@ -615,7 +635,51 @@ ico_spp_code %>%
   DT::datatable()
 ```
 
-And for Iconic Species:
+
+These are the species included in the ICO goal: 
+
+TODO Casey: ico_spp_iucn_status.csv is from functions.r
+This is the ICO list: ohiprep/globalprep/spp_ico/v2017/output
+
+Recalculating would be easy for ICO bc no area-weighting. Could edit this file directly: ico_spp_iucn_status.csv bc read into ICO function. (NC/LV)
+
+```{r spp list, echo=FALSE}
+## filter and join species name
+ico_spp_iucn_status <- ico_spp_iucn_status_csv %>%
+  filter(rgn_id == rgn_global$rgn_id) %>%
+  left_join(ico_global_list %>%
+              select(sciname, comname), 
+            by = "sciname") %>%
+  select(sciname, comname, iucn_sid, year, category)
+
+## join iucn category language
+ico_spp_code <- ico_spp_iucn_status %>%
+  dplyr::rename(cat_code = category) %>%
+  left_join(risk_code_lookup %>%
+              select(cat_code = code,
+                     category, 
+                     cat_score) %>%
+              distinct(), 
+            by = "cat_code")
+
+# ### old pre-casey, not right, just 11 variables.
+# ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
+#   filter(rgn_id == rgn_global$rgn_id)
+# 
+# ico_spp_code2 <- ico_spp_rgn_prepped %>%
+#   left_join(risk_code_lookup %>%
+#               select(cat_code = code,
+#                      category,
+#                      cat_score) %>%
+#               distinct(),
+#             by = "cat_code")
+
+## display
+ico_spp_code %>%
+  select(comname, sciname, cat_code) %>%
+  DT::datatable()
+```
+
 
 ## Discussion and Next Steps
 
