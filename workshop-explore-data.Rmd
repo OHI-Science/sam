@@ -223,7 +223,7 @@ What order should we discuss these?
 
 ## Data discussion: deep dive
 
-### [Food Provision: Fisheries](http://ohi-science.org/ohi-global/goals.html#food_provision:_fisheries)
+## [Food Provision: Fisheries](http://ohi-science.org/ohi-global/goals.html#food_provision:_fisheries)
 
 **Questions:**
 
@@ -595,7 +595,7 @@ lsp_combo %>%
 
 ## Species-based goals
 
-### Global data: SPP
+### Global data
 
 ```{r spp count, echo=FALSE}
 ## filter and join species name
@@ -607,7 +607,21 @@ rgn_spp_gl <- rgn_spp_gl_csv %>%
   select(sciname, comname, iucn_sid, cat_score) # n_spp_rgn; this = n_rows: 1467 for samoa
 ```
 
-The Species goal has `r nrow(rgn_spp_gl)` unique species. This is probably more than we can go through today. But, here is a table to look through if we have time:
+```{r ico count, echo=FALSE}
+## filter and join species name
+ico_spp_iucn_status <- ico_spp_iucn_status_csv %>%
+  filter(rgn_id == rgn_global$rgn_id) %>%
+  left_join(ico_global_list %>%
+              select(sciname, comname), 
+            by = "sciname") %>%
+  select(sciname, comname, iucn_sid, year, category)
+```
+
+**[Species subgoal of Biodiversity](http://ohi-science.org/ohi-global/goals.html#biodiversity:_species)**: There are `r nrow(rgn_spp_gl)` unique species for `r rgn_name`
+
+**[Iconic Species subgoal of Sense of Place](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_iconic_species)**: There are `r nrow(ico_spp_iucn_status)` unique species for `r rgn_name`
+
+For Species, there are probably more than we can go through today. But, here is a table that has the full list:
 
 ```{r spp display, echo=FALSE}
 ## display
@@ -616,19 +630,9 @@ rgn_spp_gl %>%
   DT::datatable()
 ```
 
-### Global data: ICO
+It might be more manageable to work with the Iconic Species list:
 
-These are the species included in the ICO goal: 
-
-```{r ico list, echo=FALSE}
-## filter and join species name
-ico_spp_iucn_status <- ico_spp_iucn_status_csv %>%
-  filter(rgn_id == rgn_global$rgn_id) %>%
-  left_join(ico_global_list %>%
-              select(sciname, comname), 
-            by = "sciname") %>%
-  select(sciname, comname, iucn_sid, year, category)
-
+```{r ico display, echo=FALSE}
 ## join iucn category language
 ico_spp_code <- ico_spp_iucn_status %>%
   dplyr::rename(cat_code = category) %>%
@@ -645,7 +649,7 @@ ico_spp_code %>%
   DT::datatable()
 ```
 
-There is a more reasonable number of species listed for Samoa at the moment: `r nrow(ico_spp_code)`. This is something that we could explore and we could potentially recalculate together. 
+This is something that we could explore and we could potentially recalculate together. 
 
 <!---
 Recalculating would be easy for ICO bc no area-weighting. Could edit this file directly: ico_spp_iucn_status.csv bc read into ICO function. (NC/LV)
