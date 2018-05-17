@@ -595,11 +595,9 @@ lsp_combo %>%
 
 ## Species-based goals
 
-### Global data
+### Global data: SPP
 
-SPP: 
-
-```{r spp list, echo=FALSE}
+```{r spp count, echo=FALSE}
 ## filter and join species name
 rgn_spp_gl <- rgn_spp_gl_csv %>%
   filter(rgn_id == rgn_global$rgn_id) %>%
@@ -607,43 +605,22 @@ rgn_spp_gl <- rgn_spp_gl_csv %>%
               select(sciname, comname), 
             by = "sciname") %>%
   select(sciname, comname, iucn_sid, cat_score) # n_spp_rgn; this = n_rows: 1467 for samoa
+```
 
-## join iucn category language THIS ISN"T RIGHT
-spp_code <- rgn_spp_gl %>%
-  left_join(risk_code_lookup %>%
-              select(cat_code = code,
-                     category,
-                     cat_score) %>%
-              distinct(), 
-            by = "cat_score")
+The Species goal has `r nrow(rgn_spp_gl)` unique species. This is probably more than we can go through today. But, here is a table to look through if we have time:
 
-# ### old pre-casey, not right, just 11 variables.
-# ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
-#   filter(rgn_id == rgn_global$rgn_id)
-# 
-# ico_spp_code2 <- ico_spp_rgn_prepped %>%
-#   left_join(risk_code_lookup %>%
-#               select(cat_code = code,
-#                      category,
-#                      cat_score) %>%
-#               distinct(),
-#             by = "cat_code")
-
+```{r spp display, echo=FALSE}
 ## display
-ico_spp_code %>%
-  select(comname, sciname, cat_code) %>%
+rgn_spp_gl %>%
+  select(comname, sciname) %>%
   DT::datatable()
 ```
 
+### Global data: ICO
 
 These are the species included in the ICO goal: 
 
-TODO Casey: ico_spp_iucn_status.csv is from functions.r
-This is the ICO list: ohiprep/globalprep/spp_ico/v2017/output
-
-Recalculating would be easy for ICO bc no area-weighting. Could edit this file directly: ico_spp_iucn_status.csv bc read into ICO function. (NC/LV)
-
-```{r spp list, echo=FALSE}
+```{r ico list, echo=FALSE}
 ## filter and join species name
 ico_spp_iucn_status <- ico_spp_iucn_status_csv %>%
   filter(rgn_id == rgn_global$rgn_id) %>%
@@ -662,24 +639,17 @@ ico_spp_code <- ico_spp_iucn_status %>%
               distinct(), 
             by = "cat_code")
 
-# ### old pre-casey, not right, just 11 variables.
-# ico_spp_rgn_prepped <- ico_spp_rgn_prepped_csv %>%
-#   filter(rgn_id == rgn_global$rgn_id)
-# 
-# ico_spp_code2 <- ico_spp_rgn_prepped %>%
-#   left_join(risk_code_lookup %>%
-#               select(cat_code = code,
-#                      category,
-#                      cat_score) %>%
-#               distinct(),
-#             by = "cat_code")
-
 ## display
 ico_spp_code %>%
   select(comname, sciname, cat_code) %>%
   DT::datatable()
 ```
 
+There is a more reasonable number of species listed for Samoa at the moment: `r nrow(ico_spp_code)`. This is something that we could explore and we could potentially recalculate together. 
+
+<!---
+Recalculating would be easy for ICO bc no area-weighting. Could edit this file directly: ico_spp_iucn_status.csv bc read into ICO function. (NC/LV)
+--->
 
 ## Discussion and Next Steps
 
