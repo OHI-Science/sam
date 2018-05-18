@@ -76,51 +76,29 @@ lsp_prot_area_offshore3nm_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/l
 
 ## Objectives
 
-Following the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g37b2a5357d_0_288) about OHI Global data and data gaps, let's explore the OHI Global data for Samoa. We will continue with gapfilling to focus our attention. 
+Following the [OHI Global Goal Models, Data, and Gaps presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g37b2a5357d_0_288), let's explore the OHI Global data for Samoa.
 
-<!---
-This is now covered in the presentation: https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g37b2a5357d_0_254
-## Gapfilling in Samoa
-
-Let's look at Samoa in the gapfilling "carpet plot". This plot is meant to show an overall picture of gapfilling in global assessments. Each row is a different country, and each column is a different goal. In these plots, reds mean the highest amounts of gapfilling, yellows are the least, and grey means not applicable. 
-
-![](images/carpetPlot_gapfillingFrazierS2Fig_sam1.TIFF)
-
-<br>
-
-### Figure: Carpetplot
-
-We can zoom in on Samoa: 
-
-![](images/carpetPlot_gapfillingFrazierS2Fig_sam2.png)
-
-Looking at the red goals, it seems that goals involving habitat data (HAB, CP, CS), as well as Food Provision (FIS and MAR) and Tourism & Recreation are the goals with the most gapfilling. This means that these data are not reported by Samoa, but instead estimated. In yellow, this figure shows that AO, SPP, CW, NP, and SP (LSP, SPP) have the least amount of gapfilling and are most representative of data.
-
---->
+----
 
 ## Gapfilling in Samoa
 
-Let's look a bit deeper to see numerically the percent gapfilling by goal. This confirms what we saw above but with more information. We can pull directly from the data from the [Frazier et al. 2015](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0160377) publication:
+Let's look a bit deeper to see numerically the percent gapfilling by goal to help us prioritize which goals we want to explore more deeply. We can pull directly from the data from the [Frazier et al. 2015](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0160377) publication. 
 
-```{r scores_gf samoa, echo=FALSE}
+It's interesting to compare the percent gapfilling by goal to the scores by goal. Let's look at this both as a table and as a figure and discuss what you see. 
+
+### Table: % Gapfilled vs. Scores
+
+Here is this information as a table.
+
+```{r scores_gf table, echo=FALSE}
+## gapfilled scores
 scores_gf <- scores_gf_csv %>% 
   filter(region_id == rgn_global$rgn_id,
          dimension == "status") %>%
   select(goal, percent_gapfilled = score) %>%
   arrange(percent_gapfilled) 
 
-
-```
-
-<br>
-
-It's also interesting to compare the percent gapfilling by goal to the scores per goal. It looks like HAB had the highest score but also some of the highest percentage of gapfilling. 
-
-### Table: % Gapfilled vs. Scores
-
-We can see this as a table. Here it is arranged by percent gapfilled, but we can also arrange by score.
-
-```{r, echo=FALSE}
+## scores
 scores <- scores_csv %>% 
   filter(region_id == rgn_global$rgn_id,
          dimension == "status",  
@@ -128,14 +106,20 @@ scores <- scores_csv %>%
   select(goal, score) %>%
   arrange(goal) 
 
+## left join
 scores_plot <- scores %>%
   left_join(scores_gf, by = "goal") %>% 
   arrange(percent_gapfilled)
 
-##TODO: default arrangement by goal/subgoal, and then 
+## custom arrange: https://stackoverflow.com/questions/26548495/reorder-rows-using-custom-order
+targets_order <-  c("FP", "FIS", "MAR", "AO", "NP", "CS", "CP", "TR", "LE", "ECO", "LIV", "SP", "LSP", "ICO", "CW", "BD", "HAB", "SPP")
+ 
+scores_plot <- scores_plot %>%
+  mutate(targets_id =  factor(goal, levels = targets_order)) %>%
+  arrange(targets_id) %>%
+  select(-targets_id)
 
-##Talk to Mel about species synonyms (to know about it)
-
+## display
 scores_plot %>% 
   DT::datatable()
 ```
@@ -144,15 +128,14 @@ scores_plot %>%
 
 ### Figure: % Gapfilled vs. Status Scores
 
-But it can also be nice to see it as a figure:
+It can also be nice to see it as a figure. There are a few places where there are overlaps because goals have the exact same scores.
 
-```{r, echo=FALSE, warning=FALSE}
+```{r plot scores_gf, echo=FALSE, warning=FALSE}
 ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
   geom_point() + 
-  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
-
-## can also assign above to p then:
-# ggplotly(p)
+  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1) +
+  xlab("status score") +
+  ylab("percent gapfilled")
 ```
 
 
@@ -160,7 +143,17 @@ ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) 
 
 There are a lot of things we can talk about from this figure. What do you see? 
 
-Let's list potential topics and then we will dive further into each of them. 
+Let's brainstorm together: let's list overall observations and observations by goal. Then we will prioritize which to dive deeply into and look at the underlying data with the time we have.
+
+<br> 
+
+<!--- photo interlude --->
+
+![](images/ci_78365275_Medium.jpg)
+
+<br> 
+
+Here are some of the things that we discussed, I'll update this to include everything we talked about.
 
 ### Overall 
 
@@ -204,11 +197,13 @@ Let's list potential topics and then we will dive further into each of them.
 
 - LSP has a very low score, and is not gapfilled. 
 
+<br>
 
 ### Species-based goals (ICO, SPP)
 
 - these scores are quite high and are not gapfilled (0). 
 
+<br>
 
 ### Livelihoods and Economies (LE, LIV, ECO)
 
@@ -216,8 +211,9 @@ Let's list potential topics and then we will dive further into each of them.
 
 - The LE goal is not on the figure. We didn't include them in our gapfilling analyses because our models rely on old data (pre-2012). 
 
+<br>
 
-What order should we discuss these?
+Now, where should we start? What order should we discuss these?
 
 ----
 
@@ -227,7 +223,7 @@ What order should we discuss these?
 
 **Questions:**
 
-- FIS has quite a bit of gapfilling (64%), which data or species are gapfilled?
+- Which species are included in the FIS calculation? Where do the data come from?
 
 <br>
 
@@ -240,13 +236,7 @@ To refresh our minds, we can look at [ohi-science.org/ohi-global/goals](http://o
 
 The Fisheries (FIS) subgoal measures wildcaught fish catch within your EEZ (if your country fishes outside the EEZ and lands that catch in your country, that is not included). Our models need catch for at least 10 years (20 is better). Ideally, we would also have status of each species stock (at least B/BMSY, bonus is F/FMSY). We use both catch and B/BMSY information when we have it, but for some species we only have catch data. 
 
-Global data are from the [Sea Around Us Project](http://www.seaaroundus.org).
-
 <  !---
-The criteria we use for our fisheries model is data that has:
-
-- catch by species: only what is fished within Samoa's EEZ
-- years: at least 10 years of data (preferably 20)
 
 Depending on the format, we'd be able to update data for those species, recalculate either with only those species, or mix-and-match SAUP and local data.
 
@@ -256,7 +246,13 @@ Depending on the format, we'd be able to update data for those species, recalcul
 
 #### Global Data
 
-We can look on their website at an interactive visualization of [fish caught in Samoa's EEZ](http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20):
+Global data are from the [Sea Around Us Project](http://www.seaaroundus.org). Many species do not have formal stock assessments, but they do have tons of catch through time. The criteria we use for our fisheries model is data that has:
+
+- **catch by species**: only what is fished within Samoa's EEZ
+- **years**: at least 10 years of data (preferably 20)
+
+
+We can look at these data in several ways. Let's start by looking on SAUP's website at an interactive visualization of [fish caught in Samoa's EEZ](http://www.seaaroundus.org/data/#/eez/882?chart=catch-chart&dimension=taxon&measure=tonnage&limit=20):
 
 ![](images/saup-samoa-eezfishing.png)
 
@@ -266,16 +262,13 @@ We can also look at an interactive visualization of [Samoa fishing around the wo
 
 <br>
 
-Let's look through the species listed and see if there are any included that don't represent Samoa's fisheries within the EEZ; we can remove them (but we won't be adding additional species in this workshop). 
+Let's look through the species listed and see if there are any included that don't represent Samoa's fisheries within the EEZ; we can remove them (but we can't add additional species in this workshop). 
 
 Then, we can look at the mean catch estimates for certain species, especially for catch that is grouped instead of by species. If better local data are available, we can try to substitute these data.
 
 #### Mean catch 
 
-Let's look at the list of species that are represented in the FIS model as mean catch: (the [fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv) layer):
-
-TODO
-mean_catch is rather a historic list because some things may not be caught any more. If it was a big catch in the past but now is 0, it will still average. it keeps things in the dataset. 
+Let's look at the list of species that are represented in the FIS model as mean catch: (the [fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv) layer). This list is in some ways a historic list because it includes species that may not be caught any more (i.e. was fished in the past and stopped for some reason). This is the average of each species' catch through time, so if it was a big catch in the past but now is 0, it will still average (it keeps all species in the dataset).
 
 ```{r fis_meancatch list, echo=FALSE}
 fis_meancatch <- fis_meancatch_csv %>%
@@ -319,12 +312,17 @@ To understand mean catch, dive into catch by species. This might be best to view
 
 <!--- downloaded from Mazu git-annex/globalprep/fis/v2017/int/stock_catch_by_rgn.csv, filtered for sam and saved locally in sam/data --->
 
-```{r stock_catch_by_rgn.csv}
-
+```{r stock_catch_by_rgn.csv, echo=FALSE}
 stock_sam <- readr::read_csv("data/stock_catch_by_rgn_sam.csv")
 # View(stock_sam)
 
+## run this and then copy to presentation, I pasted it into TextWrangler first https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g39ed252120_0_195
+# stock_sam %>% 
+#   distinct(taxon_scientific_name, taxon_common_name) %>%
+#   as.data.frame()
 ```
+
+There are `r length(unique(stock_sam$taxon_scientific_name))` unique species
 
 TODO:
 "We would have to look at this more carefully and this is where it would occur"
