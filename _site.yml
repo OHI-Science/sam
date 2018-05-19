@@ -1,7 +1,9 @@
 name: The Ocean Health Index for Samoa
 navbar:
   title: Home
-  left: ~
+  left:
+    - text: "Workshop"
+    - href: workshop.html
 output_dir: '.'
 output:
   html_document:

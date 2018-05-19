@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Julie Lowndes and Ben Halpern" />
+
+
+<title>ESM 270 Ocean Health Index Lab</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="_sass/main.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown-header">Workshop</li>
+<li>
+  <a href="workshop.html"></a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">ESM 270 Ocean Health Index Lab</h1>
+<h4 class="author"><em>Julie Lowndes and Ben Halpern</em></h4>
+<h4 class="date"><em>June 1, 2016</em></h4>
+
+</div>
+
+
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p>The Ocean Health Index (OHI) framework measures the health of coupled human-ocean ecosystems in different contexts by accommodating differences in local environmental characteristics, cultural priorities, and information availability and quality. The OHI framework assesses a suite of benefits the ocean provides humans - called ‘goals’ - using the best information available. It distills complex socio-ecological relationships and context-specific targets into scores that can be repeated so that management can track and respond through time.</p>
+<p>Assessments using the OHI framework results in scores for each goal as well as in a single score for overall ocean health, which is a weighted-average of each goal’s score. Each goal’s score is calculated compared to a target called a <strong>reference point</strong>, and thus the score represents how close the goal is to meeting that target, on a scale from 0-100. Scores can be represented on a flower plot, where the center value is the overall OHI score. Each petal of the flower plot represents a goal; the length is the score of that particular goal and the width is its <strong>weight</strong>: contribution to the overall score.</p>
+<div class="figure">
+<img src="fig/goal_icons_recolored_labeled.png" alt="Ocean Health Index goals can be represented as a flower plot" />
+<p class="caption"><strong>Ocean Health Index goals can be represented as a flower plot</strong></p>
+</div>
+</div>
+<div id="instructions" class="section level1">
+<h1><span class="header-section-number">2</span> Instructions</h1>
+<p>In this assignment you will explore how Ocean Health Index (OHI) scores respond when you change two things:</p>
+<ol style="list-style-type: decimal">
+<li>how goals are weighted</li>
+<li>the reference point of a goal</li>
+</ol>
+<p>You will be using the OHI Toolbox software to do this, and follow the instructions here (<a href="https://rawgit.com/OHI-Science/ohi-global/draft/ESM_270/OHI_Instructions.html"><code>OHI_Instructions.Rmd</code></a>). Walk through line-by-line and execute the code in R; the order does matter so be sure to proceed line-by-line. The example presented is for the USA, so please choose another country for your assignment.</p>
+<p>Your final figures will be saved as .pngs within the ohi-global folder you downloaded: <code>ohi-global/ESM_270/reports/figures</code>.</p>
+<div id="get-the-ohi-global-repo" class="section level2">
+<h2><span class="header-section-number">2.1</span> Get the ohi-global repo</h2>
+<p>We’ll be playing with weights and reference points for the global OHI assessments; we calculate scores each year for 221 coastal nations and territories. Let’s get it on your computer.</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://github.com/OHI-Science/ohi-global">github.com/OHI-Science/ohi-global</a>. This is the <code>ohi-global</code> repository (called ‘repo’).</li>
+<li>Click on the <span style="color:green">green</span> ‘clone or download’ button.</li>
+<li>Clone or download somewhere you can find on your computer. If you are familiar with GitHub, clone this repository. Otherwise click ‘Download ZIP’.</li>
+<li>Navigate to where you saved the <code>ohi-global</code> repo on your computer and double-click the <code>ohi-global.Rproj</code> file. This will open <a href="https://www.rstudio.com/">RStudio</a> (which is how you should always interface with R).</li>
+<li>Within the RStudio file directory pane (bottom right), navigate to the <code>ESM_270</code> folder. Inside is a mix of <code>.R</code> scripts and <code>.csv</code> files. We will just focus on a few of them.</li>
+</ol>
+</div>
+<div id="setup" class="section level2">
+<h2><span class="header-section-number">2.2</span> Setup</h2>
+<p>Since we’re in RStudio with a <code>.Rproj</code> file, our current working directory is <code>wherever/you/saved/it/ohi-global</code>. All of our work for the assignment happens in the <code>ESM_270</code> folder (what you are reading is from <code>ohi-global/ESM_270/ESM_270_OHI.Rmd</code>). Let’s change the working directory to the ESM_270 folder, and install the packages we need to get going.</p>
+<p><strong>Troubleshooting: If you have any problems</strong>, check that R and RStudio are up-to-date. The most recent version of R is 3.3 and RStudio is 0.99. If needed, update R <a href="Find%20the%20latest%20version%20at%20http://cran.r-project.org">here</a> and RStudio <a href="http://www.rstudio.com/products/rstudio/download">here</a>.</p>
+<p>Run the following code:</p>
+<pre class="r"><code>## set working directory to ohi-global/ESM_270 with setwd()
+setwd(&#39;ESM_270&#39;)
+
+## delete any existing version of `ohicore`
+for (p in c(&#39;ohicore&#39;)){
+  if (p %in% rownames(installed.packages())){
+    lib = subset(as.data.frame(installed.packages()), Package==p, LibPath, drop=T)
+    remove.packages(p, lib)
+  }
+}
+
+## install dependencies
+for (p in c(&#39;devtools&#39;, &#39;git2r&#39;)){
+  if (!require(p, character.only=T)){
+    install.packages(p)
+    require(p, character.only=T)
+  }
+}
+
+## install most current version of ohicore -- don&#39;t worry about the warnings. But make sure there are no errors.
+devtools::install_github(&#39;ohi-science/ohicore@dev&#39;)
+
+## load ohicore library -- again, don&#39;t worry about the warnings. But ensure the last line is not an error.
+library(ohicore)
+
+## source the function to make flower plots; this won&#39;t do anything yet.
+source(&#39;PlotFlowerMulti.r&#39;)</code></pre>
+</div>
+<div id="calculate-scores" class="section level2">
+<h2><span class="header-section-number">2.3</span> Calculate scores</h2>
+<p>We can calculate OHI scores by sourcing <code>calculate_scores.r</code> (below). This uses the following files, which are all in our current working directory, <code>ohi-global/ESM_270</code>:</p>
+<ul>
+<li>input data layers in the <code>layers</code> folder</li>
+<li>goal models and reference points in <code>conf/functions.r</code></li>
+<li>goal weighs in <code>conf/goals.csv</code></li>
+<li>calculated scores for all goals and all 221 regions are saved in <code>scores.csv</code>.</li>
+</ul>
+<p>Note: because the Toolbox relies on these file names for calculation and for visualizing, we’ll be overwriting some of these files (after saving the originals) to use in each of the steps as we go forward.</p>
+<pre class="r"><code>## calculate scores. The Toolbox will describe each step as it calculates
+source(&#39;calculate_scores.r&#39;)
+
+## save copies of original files
+file.copy(&#39;conf/goals.csv&#39;,   &#39;conf/goals_orig.csv&#39;, overwrite = TRUE)
+file.copy(&#39;conf/functions.r&#39;, &#39;conf/functions_orig.r&#39;, overwrite = TRUE)
+file.copy(&#39;scores.csv&#39;,       &#39;scores_orig.csv&#39;, overwrite = TRUE)</code></pre>
+</div>
+<div id="visualize-ohi-scores-for-your-region" class="section level2">
+<h2><span class="header-section-number">2.4</span> Visualize OHI scores for your region</h2>
+<p>We just calculated scores for all 221 regions. But you’ll just be inspecting one region, which do you choose? Each region has a unique numeric identifier. Run this to view the full list of regions and choose one to inspect: <code>View(read.csv('layers/rgn_global.csv'))</code>. Use use the search bar in the top right of the View pane to find your country and note its <code>rgn_id</code>.</p>
+<p>You’ll assign it in R now as <code>my_rgn</code>:</p>
+<pre class="r"><code>## assign your rgn_id
+my_rgn &lt;-  163 # United States; change this to your region of choice</code></pre>
+</div>
+<div id="flower-plot-for-your-region" class="section level2">
+<h2><span class="header-section-number">2.5</span> Flower plot for your region</h2>
+<p>Now, let’s visualize your region’s scores in a flower plot. The <code>PlotFlowerMulti()</code> function will make figures for you, saving them as .pngs in <code>ohi-global/ESM_270/reports/figures</code> and displaying them in the RStudio Viewer (they will look a bit cut-off in the Viewer but that is just a vizualization glitch; the .pngs are fine).</p>
+<p>Run the following – it will save a file with your region’s name, for example <code>ohi-global/ESM_270/reports/figures/flower_orig_United_States.png.</code>:</p>
+<pre class="r"><code>## parameters for the flower plot
+scores_orig &lt;- read.csv(&#39;scores.csv&#39;)
+conf_orig &lt;- read.csv(&#39;conf/goals.csv&#39;)
+name_fig_orig &lt;- &#39;reports/figures/flower_orig&#39;   # my_rng is appended to name_fig
+
+## function call for the flower plot -- original
+PlotFlowerMulti(scores       = scores_orig, 
+                rgns_to_plot = my_rgn, 
+                conf         = conf_orig, 
+                name_fig     = name_fig_orig)</code></pre>
+</div>
+<div id="change-goal-weighting" class="section level2">
+<h2><span class="header-section-number">2.6</span> Change goal weighting</h2>
+<p>Now you will change the goal weighting for one of the goals.</p>
+<p>Refer to the Introduction above to see the list of goals. Currently, goals are weighted equally. This means goals have a weight of 1; if a goal has sub-goals, those are weighted each as 0.5. View this with <code>View(conf_orig %&gt;% dplyr::select(goal, name, weight))</code>. Identify the 2- or 3- letter code for the goal or sub-goal you want to change.</p>
+<p>Run the following after updating the weight; the example below shows changing the weight of the Artisanal Fishing Opportunity goal (‘AO’) to 3. Note that all of these weights are relative; so you can just change one goal weight without worrying about what it adds up to. This will save a file with your region’s name, for example <code>ohi-global/ESM_270/reports/figures/flower_weights_new_United_States.png.</code></p>
+<pre class="r"><code>## create a new variable conf_new_wt
+conf_new_wt &lt;- conf_orig
+
+## change the weight of a goal, eg AO to 3 and save file
+conf_new_wt$weight[conf_new_wt$goal == &#39;AO&#39;] = 3. # the 2- or 3- letter code must be in quotes. 
+write.csv(conf_new_wt, &#39;conf/goals.csv&#39;, row.names = FALSE) 
+
+## re-calculate scores with new weight
+source(&#39;calculate_scores.r&#39;)
+scores_new_wt &lt;- read.csv(&#39;scores.csv&#39;)
+
+## parameter for the flower plot -- new weight
+name_fig_weights &lt;- &#39;reports/figures/flower_weights_new&#39;
+
+## function call for the flower plot
+PlotFlowerMulti(scores       = scores_new_wt, 
+                rgns_to_plot = my_rgn, 
+                conf         = conf_new_wt, 
+                name_fig     = name_fig_weights)</code></pre>
+</div>
+<div id="change-reference-point" class="section level2">
+<h2><span class="header-section-number">2.7</span> Change reference point</h2>
+<p>The <strong>Lasting Special Places</strong> sub-goal represents geographic locations that hold particular value for aesthetic, spiritual, cultural, recreational or existence reasons, and assesses how well they are protected. In global assessments, we model this with the proportion of the offshore area that is a marine protected area (MPAs), with the reference point set to 30%.</p>
+<p>You can see this by navigating to <code>conf/functions.r</code>, and looking at line 1578: you can also search for <code>LSP =</code>. Right now it’s set to 30% of waters should be in MPAs. What if we altered that? The example below changes it to 100%.</p>
+<p>Go ahead and change it and run the following. It will save a file with your region’s name, for example <code>ohi-global/ESM_270/reports/figures/flower_ref_new_United_States.png.</code></p>
+<pre class="r"><code>## set a new reference point
+ref_pct_new &lt;- 40 # change this with your reference point
+
+## run this to insert your new reference point into conf/functions.r
+readLines(&#39;conf/functions.r&#39;) %&gt;%
+  str_replace(&quot;LSP = .*&quot;, sprintf(&quot;LSP = function(layers, ref_pct_cmpa=%s, ref_pct_cp=%s, status_year){&quot;, 
+                                  ref_pct_new, ref_pct_new)) %&gt;%
+  writeLines(&#39;conf/functions.r&#39;)
+
+## reset original conf/goals.csv file
+write.csv(conf_orig, &#39;conf/goals.csv&#39;, row.names = FALSE) # use original conf
+
+## re-calculate scores with new reference point
+source(&#39;calculate_scores.r&#39;)
+scores_new_ref &lt;- read.csv(&#39;scores.csv&#39;)
+
+## parameter for the flower plot -- new reference point
+name_fig_ref &lt;- &#39;reports/figures/flower_ref_new&#39;
+
+PlotFlowerMulti(scores       = scores_new_ref, 
+                rgns_to_plot = my_rgn, 
+                conf         = conf_orig, 
+                name_fig     = name_fig_ref)</code></pre>
+<p>How does the new reference point flower plot compare with the original? How much would you have expected the overall score to change? And how would you communicate this using the flower plots?</p>
+<p>Run this to compare how much the LSP goal score changed vs. the overall Index score (displayed in the middle of the flower plot):</p>
+<pre class="r"><code>## investigate the LSP scores: 
+scores_orig %&gt;%
+  filter(region_id == my_rgn, 
+         goal == &#39;LSP&#39;, 
+         dimension == &#39;score&#39;)
+
+scores_new_ref %&gt;%
+  filter(region_id == my_rgn, 
+         goal == &#39;LSP&#39;, 
+         dimension == &#39;score&#39;)
+
+## investigate the overall Index scores 
+scores_orig %&gt;%
+  filter(region_id == my_rgn, 
+         goal == &#39;Index&#39;, 
+         dimension == &#39;score&#39;)
+
+scores_new_ref %&gt;%
+  filter(region_id == my_rgn, 
+         goal == &#39;Index&#39;, 
+         dimension == &#39;score&#39;)</code></pre>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

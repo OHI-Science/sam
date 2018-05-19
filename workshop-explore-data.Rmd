@@ -219,6 +219,76 @@ Now, where should we start? What order should we discuss these?
 
 ## Data discussion: deep dive
 
+Let's look into the data behind some of these goals. 
+
+We will use several resources for each goal, all linked from [ohi-science.org/ohi-global](http://ohi-science.org/ohi-global]): 
+
+- [ohi-science.org/ohi-global/goals](http://ohi-science.org/ohi-global/goals)
+- [ohi-science.org/ohi-global/layers_table.html](http://ohi-science.org/ohi-global/layers_table.html)
+- [Global supplemental information](https://rawgit.com/OHI-Science/ohi-global/draft/global_supplement/Supplement.html)
+
+<br>
+
+## [Lasting Special Places](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_lasting_special_places)
+
+The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage. We focus only on coastal waters (within 3nmi of shore) for marine special places because it was assumed that lasting special places are primarily in coastal areas; we wanted our estimates of % area protected to be bounded to this coastal region. For coastlines, we focused only on the first km-wide strip of land as a way to increase the likelihood that the area being protected by terrestrial parks is connected to the marine system in some way.
+
+
+### Global Data
+
+Data is from the United Nations Environment Programme - World Conservation Monitoring Centre’s World Database on Protected Areas: [protectedplanet.net](http://www.protectedplanet.net). 
+
+Data details: 
+
+- includes all nationally designated (e.g., National Parks, Nature Reserves)
+- includes internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance)
+- includes WDPA polygons only (not points)
+- includes status of “designated” only (not “proposed”)
+
+The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage (30%). 
+
+```{r lsp, echo=FALSE}
+lsp_prot_area_inland1km <- lsp_prot_area_inland1km_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_prot_area_offshore3nm <- lsp_prot_area_offshore3nm_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_combo <- left_join(
+  lsp_prot_area_inland1km,
+  lsp_prot_area_offshore3nm, 
+  by = c("rgn_id", "year")) %>%
+  select(-rgn_id)
+  
+lsp_combo %>%
+  DT::datatable()
+
+```
+
+
+
+There is a lag in the WDPA database, as discussed [in this article](https://www.protectedplanet.net/c/the-lag-effect-in-the-world-database-on-protected-areas). Therefore, Samoa may not have been included in previous datasets. 
+
+Let's have a look at the data available now (I downloaded it as a CSV):
+
+![](images/protectedplanet_sam.png)
+
+```{r wdpa_sam, echo=FALSE}
+wdpa <- read_csv("data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv.csv")
+
+wdpa %>%
+  DT::datatable()
+```
+
+
+![](data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/Resources_in_English/wdpa_Summary_table_WDPA_attributes.png)
+
+#### Discussion
+
+- are there other coastal or marine parks that are not accounted for? Discuss reporting, etc. 
+
+<br>
+
 ## [Food Provision: Fisheries](http://ohi-science.org/ohi-global/goals.html#food_provision:_fisheries)
 
 **Questions:**
@@ -268,7 +338,19 @@ Then, we can look at the mean catch estimates for certain species, especially fo
 
 #### Mean catch 
 
-Let's look at the list of species that are represented in the FIS model as mean catch: (the [fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv) layer). This list is in some ways a historic list because it includes species that may not be caught any more (i.e. was fished in the past and stopped for some reason). This is the average of each species' catch through time, so if it was a big catch in the past but now is 0, it will still average (it keeps all species in the dataset).
+The mean catch layer ([fis_meancatch](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_meancatch.csv)) is in some ways a historic list because it includes species that may not be caught any more (i.e. was fished in the past and stopped for some reason). It is calculated as the average (mean) of each species' catch through time, so if it was a big catch in the past but now is 0, it will still average (it keeps all species in the dataset).
+
+It will be more useful for us to look at the raw catch values, and see if any of them don't seem right. 
+
+<!---
+We can then recalculate mean_catch for the Toolbox. Not sure we can do this on the fly: We would have to look at this more carefully and this is where it would occur
+
+If wanted to substitute new species data, don't add it to mean_catch; add it to the raw and then recalculate using this.
+https://github.com/OHI-Science/ohiprep_v2018/blob/master/globalprep/fis/v2017/catch_data_prep.Rmd
+--->
+
+
+<!---
 
 ```{r fis_meancatch list, echo=FALSE}
 fis_meancatch <- fis_meancatch_csv %>%
@@ -296,19 +378,12 @@ There are `r fis_meancatch_lookup %>% nrow()` species in the [fis_meancatch](htt
 
 We can look at this another way in the presentation.
 
-<!---
-If we want to look up a single species, like red snapper (*Xiphias_gladius*): The values are all the same: this is the mean catch throughout the period. 
-
-```{r fis_meancatch sp, echo=FALSE}
-fis_meancatch %>%
-  filter(stock_name == "Xiphias_gladius") %>%
-  knitr::kable()
-```
-
 --->
 #### Raw catch data
 
-To understand mean catch, dive into catch by species. This might be best to view from within RStudio.
+To understand mean catch, dive into catch by species. 
+
+Let's do two things. First, look through the list of species to see if any of them should be removed.
 
 <!--- downloaded from Mazu git-annex/globalprep/fis/v2017/int/stock_catch_by_rgn.csv, filtered for sam and saved locally in sam/data --->
 
@@ -322,14 +397,20 @@ stock_sam <- readr::read_csv("data/stock_catch_by_rgn_sam.csv")
 #   as.data.frame()
 ```
 
-There are `r length(unique(stock_sam$taxon_scientific_name))` unique species
+There are `r n_distinct(stock_sam$taxon_scientific_name)` unique species. 
 
-TODO:
-"We would have to look at this more carefully and this is where it would occur"
+Let's look at them in the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g39ed252120_0_195) since there are so many.
 
-TODO: note to self:
-If wanted to add new species data, don't add it to mean_catch; add it to the raw and then recalculate using this.
-https://github.com/OHI-Science/ohiprep_v2018/blob/master/globalprep/fis/v2017/catch_data_prep.Rmd
+
+Do we want to look at the timeseries for any species? For example:
+
+```{r stock_catch_by_rgn.csv2, echo=FALSE}
+stock_sam %>%
+  filter(taxon_scientific_name == "Acanthuridae") %>%
+  select(year, taxon_scientific_name, taxon_common_name, tons, stock_id) %>%
+  DT::datatable()
+
+```
 
 #### B/Bmsy
 
@@ -359,7 +440,7 @@ fis_b_bmsy_lookup %>% write_csv("data/fis_b_bmsy_lookup_sam.csv")
 
 There are only `r fis_b_bmsy_lookup %>% nrow()` species in the [fis_b_bmsy](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_b_bmsy.csv) layer for Samoa.
 
-Are there any species that don't seem right?
+Let's look at these too. Are there any species that don't seem right?
 
 <!---
 If we want to look up b_bmsy for a single species, like red snapper (*Xiphias_gladius-77*):
@@ -560,35 +641,7 @@ np_harvest_tonnes %>%
 - are there other products that should be included?
 - is this a goal that represents Samoa well?
 
-## [Lasting Special Places](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_lasting_special_places)
-
-
-
-### Global Data
-
-The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage. 
-
-```{r lsp, echo=FALSE}
-lsp_prot_area_inland1km <- lsp_prot_area_inland1km_csv %>%
-  filter(rgn_id == rgn_global$rgn_id)
-
-lsp_prot_area_offshore3nm <- lsp_prot_area_offshore3nm_csv %>%
-  filter(rgn_id == rgn_global$rgn_id)
-
-lsp_combo <- left_join(
-  lsp_prot_area_inland1km,
-  lsp_prot_area_offshore3nm, 
-  by = c("rgn_id", "year")) %>%
-  select(-rgn_id)
-  
-lsp_combo %>%
-  DT::datatable()
-
-```
-
-#### Discussion
-
-- are there coastal or marine parks that are not accounted for?
+<br>
 
 
 ## Species-based goals
