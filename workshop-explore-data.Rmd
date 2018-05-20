@@ -242,8 +242,8 @@ Data details:
 
 - includes all nationally designated (e.g., National Parks, Nature Reserves)
 - includes internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance)
-- includes WDPA polygons only (not points)
-- includes status of “designated” only (not “proposed”)
+- includes WDPA polygons only (excludes points)
+- includes status of “designated” only (excludes “proposed”)
 
 The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage (30%). 
 
