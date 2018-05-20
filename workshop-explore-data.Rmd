@@ -287,6 +287,8 @@ wdpa %>%
 
 - are there other coastal or marine parks that are not accounted for? Discuss reporting, etc. 
 
+- an example of adding data to LSP is available [here](https://rawgit.com/OHI-Science/sam/master/toolbox-demo/workshop-sub-data.html) (run from the master branch)
+
 <br>
 
 ## [Food Provision: Fisheries](http://ohi-science.org/ohi-global/goals.html#food_provision:_fisheries)
