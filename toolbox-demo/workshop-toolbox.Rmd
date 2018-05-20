@@ -50,9 +50,9 @@ Since we're in RStudio with a `.Rproj` file, our current working directory is `w
 **Troubleshooting: If you have any problems**, check that R and RStudio are up-to-date. If needed, update R [here](Find the latest version at http://cran.r-project.org) and RStudio [here](http://www.rstudio.com/products/rstudio/download). 
 
 Run the following code:
-```{r ohicore, eval=FALSE, message=FALSE, results='hide'}
+```{r ohicore, message=FALSE, results='hide'}
 ## set working directory to sam/toolbox-demo with setwd()
-setwd('toolbox-demo')
+#setwd('toolbox-demo')
 
 ## install OHI's `ohicore` package
 ## first we need to install the devtools package. Note the different install functions.
@@ -80,7 +80,7 @@ We can calculate OHI scores by sourcing `calculate_scores.r` (below). This uses 
 Note: because the Toolbox relies on these file names for calculation and for visualizing, we'll be overwriting some of these files (after saving the originals) to use in each of the steps as we go forward. 
 
 
-```{r calculate scores, eval=FALSE, message=FALSE}
+```{r calculate scores, message=FALSE}
 
 ## Before we do anything, let's save copies of original files
 file.copy('scores.csv','scores_orig.csv', overwrite = TRUE)
@@ -97,22 +97,22 @@ source('calculate_scores.r')
 
 We just calculated scores for all 220 regions in the global assessment. But now let's just inspect one region, Samoa. Each region has a unique numeric identifier. You can run this to view the full list of regions and find their numeric region identifier called a `rgn_id`: `View(read_csv('layers/rgn_global.csv'))`. Use use the search bar in the top right of the View pane to find your country and note its `rgn_id`. (Or, you can trust me that the **`rgn_id` for Samoa is 152**.)
 
-You'll assign it in R now as `my_rgn`: 
-```{r assign rgn_id, eval=FALSE}
+You'll assign it in R now as `rgn_id_sam`: 
+```{r assign rgn_id}
 ## assign your rgn_id
-my_rgn <-  152 # Samoa
+rgn_id_sam <-  152 # Samoa
 ```
 
 ## Flower plot for your region
 
-Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/toolbox-demo/reports/figures` and displaying them in the RStudio Viewer (they will look a bit cut-off in the Viewer but that is just a vizualization glitch; the .pngs are fine).  
+Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/toolbox-demo/reports/figures` and displaying them in the RStudio Viewer 
 
 Run the following -- it will save a file with your region's name, for example `sam/toolbox-demo/reports/figures/flower_orig/Samoa.png.`. The `PlotFlower()` function will use the scores.csv file that was saved from `calculate_scores.R` 
 
-```{r plot original, eval=FALSE, message=FALSE}
+```{r plot original, message=FALSE}
 
 ## now, create a flower plot for Samoa
-PlotFlower(region_plot = my_rgn,
+PlotFlower(region_plot = rgn_id_sam,
            assessment_name = "Samoa",
            dir_fig_save    = "reports/figures/flower_orig")
 ```
@@ -125,7 +125,7 @@ Now let's remove a goal that might not represent Samoa: Natural Products.
 Refer to the Introduction above to see the list of goals. We can identify the 2- or 3- letter code for the goal or sub-goal we want to change by viewing `View(conf_orig %>% dplyr::select(goal, name))`.
 --->
 
-```{r, eval=FALSE, message=FALSE}
+```{r calculate, }
 ## assign goal to remove
 goal_remove <- "NP" # the 2- or 3- letter code must be in quotes. 
 
@@ -149,71 +149,9 @@ read.csv("conf/resilience_matrix_orig.csv") %>%
 source('calculate_scores.r')
 
 ## now, create a flower plot for Samoa
-PlotFlower(region_plot = my_rgn,
+PlotFlower(region_plot = rgn_id_sam,
            assessment_name = "Samoa",
            dir_fig_save    = "reports/figures/flower_new")
 ```
 
 Let's have look and compare. 
-
-## Change reference point
-
-The **Lasting Special Places** sub-goal represents geographic locations that hold particular value for aesthetic, spiritual, cultural, recreational or existence reasons, and assesses how well they are protected. In global assessments, we model this with the proportion of the offshore area that is a marine protected area (MPAs), with the reference point set to 30%. 
-
-You can see this by navigating to `conf/functions.r`, and looking at line 1578: you can also search for `LSP = `. Right now it's set to 30% of waters should be in MPAs. What if we altered that? The example below changes it to 100%. 
-
-Go ahead and change it and run the following. It will save a file with your region's name, for example `ohi-global/ESM_270/reports/figures/flower_ref_new_United_States.png.`
-
-```{r, eval=FALSE, message=FALSE}
-## set a new reference point
-ref_pct_new <- 40 # change this with your reference point
-
-## run this to insert your new reference point into conf/functions.r
-readLines('conf/functions.r') %>%
-  str_replace("LSP = .*", sprintf("LSP = function(layers, ref_pct_cmpa=%s, ref_pct_cp=%s, status_year){", 
-                                  ref_pct_new, ref_pct_new)) %>%
-  writeLines('conf/functions.r')
-
-## reset original conf/goals.csv file
-write_csv(conf_orig, 'conf/goals.csv') # use original conf
-
-## re-calculate scores with new reference point
-source('calculate_scores.r')
-scores_new_ref <- read_csv('scores.csv')
-
-## parameter for the flower plot -- new reference point
-name_fig_ref <- 'reports/figures/flower_ref_new'
-
-PlotFlowerMulti(scores       = scores_new_ref, 
-                rgns_to_plot = my_rgn, 
-                conf         = conf_orig, 
-                name_fig     = name_fig_ref)
-```
-
-How does the new reference point flower plot compare with the original? How much would you have expected the overall score to change? And how would you communicate this using the flower plots? 
-
-Run this to compare how much the LSP goal score changed vs. the overall Index score (displayed in the middle of the flower plot): 
-```{r, eval=FALSE, message=FALSE}
-
-## investigate the LSP scores: 
-scores_orig %>%
-  filter(region_id == my_rgn, 
-         goal == 'LSP', 
-         dimension == 'score')
-
-scores_new_ref %>%
-  filter(region_id == my_rgn, 
-         goal == 'LSP', 
-         dimension == 'score')
-
-## investigate the overall Index scores 
-scores_orig %>%
-  filter(region_id == my_rgn, 
-         goal == 'Index', 
-         dimension == 'score')
-
-scores_new_ref %>%
-  filter(region_id == my_rgn, 
-         goal == 'Index', 
-         dimension == 'score')
-```

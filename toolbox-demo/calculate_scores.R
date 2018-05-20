@@ -33,12 +33,4 @@ scores <- ohicore::CalculateAll(conf, layers)
 ## save scores as scores.csv
 readr::write_csv(scores, 'scores.csv', na='')
 
-# visualize scores ----
-
-## Flower plots for each region ----
-source('plot_flower_local.R')
-
-##  plot.
-PlotFlower(region_plot = rgn_id_sam,
-  assessment_name = "Samoa")
 
