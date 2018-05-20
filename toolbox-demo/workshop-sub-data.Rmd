@@ -93,6 +93,15 @@ We can check in the differences in GitHub and see that Samoa's data have been up
 
 ```{r}
 source("calculate_scores.R")
+
+# visualize scores ----
+
+## Flower plots for each region ----
+source('plot_flower_local.R')
+
+##  plot.
+PlotFlower(region_plot = rgn_id_sam,
+  assessment_name = "Samoa")
 ```
 
 
