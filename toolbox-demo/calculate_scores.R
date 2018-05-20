@@ -26,19 +26,12 @@ layers = ohicore::Layers('layers.csv', 'layers')
 ## select corresponding data year to use for pressures and resilience
 scenario_years <- 2017
 layers$data$scenario_year <- scenario_years
-<<<<<<< HEAD
-=======
-
->>>>>>> 969201f8ed38ee7c9525bdd860a96a6274df5dca
-
 
 ## calculate scenario scores
 scores <- ohicore::CalculateAll(conf, layers)
 
 ## save scores as scores.csv
 readr::write_csv(scores, 'scores.csv', na='')
-
-## visualize ----
 
 # visualize scores ----
 
