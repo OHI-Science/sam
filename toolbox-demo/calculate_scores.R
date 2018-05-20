@@ -4,6 +4,7 @@
 ## - The `ohicore` function CalculateAll() calculates OHI scores.
 
 ## set working directory for all OHI calculations
+
 setwd("~/github/sam/toolbox-demo")
 
 ## load required packages after checking if they are already installed
@@ -25,6 +26,10 @@ layers = ohicore::Layers('layers.csv', 'layers')
 ## select corresponding data year to use for pressures and resilience
 scenario_years <- 2017
 layers$data$scenario_year <- scenario_years
+<<<<<<< HEAD
+=======
+
+>>>>>>> 969201f8ed38ee7c9525bdd860a96a6274df5dca
 
 
 ## calculate scenario scores
