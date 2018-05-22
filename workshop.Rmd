@@ -28,8 +28,7 @@ Below is the Workshop schedule.
 
 Additionally, here are links to the seminars given on May 21 and May 22: 
 
-- [**The Ocean Health Index: A tool, a program, a community of practice**
-](https://docs.google.com/presentation/d/1v1JFCeopNbT3LxQ7NW9dDhWQjti3iweoyhexXWJr_zc/edit?usp=sharing) — Ocean Health Network
+- [**The Ocean Health Index: A tool, a program, a community of practice**](https://docs.google.com/presentation/d/1v1JFCeopNbT3LxQ7NW9dDhWQjti3iweoyhexXWJr_zc/edit?usp=sharing) — Ocean Health Network
 - [**The power of open science: experience from the Ocean Health Index**](https://docs.google.com/presentation/d/14TteMSsHbzcEXG9zs9_mAOv0ivURTeJd7PewkSVqX2M/edit?usp=sharing) — National University of Samoa
 
 <!---
