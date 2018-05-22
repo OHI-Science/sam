@@ -59,7 +59,7 @@ During the three-day workshop we will:
 
 This 3-day workshop follows the diagram from the OHI publication ([Best practices for assessing ocean health in multiple contexts using tailorable frameworks](https://peerj.com/articles/1503/)): 
 
-![](images/peerj_tier1_schedule.png)
+![](images/peerj_tier1_schedule.png) 
 
 <!--- 
 ## Prerequisites
