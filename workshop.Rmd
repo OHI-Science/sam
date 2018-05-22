@@ -24,6 +24,14 @@ Welcome to the **Ocean Health Index Samoa Opportunities Training Workshop** in A
 
 In this workshop we will do an in-depth exploration of OHI Global assessments and how they represent Samoa. We will also identify opportunites for Samoa, both conceptually (how does the  framework represent Samoa?) and technically (what data could we substitute)? We will also have some hands-on experience with the OHI Toolbox, and communicate next steps for OHI in Samoa.
 
+Below is the Workshop schedule. 
+
+Additionally, here are links to the seminars given on May 21 and May 22: 
+
+- [**The Ocean Health Index: A tool, a program, a community of practice**
+](https://docs.google.com/presentation/d/1v1JFCeopNbT3LxQ7NW9dDhWQjti3iweoyhexXWJr_zc/edit?usp=sharing) — Ocean Health Network
+- [**The power of open science: experience from the Ocean Health Index**](https://docs.google.com/presentation/d/14TteMSsHbzcEXG9zs9_mAOv0ivURTeJd7PewkSVqX2M/edit?usp=sharing) — National University of Samoa
+
 <!---
 During the three-day workshop we will:
 
@@ -49,7 +57,7 @@ During the three-day workshop we will:
 
 ----
 
-This 3-day workshop follows the diagram from the OHI best practices publication ([Best practices for assessing ocean health in multiple contexts using tailorable frameworks](https://peerj.com/articles/1503/)): 
+This 3-day workshop follows the diagram from the OHI publication ([Best practices for assessing ocean health in multiple contexts using tailorable frameworks](https://peerj.com/articles/1503/)): 
 
 ![](images/peerj_tier1_schedule.png)
 
