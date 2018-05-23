@@ -141,8 +141,6 @@ ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) 
 
 ## Gapfilling Observations
 
-There are a lot of things we can talk about from this figure. What do you see? 
-
 Let's brainstorm together: let's list overall observations and observations by goal. Then we will prioritize which to dive deeply into and look at the underlying data with the time we have.
 
 <br> 
@@ -205,6 +203,14 @@ Here are some of the things that we discussed, I'll update this to include every
 
 <br>
 
+### [Artisanal Fishing Opportunities (AO)](http://ohi-science.org/ohi-global/goals.html#artisanal_fishing_opportunity)
+
+**Observations**:
+
+- This is not gapfilled, meaning that the data was not gapfilled by OHI. Data for access comes from survey data (Mora et al) and need comes from GDPpcPPP as a proxy for subsistence fishing need (World Bank).
+
+<br>
+
 ### Livelihoods and Economies (LE, LIV, ECO)
 
 **Observations**:
@@ -226,68 +232,6 @@ We will use several resources for each goal, all linked from [ohi-science.org/oh
 - [ohi-science.org/ohi-global/goals](http://ohi-science.org/ohi-global/goals)
 - [ohi-science.org/ohi-global/layers_table.html](http://ohi-science.org/ohi-global/layers_table.html)
 - [Global supplemental information](https://rawgit.com/OHI-Science/ohi-global/draft/global_supplement/Supplement.html)
-
-<br>
-
-## [Lasting Special Places](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_lasting_special_places)
-
-The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage. We focus only on coastal waters (within 3nmi of shore) for marine special places because it was assumed that lasting special places are primarily in coastal areas; we wanted our estimates of % area protected to be bounded to this coastal region. For coastlines, we focused only on the first km-wide strip of land as a way to increase the likelihood that the area being protected by terrestrial parks is connected to the marine system in some way.
-
-
-### Global Data
-
-Data is from the United Nations Environment Programme - World Conservation Monitoring Centre’s World Database on Protected Areas: [protectedplanet.net](http://www.protectedplanet.net). 
-
-Data details: 
-
-- includes all nationally designated (e.g., National Parks, Nature Reserves)
-- includes internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance)
-- includes WDPA polygons only (excludes points)
-- includes status of “designated” only (excludes “proposed”)
-
-The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage (30%). 
-
-```{r lsp, echo=FALSE}
-lsp_prot_area_inland1km <- lsp_prot_area_inland1km_csv %>%
-  filter(rgn_id == rgn_global$rgn_id)
-
-lsp_prot_area_offshore3nm <- lsp_prot_area_offshore3nm_csv %>%
-  filter(rgn_id == rgn_global$rgn_id)
-
-lsp_combo <- left_join(
-  lsp_prot_area_inland1km,
-  lsp_prot_area_offshore3nm, 
-  by = c("rgn_id", "year")) %>%
-  select(-rgn_id)
-  
-lsp_combo %>%
-  DT::datatable()
-
-```
-
-
-
-There is a lag in the WDPA database, as discussed [in this article](https://www.protectedplanet.net/c/the-lag-effect-in-the-world-database-on-protected-areas). Therefore, Samoa may not have been included in previous datasets. 
-
-Let's have a look at the data available now (I downloaded it as a CSV):
-
-![](images/protectedplanet_sam.png)
-
-```{r wdpa_sam, echo=FALSE}
-wdpa <- read_csv("data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv.csv")
-
-wdpa %>%
-  DT::datatable()
-```
-
-
-![](data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/Resources_in_English/wdpa_Summary_table_WDPA_attributes.png)
-
-#### Discussion
-
-- are there other coastal or marine parks that are not accounted for? Discuss reporting, etc. 
-
-- an example of adding data to LSP is available [here](https://rawgit.com/OHI-Science/sam/master/toolbox-demo/workshop-sub-data.html) (run from the master branch)
 
 <br>
 
@@ -403,6 +347,7 @@ There are `r n_distinct(stock_sam$taxon_scientific_name)` unique species.
 
 Let's look at them in the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g39ed252120_0_195) since there are so many.
 
+<br>
 
 Do we want to look at the timeseries for any species? For example:
 
@@ -439,6 +384,9 @@ fis_b_bmsy_lookup %>%
 ## save as csv:
 fis_b_bmsy_lookup %>% write_csv("data/fis_b_bmsy_lookup_sam.csv")
 ```
+
+Let's also look at these in the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g39ed252120_0_195).
+
 
 There are only `r fis_b_bmsy_lookup %>% nrow()` species in the [fis_b_bmsy](https://github.com/OHI-Science/sam/blob/master/eez/layers/fis_b_bmsy.csv) layer for Samoa.
 
@@ -497,7 +445,9 @@ We don't have information on the catch that is gapfilled.
 
 #### Tonnes of Harvest
 
-Let's look at the list of species that are represented in the MAR model as tonnes of harvest: (the [mar_harvest_tonnes](https://github.com/OHI-Science/sam/blob/master/eez/layers/mar_harvest_tonnes.csv) layer):
+Let's look at the list of species that are represented in the MAR model as tonnes of harvest: (the [mar_harvest_tonnes](https://github.com/OHI-Science/sam/blob/master/eez/layers/mar_harvest_tonnes.csv) layer). 
+
+***Note! In 2018 Seaweed will also be included if this is reported for Samoa)
 
 ```{r mar_harvest_tonnes, echo=FALSE}
 mar_harvest_tonnes <- mar_harvest_tonnes_csv %>%
@@ -530,6 +480,68 @@ mar_harvest_tonnes %>%
 
 - are better data available for these species?
 - are there other species that should be represented in Samoa?
+
+<br>
+
+## [Lasting Special Places](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_lasting_special_places)
+
+The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage. We focus only on coastal waters (within 3nmi of shore) for marine special places because it was assumed that lasting special places are primarily in coastal areas; we wanted our estimates of % area protected to be bounded to this coastal region. For coastlines, we focused only on the first km-wide strip of land as a way to increase the likelihood that the area being protected by terrestrial parks is connected to the marine system in some way.
+
+
+### Global Data
+
+Data is from the United Nations Environment Programme - World Conservation Monitoring Centre’s World Database on Protected Areas: [protectedplanet.net](http://www.protectedplanet.net). 
+
+Data details: 
+
+- includes all nationally designated (e.g., National Parks, Nature Reserves)
+- includes internationally recognized protected areas (e.g., UNESCO World Heritage Sites, Ramsar Wetlands of International Importance)
+- includes WDPA polygons only (excludes points)
+- includes status of “designated” only (excludes “proposed”)
+
+The model measures the percentage of coastal marine protected area and protected coastline in each country, against a reference percentage (30%). 
+
+```{r lsp, echo=FALSE}
+lsp_prot_area_inland1km <- lsp_prot_area_inland1km_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_prot_area_offshore3nm <- lsp_prot_area_offshore3nm_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+lsp_combo <- left_join(
+  lsp_prot_area_inland1km,
+  lsp_prot_area_offshore3nm, 
+  by = c("rgn_id", "year")) %>%
+  select(-rgn_id)
+  
+lsp_combo %>%
+  DT::datatable()
+
+```
+
+
+
+There is a lag in the WDPA database, as discussed [in this article](https://www.protectedplanet.net/c/the-lag-effect-in-the-world-database-on-protected-areas). Therefore, Samoa may not have been included in previous datasets. 
+
+Let's have a look at the data available now (I downloaded it as a CSV):
+
+![](images/protectedplanet_sam.png)
+
+```{r wdpa_sam, echo=FALSE}
+wdpa <- read_csv("data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv.csv")
+
+wdpa %>%
+  DT::datatable()
+```
+
+
+![](data/WDPA_May2018_search_ef5e1f4c6bafed1fc0d6e2e299c0d3db917c43a449f66e54b4989338cdaa1086-csv/Resources_in_English/wdpa_Summary_table_WDPA_attributes.png)
+
+#### Discussion
+
+- are there other coastal or marine parks that are not accounted for? Discuss reporting, etc. 
+
+- an example of adding data to LSP is available [here](https://rawgit.com/OHI-Science/sam/master/toolbox-demo/workshop-sub-data.html) (run from the master branch)
 
 <br>
 
@@ -658,6 +670,9 @@ rgn_spp_gl <- rgn_spp_gl_csv %>%
               select(sciname, comname), 
             by = "sciname") %>%
   select(sciname, comname, iucn_sid, cat_score) # n_spp_rgn; this = n_rows: 1467 for samoa
+
+rgn_spp_gl_distinct <- rgn_spp_gl %>%
+  select(comname, sciname) %>% distinct() %>% data.frame()
 ```
 
 ```{r ico count, echo=FALSE}
@@ -668,11 +683,15 @@ ico_spp_iucn_status <- ico_spp_iucn_status_csv %>%
               select(sciname, comname), 
             by = "sciname") %>%
   select(sciname, comname, iucn_sid, year, category)
+
+ico_spp_iucn_status_distinct <- ico_spp_iucn_status %>%
+  select(comname, sciname) %>% distinct() %>% data.frame()
+
 ```
 
-**[Species subgoal of Biodiversity](http://ohi-science.org/ohi-global/goals.html#biodiversity:_species)**: There are `r nrow(rgn_spp_gl)` unique species for `r rgn_name`
+**[Species subgoal of Biodiversity](http://ohi-science.org/ohi-global/goals.html#biodiversity:_species)**: There are `r nrow(rgn_spp_gl_distinct)` unique species for `r rgn_name`
 
-**[Iconic Species subgoal of Sense of Place](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_iconic_species)**: There are `r nrow(ico_spp_iucn_status)` unique species for `r rgn_name`
+**[Iconic Species subgoal of Sense of Place](http://ohi-science.org/ohi-global/goals.html#sense_of_place:_iconic_species)**: There are `r nrow(ico_spp_iucn_status_distinct)` unique species for `r rgn_name`
 
 For Species, there are probably more than we can go through today. But, here is a table that has the full list:
 
@@ -698,15 +717,20 @@ ico_spp_code <- ico_spp_iucn_status %>%
 
 ## display
 ico_spp_code %>%
-  select(comname, sciname, cat_code) %>%
+  select(comname, sciname) %>% distinct() %>% #data.frame()
   DT::datatable()
 ```
+
+Let's also look at this list in the [presentation](https://docs.google.com/presentation/d/1myCjWaUp6kXGMJbBOE3kOoZO_-miicKluN_2hlzcFVo/edit#slide=id.g39ed252120_0_195) since there are so many.
+
 
 This is something that we could explore and we could potentially recalculate together. 
 
 <!---
 Recalculating would be easy for ICO bc no area-weighting. Could edit this file directly: ico_spp_iucn_status.csv bc read into ICO function. (NC/LV)
 --->
+
+<!---
 
 ## Discussion and Next Steps
 
@@ -756,4 +780,4 @@ ggplot(data = scores_plot_compare, aes(x = score, y = percent_gapfilled, label =
   geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1)
 ```
 
-
+--->

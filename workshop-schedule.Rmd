@@ -1,8 +1,7 @@
-|Time       |      Day 1|      Day 2|      Day 3|
+|Time       |      Day 1 |      Day 2 |      Day 3|
 |:----------|----------:|----------:|----------:|
-|9-10:30 | Welcome; [Workshop and OHI Program Overview](https://docs.google.com/presentation/d/1kTYqMc-aYDhbi7tfMA9dIdATVOVC0MbXeKuTqTWz6XY/edit?usp=sharing) | [Global Goal Models, Data, and Gaps](https://docs.google.com/presentation/d/18FYccC7Ox8ZlZNpsKDrPBnjk9c87eTQ9gruj4ICdeuE/edit?usp=sharing)  | Intro to OHI Toolbox |
-|11-12:30 | [OHI Global Framework ](https://docs.google.com/presentation/d/1RAY6t4xh1oWsFhxsFoo_ImAa_KIsw7dTkjzfQvHRmqU/edit?usp=sharing) | Data and Global Models: Samoa Global Scores and Data <!---](http://ohi-science.org/sam/workshop-explore-data) ---> |  Hands-on with the OHI Toolbox <!---](https://rawgit.com/OHI-Science/sam/master/eez/workshop-toolbox.html) ---> |
-|13:30-15:00 | Alignment with SDGs  | Work with Samoa Data |  Final Discussions, Next Steps, Certificate Ceremony |
+|Morning | Welcome; [Workshop and OHI Program Overview](https://docs.google.com/presentation/d/1kTYqMc-aYDhbi7tfMA9dIdATVOVC0MbXeKuTqTWz6XY/edit?usp=sharing); [OHI Global Framework ](https://docs.google.com/presentation/d/1RAY6t4xh1oWsFhxsFoo_ImAa_KIsw7dTkjzfQvHRmqU/edit?usp=sharing)  |  | OHI Toolbox |
+|Afternoon | Alignment with SDGs | [Global Goal Models, Data, and Gaps](https://docs.google.com/presentation/d/18FYccC7Ox8ZlZNpsKDrPBnjk9c87eTQ9gruj4ICdeuE/edit?usp=sharing); Samoa Global Models, Data, and Scores <!---](http://ohi-science.org/sam/workshop-explore-data) ---> |  Final Discussions, Next Steps, Certificate Ceremony <!---](https://rawgit.com/OHI-Science/sam/master/eez/workshop-toolbox.html) ---> |
 
 
 <!----
