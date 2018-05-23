@@ -61,13 +61,21 @@ ico_spp_iucn_status_csv <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ic
 ico_global_list <- read_csv(file.path(rawprep_prefix, "globalprep/spp_ico/v2017/int/ico_global_list.csv"))
 
 
-## Habitat goals
+## Habitat goals extent
 hab_mangrove_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_extent.csv"))
 hab_seagrass_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seagrass_extent.csv"))
 hab_saltmarsh_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_saltmarsh_extent.csv"))
 hab_coral_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_coral_extent.csv"))
 hab_seaice_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seaice_extent.csv"))
 hab_softbottom_extent_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_softbottom_extent.csv"))
+
+## health
+hab_mangrove_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_mangrove_health.csv"))
+hab_seagrass_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seagrass_health.csv"))
+hab_saltmarsh_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_saltmarsh_health.csv"))
+hab_coral_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_coral_health.csv"))
+hab_seaice_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_seaice_health.csv"))
+hab_softbottom_health_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/hab_softbottom_health.csv"))
 
 ## LSP
 lsp_prot_area_inland1km_csv <- read_csv(file.path(rawkey_prefix, "eez/layers/lsp_prot_area_inland1km.csv"))
@@ -559,15 +567,15 @@ wdpa %>%
 
 **[Habitats (BD sub-goal)](http://ohi-science.org/ohi-global/goals.html#biodiversity:_habitats)**: 6 coastal habitats: mangroves, seagrasses, salt marshes, coral reefs, sea ice, and subtidal soft-bottom habitats
 
+All models include Habitat Extent, which is not gapfilled, and is half of the calculation. But HAB is entirely modeled with Habitat Condition, which is all gapfilled for most places. 
+
+Habitats are one of our worst data sets.
+CP, CS goes down by ~50% because extent is ~50% of the score and extent is not gapfilled.
+
 #### Habitat extent
-TODO condition. extent is not gapfilled. but Condition is almost always gapfilled. extent is ~half of the calculation. For status. 
 
-HAB is entirely condition, which is all gapfilled for most places. One of our worst data sets.
-CP, CS goes down by ~50% because extent is ~1/2 of the score and extent is not gapfilled. (also mangrove trend is not gapfilled
 
-Let's have a look at the data included for Samoa:
-
-```{r hab data, echo=FALSE, message=FALSE, warning=FALSE}
+```{r hab extent, echo=FALSE, message=FALSE, warning=FALSE}
 ## extract
 hab_mangrove_extent <- hab_mangrove_extent_csv %>%
   filter(rgn_id == rgn_global$rgn_id)
@@ -596,6 +604,43 @@ hab_extent_samoa <- rbind(
   hab_softbottom_extent) 
 
 hab_extent_samoa %>%
+  DT::datatable()
+```
+
+
+#### Habitat health
+
+Let's have a look at the data included for Samoa:
+
+```{r hab health, echo=FALSE, message=FALSE, warning=FALSE}
+## extract
+hab_mangrove_health <- hab_mangrove_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_seagrass_health <- hab_seagrass_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_saltmarsh_health <- hab_saltmarsh_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_coral_health <- hab_coral_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_seaice_health <- hab_seaice_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_softbottom_health <- hab_softbottom_health_csv %>%
+  filter(rgn_id == rgn_global$rgn_id)
+
+hab_health_samoa <- rbind(
+  hab_mangrove_health,
+  hab_seagrass_health,
+  hab_saltmarsh_health,
+  hab_coral_health,
+  hab_seaice_health,
+  hab_softbottom_health) 
+
+hab_health_samoa %>%
   DT::datatable()
 ```
 
