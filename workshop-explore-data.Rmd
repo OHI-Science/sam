@@ -139,9 +139,17 @@ scores_plot %>%
 It can also be nice to see it as a figure. There are a few places where there are overlaps because goals have the exact same scores.
 
 ```{r plot scores_gf, echo=FALSE, warning=FALSE}
-ggplot(data = scores_plot, aes(x = score, y = percent_gapfilled, label = goal)) + 
+## hack for not overlapping labels
+scores_plot_noBDFP <- scores_plot %>%
+  filter(!goal %in% c("FP", "BD"))
+scores_plot_BDFP <- scores_plot %>%
+  filter(goal %in% c("FP", "BD"))
+
+ggplot(data = scores_plot_noBDFP, aes(x = score, y = percent_gapfilled, label = goal)) + 
   geom_point() + 
-  geom_text(aes(label = goal), nudge_x = 3, nudge_y = 1) +
+  geom_text(aes(label = goal), nudge_x = 2, nudge_y = 2) +
+  geom_point(data = scores_plot_BDFP) +
+  geom_text(data = scores_plot_BDFP, aes(label = goal), nudge_x = -2, nudge_y = -3) +
   xlab("status score") +
   ylab("percent gapfilled")
 ```
