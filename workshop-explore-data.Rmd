@@ -369,7 +369,7 @@ Do we want to look at the timeseries for any species? For example:
 
 ```{r stock_catch_by_rgn.csv2, echo=FALSE}
 stock_sam %>%
-  filter(taxon_scientific_name == "Acanthuridae") %>%
+  filter(taxon_scientific_name == "Acanthuridae") %>% ## we looked at Katsuwonus pelamis, Etelis, Acanthuridae
   select(year, taxon_scientific_name, taxon_common_name, tons, stock_id) %>%
   DT::datatable()
 
