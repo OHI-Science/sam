@@ -69,7 +69,11 @@ rgn_id_sam <- 152
 
 ## LSP's new data
 
+### Import and view
+
 First read in new data. In this example we have saved the new WDPA data from May 2018 in a folder called workshop-data.
+
+The data is already tidy!
 
 ```{r read in}
 wdpa <- read_csv("workshop-data/WDPA_May2018.csv")
@@ -77,6 +81,8 @@ wdpa <- read_csv("workshop-data/WDPA_May2018.csv")
 wdpa %>%
   select(NAME, REP_M_AREA, STATUS, STATUS_YR, NO_TK_AREA)
 ```
+
+### Transform
 
 Summarize the total areas within MPAs:
 
@@ -94,7 +100,7 @@ So since all were designated in the same year, `r mpa_area_total_sam` is the tot
 
 ### Current Toolbox Data
 
-Inspect LSP data layer: 
+Inspect LSP data layer that already exists: 
 
 ```{r inspect LSP data layer}
 lsp_prot_area_offshore3nm <- read_csv("layers/lsp_prot_area_offshore3nm.csv")

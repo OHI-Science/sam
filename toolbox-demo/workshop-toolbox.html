@@ -264,7 +264,10 @@ rgn_id_sam &lt;- 152</code></pre>
 </div>
 <div id="lsps-new-data" class="section level2">
 <h2><span class="header-section-number">1.3</span> LSP’s new data</h2>
+<div id="import-and-view" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Import and view</h3>
 <p>First read in new data. In this example we have saved the new WDPA data from May 2018 in a folder called workshop-data.</p>
+<p>The data is already tidy!</p>
 <pre class="r"><code>wdpa &lt;- read_csv(&quot;workshop-data/WDPA_May2018.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -291,6 +294,9 @@ rgn_id_sam &lt;- 152</code></pre>
 ## 4 Vaiee            0.770  Designated      1999          0
 ## 5 Fausaga          0.280  Designated      1999          0
 ## 6 Faaofi laulu     0.200  Designated      1999          0</code></pre>
+</div>
+<div id="transform" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Transform</h3>
 <p>Summarize the total areas within MPAs:</p>
 <pre class="r"><code>mpa_area_total &lt;- wdpa %&gt;%
   group_by(STATUS_YR) %&gt;%
@@ -309,9 +315,10 @@ mpa_area_total</code></pre>
 ## 6 Faaofi laulu     0.200  Designated      1999          0     1.84</code></pre>
 <pre class="r"><code>mpa_area_total_sam &lt;- unique(mpa_area_total$AREA_KM2)</code></pre>
 <p>So since all were designated in the same year, 1.84 is the total recorded since 1999.</p>
+</div>
 <div id="current-toolbox-data" class="section level3">
-<h3><span class="header-section-number">1.3.1</span> Current Toolbox Data</h3>
-<p>Inspect LSP data layer:</p>
+<h3><span class="header-section-number">1.3.3</span> Current Toolbox Data</h3>
+<p>Inspect LSP data layer that already exists:</p>
 <pre class="r"><code>lsp_prot_area_offshore3nm &lt;- read_csv(&quot;layers/lsp_prot_area_offshore3nm.csv&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -347,7 +354,7 @@ lsp_prot_area_offshore3nm  %&gt;%
 <p>Since the WDPA data shows that all were designated in 1999, and the OHI LSP data layer begins with 2000, we can inject 1.84 for all years.</p>
 </div>
 <div id="substitute-new-data" class="section level3">
-<h3><span class="header-section-number">1.3.2</span> Substitute new data</h3>
+<h3><span class="header-section-number">1.3.4</span> Substitute new data</h3>
 <p>Inject in LSP data layer.</p>
 <pre class="r"><code>## base-R
 # lsp_prot_area_offshore3nm$a_prot_3nm[lsp_prot_area_offshore3nm$rgn_id == rgn_id_sam] &lt;- mpa_area_total_sam
@@ -366,7 +373,7 @@ write_csv(lsp_new, &quot;layers/lsp_prot_area_offshore3nm.csv&quot;)</code></pre
 <p>We can check in the differences in GitHub and see that Samoa’s data have been updated.</p>
 </div>
 <div id="recalculate-scores" class="section level3">
-<h3><span class="header-section-number">1.3.3</span> Recalculate scores</h3>
+<h3><span class="header-section-number">1.3.5</span> Recalculate scores</h3>
 <pre class="r"><code>source(&quot;calculate_scores.R&quot;)</code></pre>
 <pre><code>##   cntry_rgn
 ##   rgn_area
@@ -568,7 +575,8 @@ source('plot_flower_local.R')
 
 ##  plot.
 PlotFlower(region_plot = rgn_id_sam,
-  assessment_name = &quot;Samoa&quot;)</code></pre>
+  assessment_name = &quot;Samoa&quot;, 
+  dir_fig_save = &quot;reports/figures/flower_new&quot;)</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   order_color = col_double(),
