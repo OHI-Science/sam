@@ -7,29 +7,20 @@ output:
     toc_float: yes
 ---
 
-# Introduction
-
-The Ocean Health Index (OHI) framework measures the health of coupled human-ocean ecosystems in different contexts by accommodating differences in local environmental characteristics, cultural priorities, and information availability and quality. The OHI framework assesses a suite of benefits the ocean provides humans - called 'goals' - using the best information available. It distills complex socio-ecological relationships and context-specific targets into scores that can be repeated so that management can track and respond through time. 
-
-Assessments using the OHI framework results in scores for each goal as well as in a single score for overall ocean health, which is a weighted-average of each goal's score. Each goal's score is calculated compared to a target called a **reference point**, and thus the score represents how close the goal is to meeting that target, on a scale from 0-100. Scores can be represented on a flower plot, where the center value is the overall OHI score. Each petal of the flower plot represents a goal; the length is the score of that particular goal and the width is its **weight**: contribution to the overall score.
-
-<!---
-![**Ocean Health Index goals can be represented as a flower plot**](fig/goal_icons_recolored_labeled.png)
---->
-
 # Overview
 
-To get some hands-on experience with the Toolbox, we will explore how Ocean Health Index (OHI) scores respond when you change the following: 
+To get some hands-on experience with the Toolbox, we will explore how Ocean Health Index (OHI) scores respond when add different data to the LSP goal.  
 
-1. remove the NP goal 
-
-You will be using the OHI Toolbox software to do this, and follow the instructions here ([`workshop-toolbox.Rmd`](http://ohi-science.org/sam/workshop-toolbox)). Walk through line-by-line and execute the code in R; the order does matter so be sure to proceed line-by-line. 
+You will be using the OHI Toolbox software to do this, and follow the instructions here ([`workshop-toolbox.Rmd`](http://ohi-science.org/sam/workshop-toolbox)). We will walk through line-by-line together and execute the code in R; the order does matter so be sure to proceed line-by-line. 
 
 Your final figures will be saved as .pngs within the `sam` folder you downloaded: `sam/toolbox-demo/reports/figures`. 
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+## hidden up here
+library(devtools) 
+library(ohicore)
+source('plot_flower_local.r')
 ```
 
 ## Get the `sam` repository
@@ -39,119 +30,139 @@ We'll be playing with the Toolbox for the global OHI assessments; we calculate s
 1. Go to [github.com/OHI-Science/sam](https://github.com/OHI-Science/sam). This is the `sam` repository (called 'repo'). 
 2. Click on the <span style="color:green">green</span> 'clone or download' button. 
 3. Clone or download somewhere you can find on your computer. If you are familiar with GitHub, clone this repository. Otherwise click 'Download ZIP'.
-4. Navigate to where you saved the `sam` repo on your computer and double-click the `sam.Rproj` file. This will open [RStudio](https://www.rstudio.com/) (which is how you should always interface with R). 
+4. Navigate to where you saved the `sam` repo on your computer and rename it to `sam` if it has any other name. Double-click the `sam.Rproj` file. This will open [RStudio](https://www.rstudio.com/) (which is how you should always interface with R). 
 5. Within the RStudio file directory pane (bottom right), navigate to the `toolbox-demo` folder. Inside is a mix of `.R` scripts and `.csv` files. We will just focus on a few of them.
 
 
 ## Setup
 
-Since we're in RStudio with a `.Rproj` file, our current working directory is `wherever/you/saved/it/sam`. All of our work in the Toolbox happens in the `toolbox-demo` folder within the `sam` folder. (Even [these instructions](https://github.com/OHI-Science/sam/blob/master/toolbox-demo/workshop-toolbox.Rmd) are within the `toolbox-demo` folder!) But we need to let R know that we want to be inside the `toolbox-demo` folder. Let's change the working directory to the `toolbox-demo` folder, and install the packages we need to get going. 
-
-**Troubleshooting: If you have any problems**, check that R and RStudio are up-to-date. If needed, update R [here](Find the latest version at http://cran.r-project.org) and RStudio [here](http://www.rstudio.com/products/rstudio/download). 
+Since we're in RStudio with a `.Rproj` file, our current working directory is `wherever/you/saved/it/sam`. All of our work in the Toolbox happens in the `toolbox-demo` folder within the `sam` folder. (Even [these instructions](https://github.com/OHI-Science/sam/blob/master/toolbox-demo/workshop-toolbox.Rmd) are within the `toolbox-demo` folder!) But we need to let R know that we want to be working inside the `toolbox-demo` folder. Let's change the working directory to the `toolbox-demo` folder, and install the packages we need to get going. 
 
 Run the following code:
-```{r ohicore, message=FALSE, results='hide'}
+```{r ohicore, eval=FALSE}
 ## set working directory to sam/toolbox-demo with setwd()
-#setwd('toolbox-demo')
+setwd('toolbox-demo')
 
-## install OHI's `ohicore` package
-## first we need to install the devtools package. Note the different install functions.
-## don't worry about the warnings. But ensure there are no errors!
-# install.packages('devtools') # do this just one time!
+## install the packages we need. 
+
+## tidyverse is by RStudio, for "data wrangling"
+install.packages("tidyverse")
+library(tidyverse)
+
+## devtools helps install our ohicore software
+install.packages('devtools') # do this just one time!
 library(devtools) # do this every time you begin
 
-# devtools::install_github("ohi-science/ohicore@dev") # do this just one time!
+devtools::install_github("ohi-science/ohicore@dev") # do this just one time!
 library(ohicore) # do this every time you begin
 
 ## source the function to make flower plots; this won't do anything yet, but it makes it available to us.
 source('plot_flower_local.r')
 ```
 
+There are 220 countries that will be in our data set below, and we will just want to change information for Samoa. Samoa's region identifier number is 152 (full list [here](https://github.com/OHI-Science/sam/blob/master/toolbox-demo/layers/rgn_global.csv)).
 
-## Calculate scores
-
-We can calculate OHI scores by sourcing `calculate_scores.r` (below). This uses the following files, which are all in our current working directory, `sam/toolbox-demo`: 
-
-- input data layers in the `layers` folder
-- goal models and reference points in `conf/functions.r`
-- goal weights in `conf/goals.csv`
-- calculated scores for all goals and all 220 regions are saved in `scores.csv`. 
-
-Note: because the Toolbox relies on these file names for calculation and for visualizing, we'll be overwriting some of these files (after saving the originals) to use in each of the steps as we go forward. 
-
-
-```{r calculate scores, message=FALSE}
-
-## Before we do anything, let's save copies of original files
-file.copy('scores.csv','scores_orig.csv', overwrite = TRUE)
-file.copy('conf/goals.csv',   'conf/goals_orig.csv', overwrite = TRUE)
-file.copy('conf/functions.r', 'conf/functions_orig.r', overwrite = TRUE)
-file.copy('conf/pressures_matrix.csv', 'conf/pressures_matrix_orig.csv', overwrite = TRUE)
-file.copy('conf/resilience_matrix.csv', 'conf/resilience_matrix_orig.csv', overwrite = TRUE)
-
-## Calculate scores. The Toolbox will describe each step as it checks all the data layers and then calculates the OHI components. It will save all this in scores.csv.
-source('calculate_scores.r')
+```{r}
+## identify region identifier for Samoa
+rgn_id_sam <- 152
 ```
 
-## Visualize OHI scores for Samoa
+## LSP's new data
 
-We just calculated scores for all 220 regions in the global assessment. But now let's just inspect one region, Samoa. Each region has a unique numeric identifier. You can run this to view the full list of regions and find their numeric region identifier called a `rgn_id`: `View(read_csv('layers/rgn_global.csv'))`. Use use the search bar in the top right of the View pane to find your country and note its `rgn_id`. (Or, you can trust me that the **`rgn_id` for Samoa is 152**.)
+First read in new data. In this example we have saved the new WDPA data from May 2018 in a folder called workshop-data.
 
-You'll assign it in R now as `rgn_id_sam`: 
-```{r assign rgn_id}
-## assign your rgn_id
-rgn_id_sam <-  152 # Samoa
+```{r read in}
+wdpa <- read_csv("workshop-data/WDPA_May2018.csv")
+
+wdpa %>%
+  select(NAME, REP_M_AREA, STATUS, STATUS_YR, NO_TK_AREA)
 ```
 
-## Flower plot for your region
+Summarize the total areas within MPAs:
 
-Now, let's check Samoa's flower plot. The `plot_flower_local()` function will make figures for you, saving them as .pngs in `sam/toolbox-demo/reports/figures` and displaying them in the RStudio Viewer 
+```{r total area}
+mpa_area_total <- wdpa %>%
+  group_by(STATUS_YR) %>%
+  mutate(AREA_KM2 = sum(REP_M_AREA)) %>%
+  select(NAME, REP_M_AREA, STATUS, STATUS_YR, NO_TK_AREA, AREA_KM2)
+mpa_area_total
 
-Run the following -- it will save a file with your region's name, for example `sam/toolbox-demo/reports/figures/flower_orig/Samoa.png.`. The `PlotFlower()` function will use the scores.csv file that was saved from `calculate_scores.R` 
+mpa_area_total_sam <- unique(mpa_area_total$AREA_KM2)
+```
 
-```{r plot original, message=FALSE}
+So since all were designated in the same year, `r mpa_area_total_sam` is the total recorded since 1999.
 
-## now, create a flower plot for Samoa
+### Current Toolbox Data
+
+Inspect LSP data layer: 
+
+```{r inspect LSP data layer}
+lsp_prot_area_offshore3nm <- read_csv("layers/lsp_prot_area_offshore3nm.csv")
+
+## display
+lsp_prot_area_offshore3nm  %>%
+  filter(rgn_id == rgn_id_sam)
+```
+
+
+Since the WDPA data shows that all were designated in 1999, and the OHI LSP data layer begins with 2000, we can inject `r mpa_area_total_sam` for all years.
+
+### Substitute new data
+
+Inject in LSP data layer. 
+
+```{r inject datalayer}
+## base-R
+# lsp_prot_area_offshore3nm$a_prot_3nm[lsp_prot_area_offshore3nm$rgn_id == rgn_id_sam] <- mpa_area_total_sam
+
+## tidyverse
+lsp_new <- rbind(
+  lsp_prot_area_offshore3nm %>%
+    filter(rgn_id != rgn_id_sam), 
+  lsp_prot_area_offshore3nm %>%
+    filter(rgn_id == rgn_id_sam) %>%
+    mutate(a_prot_3nm = mpa_area_total_sam)) %>%
+  arrange(rgn_id, year)
+
+## save new data in existing layer
+write_csv(lsp_new, "layers/lsp_prot_area_offshore3nm.csv")
+```
+
+We can check in the differences in GitHub and see that Samoa's data have been updated. 
+
+###  Recalculate scores
+
+```{r}
+source("calculate_scores.R")
+
+# visualize scores ----
+
+## Flower plots for each region ----
+source('plot_flower_local.R')
+
+##  plot.
 PlotFlower(region_plot = rgn_id_sam,
-           assessment_name = "Samoa",
-           dir_fig_save    = "reports/figures/flower_orig")
+  assessment_name = "Samoa", 
+  dir_fig_save = "reports/figures/flower_new")
 ```
 
-## Remove a Goal
 
-Now let's remove a goal that might not represent Samoa: Natural Products. 
+Inspect new scores. The best way to do this is by looking at the GitHub differences in scores.csv and in the flower plot. 
 
-<!---
-Refer to the Introduction above to see the list of goals. We can identify the 2- or 3- letter code for the goal or sub-goal we want to change by viewing `View(conf_orig %>% dplyr::select(goal, name))`.
---->
+The overall Index score changed slightly, and the LSP goal did as well. 
 
-```{r calculate, }
-## assign goal to remove
-goal_remove <- "NP" # the 2- or 3- letter code must be in quotes. 
+In this example, the change is too small to be visible in the flower plot, but that is what we would expect from such a small change in data. And LSP is just one goal.
 
-## remove the goal that we want to exclude and save in the goals.csv file 
-read.csv("conf/goals_orig.csv") %>%
-  filter(goal != goal_remove) %>%
-  write.csv('conf/goals.csv', na='', row.names = FALSE) 
-
-## also from the pressures_matrix file 
-read.csv("conf/pressures_matrix_orig.csv") %>%
-  filter(goal != goal_remove) %>%
-  write.csv('conf/pressures_matrix.csv', na='', row.names = FALSE) 
-
-## also from the resilience_matrix file 
-read.csv("conf/resilience_matrix_orig.csv") %>%
-  filter(goal != goal_remove) %>%
-  write.csv('conf/resilience_matrix.csv', na='', row.names = FALSE) 
+![](images/flowerplot_diff.png)
 
 
-## re-calculate scores with goal removed, this will overwrite scores.csv
-source('calculate_scores.r')
+We can also look at the scores in R:
 
-## now, create a flower plot for Samoa
-PlotFlower(region_plot = rgn_id_sam,
-           assessment_name = "Samoa",
-           dir_fig_save    = "reports/figures/flower_new")
+```{r}
+scores <- read_csv("scores.csv")
+
+scores %>%
+  filter(region_id == rgn_id_sam, 
+         goal == "LSP")
 ```
 
-Let's have look and compare. 

@@ -13655,7 +13655,7 @@ Index,score,148,73.01
 Index,score,149,83.9
 Index,score,150,82.3
 Index,score,151,79.07
-Index,score,152,72.94
+Index,score,152,72.95
 Index,score,153,65.35
 Index,score,154,67.23
 Index,score,155,71.11
@@ -16535,7 +16535,7 @@ LSP,future,148,0
 LSP,future,149,100
 LSP,future,150,100
 LSP,future,151,69.26
-LSP,future,152,1.16
+LSP,future,152,1.31
 LSP,future,153,0.35
 LSP,future,154,40.82
 LSP,future,155,3.81
@@ -17199,7 +17199,7 @@ LSP,score,148,0
 LSP,score,149,100
 LSP,score,150,100
 LSP,score,151,68.54
-LSP,score,152,1.09
+LSP,score,152,1.23
 LSP,score,153,0.33
 LSP,score,154,38.55
 LSP,score,155,3.74
@@ -17421,7 +17421,7 @@ LSP,status,148,0
 LSP,status,149,100
 LSP,status,150,100
 LSP,status,151,67.83
-LSP,status,152,1.02
+LSP,status,152,1.15
 LSP,status,153,0.31
 LSP,status,154,36.28
 LSP,status,155,3.68
@@ -20522,7 +20522,7 @@ SP,future,148,31.54
 SP,future,149,81.2
 SP,future,150,80.88
 SP,future,151,67.97
-SP,future,152,37.21
+SP,future,152,37.28
 SP,future,153,35.05
 SP,future,154,55.5
 SP,future,155,35.34
@@ -21186,7 +21186,7 @@ SP,score,148,30.11
 SP,score,149,78.93
 SP,score,150,78.77
 SP,score,151,65.69
-SP,score,152,34.86
+SP,score,152,34.93
 SP,score,153,33.28
 SP,score,154,52.65
 SP,score,155,33.82
@@ -21408,7 +21408,7 @@ SP,status,148,28.69
 SP,status,149,76.67
 SP,status,150,76.67
 SP,status,151,63.42
-SP,status,152,32.51
+SP,status,152,32.57
 SP,status,153,31.52
 SP,status,154,49.81
 SP,status,155,32.29
