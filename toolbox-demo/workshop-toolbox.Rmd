@@ -127,7 +127,7 @@ lsp_new <- rbind(
     filter(rgn_id != rgn_id_sam), 
   lsp_prot_area_offshore3nm %>%
     filter(rgn_id == rgn_id_sam) %>%
-    mutate(a_prot_3nm = mpa_area_total_sam)) %>%
+    mutate(a_prot_3nm = 0)) %>%
   arrange(rgn_id, year)
 
 ## save new data in existing layer
@@ -149,7 +149,7 @@ source('plot_flower_local.R')
 ##  plot.
 PlotFlower(region_plot = rgn_id_sam,
   assessment_name = "Samoa", 
-  dir_fig_save = "reports/figures/flower_new")
+  dir_fig_save = "reports/figures")
 ```
 
 

@@ -1,223 +1,223 @@
 region_id,region_name,flower_png
-0,Samoa,reports/figures/flower_new/flower_Samoa.png
-1,Cocos Islands,reports/figures/flower_new/flower_CocosIslands.png
-2,Christmas Island,reports/figures/flower_new/flower_ChristmasIsland.png
-3,Norfolk Island,reports/figures/flower_new/flower_NorfolkIsland.png
-4,Macquarie Island,reports/figures/flower_new/flower_MacquarieIsland.png
-5,New Caledonia,reports/figures/flower_new/flower_NewCaledonia.png
-6,Vanuatu,reports/figures/flower_new/flower_Vanuatu.png
-7,Solomon Islands,reports/figures/flower_new/flower_SolomonIslands.png
-8,Palau,reports/figures/flower_new/flower_Palau.png
-9,Micronesia,reports/figures/flower_new/flower_Micronesia.png
-10,Nauru,reports/figures/flower_new/flower_Nauru.png
-11,Marshall Islands,reports/figures/flower_new/flower_MarshallIslands.png
-12,Wake Island,reports/figures/flower_new/flower_WakeIsland.png
-13,Northern Mariana Islands and Guam,reports/figures/flower_new/flower_NorthernMarianaIslandsandGuam.png
-14,Taiwan,reports/figures/flower_new/flower_Taiwan.png
-15,Philippines,reports/figures/flower_new/flower_Philippines.png
-16,Australia,reports/figures/flower_new/flower_Australia.png
-17,Papua New Guinea,reports/figures/flower_new/flower_PapuaNewGuinea.png
-18,Fiji,reports/figures/flower_new/flower_Fiji.png
-19,Tuvalu,reports/figures/flower_new/flower_Tuvalu.png
-20,South Korea,reports/figures/flower_new/flower_SouthKorea.png
-21,North Korea,reports/figures/flower_new/flower_NorthKorea.png
-24,Cambodia,reports/figures/flower_new/flower_Cambodia.png
-25,Thailand,reports/figures/flower_new/flower_Thailand.png
-26,Andaman and Nicobar,reports/figures/flower_new/flower_AndamanandNicobar.png
-28,Comoro Islands,reports/figures/flower_new/flower_ComoroIslands.png
-29,Mayotte,reports/figures/flower_new/flower_Mayotte.png
-30,Glorioso Islands,reports/figures/flower_new/flower_GloriosoIslands.png
-31,Seychelles,reports/figures/flower_new/flower_Seychelles.png
-32,Reunion,reports/figures/flower_new/flower_Reunion.png
-33,Juan de Nova Island,reports/figures/flower_new/flower_JuandeNovaIsland.png
-34,Bassas da India,reports/figures/flower_new/flower_BassasdaIndia.png
-35,Ile Europa,reports/figures/flower_new/flower_IleEuropa.png
-36,Ile Tromelin,reports/figures/flower_new/flower_IleTromelin.png
-37,Mauritius,reports/figures/flower_new/flower_Mauritius.png
-38,British Indian Ocean Territory,reports/figures/flower_new/flower_BritishIndianOceanTerritory.png
-39,Maldives,reports/figures/flower_new/flower_Maldives.png
-40,Sri Lanka,reports/figures/flower_new/flower_SriLanka.png
-41,Mozambique,reports/figures/flower_new/flower_Mozambique.png
-42,Madagascar,reports/figures/flower_new/flower_Madagascar.png
-43,Kenya,reports/figures/flower_new/flower_Kenya.png
-44,Somalia,reports/figures/flower_new/flower_Somalia.png
-45,Eritrea,reports/figures/flower_new/flower_Eritrea.png
-46,Djibouti,reports/figures/flower_new/flower_Djibouti.png
-47,Yemen,reports/figures/flower_new/flower_Yemen.png
-48,Oman,reports/figures/flower_new/flower_Oman.png
-49,Sudan,reports/figures/flower_new/flower_Sudan.png
-50,Saudi Arabia,reports/figures/flower_new/flower_SaudiArabia.png
-51,Kuwait,reports/figures/flower_new/flower_Kuwait.png
-52,Bahrain,reports/figures/flower_new/flower_Bahrain.png
-53,Pakistan,reports/figures/flower_new/flower_Pakistan.png
-54,United Arab Emirates,reports/figures/flower_new/flower_UnitedArabEmirates.png
-55,Azores,reports/figures/flower_new/flower_Azores.png
-56,Cape Verde,reports/figures/flower_new/flower_CapeVerde.png
-57,Madeira,reports/figures/flower_new/flower_Madeira.png
-58,Canary Islands,reports/figures/flower_new/flower_CanaryIslands.png
-59,Belgium,reports/figures/flower_new/flower_Belgium.png
-60,Gibraltar,reports/figures/flower_new/flower_Gibraltar.png
-61,Tunisia,reports/figures/flower_new/flower_Tunisia.png
-62,Morocco,reports/figures/flower_new/flower_Morocco.png
-63,Western Sahara,reports/figures/flower_new/flower_WesternSahara.png
-64,Mauritania,reports/figures/flower_new/flower_Mauritania.png
-65,Gambia,reports/figures/flower_new/flower_Gambia.png
-66,Senegal,reports/figures/flower_new/flower_Senegal.png
-67,Libya,reports/figures/flower_new/flower_Libya.png
-68,Malta,reports/figures/flower_new/flower_Malta.png
-69,Latvia,reports/figures/flower_new/flower_Latvia.png
-70,Estonia,reports/figures/flower_new/flower_Estonia.png
-71,Bulgaria,reports/figures/flower_new/flower_Bulgaria.png
-72,Romania,reports/figures/flower_new/flower_Romania.png
-73,Russia,reports/figures/flower_new/flower_Russia.png
-74,Georgia,reports/figures/flower_new/flower_Georgia.png
-75,Ukraine,reports/figures/flower_new/flower_Ukraine.png
-76,Turkey,reports/figures/flower_new/flower_Turkey.png
-77,Syria,reports/figures/flower_new/flower_Syria.png
-78,Lebanon,reports/figures/flower_new/flower_Lebanon.png
-79,Israel,reports/figures/flower_new/flower_Israel.png
-80,Greece,reports/figures/flower_new/flower_Greece.png
-81,Cyprus,reports/figures/flower_new/flower_Cyprus.png
-82,Albania,reports/figures/flower_new/flower_Albania.png
-84,Algeria,reports/figures/flower_new/flower_Algeria.png
-85,Ascension,reports/figures/flower_new/flower_Ascension.png
-86,Saint Helena,reports/figures/flower_new/flower_SaintHelena.png
-88,Tristan da Cunha,reports/figures/flower_new/flower_TristandaCunha.png
-89,South Georgia and the South Sandwich Islands,reports/figures/flower_new/flower_SouthGeorgiaandtheSouthSandwichIslands.png
-90,Prince Edward Islands,reports/figures/flower_new/flower_PrinceEdwardIslands.png
-91,Crozet Islands,reports/figures/flower_new/flower_CrozetIslands.png
-92,Amsterdam Island and Saint Paul Island,reports/figures/flower_new/flower_AmsterdamIslandandSaintPaulIsland.png
-93,Kerguelen Islands,reports/figures/flower_new/flower_KerguelenIslands.png
-94,Heard and McDonald Islands,reports/figures/flower_new/flower_HeardandMcDonaldIslands.png
-95,Falkland Islands,reports/figures/flower_new/flower_FalklandIslands.png
-96,Sierra Leone,reports/figures/flower_new/flower_SierraLeone.png
-97,Liberia,reports/figures/flower_new/flower_Liberia.png
-98,Togo,reports/figures/flower_new/flower_Togo.png
-99,Benin,reports/figures/flower_new/flower_Benin.png
-100,Republique du Congo,reports/figures/flower_new/flower_RepubliqueduCongo.png
-101,Namibia,reports/figures/flower_new/flower_Namibia.png
-102,South Africa,reports/figures/flower_new/flower_SouthAfrica.png
-103,Sao Tome and Principe,reports/figures/flower_new/flower_SaoTomeandPrincipe.png
-104,Equatorial Guinea,reports/figures/flower_new/flower_EquatorialGuinea.png
-105,Bouvet Island,reports/figures/flower_new/flower_BouvetIsland.png
-106,Ghana,reports/figures/flower_new/flower_Ghana.png
-107,Clipperton Island,reports/figures/flower_new/flower_ClippertonIsland.png
-108,Bermuda,reports/figures/flower_new/flower_Bermuda.png
-110,Bahamas,reports/figures/flower_new/flower_Bahamas.png
-111,Turks and Caicos Islands,reports/figures/flower_new/flower_TurksandCaicosIslands.png
-112,Cuba,reports/figures/flower_new/flower_Cuba.png
-113,Cayman Islands,reports/figures/flower_new/flower_CaymanIslands.png
-114,Haiti,reports/figures/flower_new/flower_Haiti.png
-115,Dominican Republic,reports/figures/flower_new/flower_DominicanRepublic.png
-116,Puerto Rico and Virgin Islands of the United States,reports/figures/flower_new/flower_PuertoRicoandVirginIslandsoftheUnitedStates.png
-117,British Virgin Islands,reports/figures/flower_new/flower_BritishVirginIslands.png
-118,Anguilla,reports/figures/flower_new/flower_Anguilla.png
-119,Saint Kitts and Nevis,reports/figures/flower_new/flower_SaintKittsandNevis.png
-120,Antigua and Barbuda,reports/figures/flower_new/flower_AntiguaandBarbuda.png
-121,Montserrat,reports/figures/flower_new/flower_Montserrat.png
-122,Saint Lucia,reports/figures/flower_new/flower_SaintLucia.png
-123,Dominica,reports/figures/flower_new/flower_Dominica.png
-124,Barbados,reports/figures/flower_new/flower_Barbados.png
-125,Grenada,reports/figures/flower_new/flower_Grenada.png
-126,Trinidad and Tobago,reports/figures/flower_new/flower_TrinidadandTobago.png
-127,Saint Vincent and the Grenadines,reports/figures/flower_new/flower_SaintVincentandtheGrenadines.png
-129,Panama,reports/figures/flower_new/flower_Panama.png
-130,Costa Rica,reports/figures/flower_new/flower_CostaRica.png
-131,Nicaragua,reports/figures/flower_new/flower_Nicaragua.png
-132,Colombia,reports/figures/flower_new/flower_Colombia.png
-133,Honduras,reports/figures/flower_new/flower_Honduras.png
-134,El Salvador,reports/figures/flower_new/flower_ElSalvador.png
-135,Mexico,reports/figures/flower_new/flower_Mexico.png
-136,Guatemala,reports/figures/flower_new/flower_Guatemala.png
-137,Ecuador,reports/figures/flower_new/flower_Ecuador.png
-138,Peru,reports/figures/flower_new/flower_Peru.png
-139,Venezuela,reports/figures/flower_new/flower_Venezuela.png
-140,Guadeloupe and Martinique,reports/figures/flower_new/flower_GuadeloupeandMartinique.png
-141,Faeroe Islands,reports/figures/flower_new/flower_FaeroeIslands.png
-143,Iceland,reports/figures/flower_new/flower_Iceland.png
-144,Jan Mayen,reports/figures/flower_new/flower_JanMayen.png
-145,Greenland,reports/figures/flower_new/flower_Greenland.png
-146,Pitcairn,reports/figures/flower_new/flower_Pitcairn.png
-147,French Polynesia,reports/figures/flower_new/flower_FrenchPolynesia.png
-148,Line Islands (Kiribati),reports/figures/flower_new/flower_LineIslands(Kiribati).png
-149,Jarvis Island,reports/figures/flower_new/flower_JarvisIsland.png
-150,Palmyra Atoll,reports/figures/flower_new/flower_PalmyraAtoll.png
-151,American Samoa,reports/figures/flower_new/flower_AmericanSamoa.png
-152,Samoa,reports/figures/flower_new/flower_Samoa.png
-153,Cook Islands,reports/figures/flower_new/flower_CookIslands.png
-154,Niue,reports/figures/flower_new/flower_Niue.png
-155,Tonga,reports/figures/flower_new/flower_Tonga.png
-156,Tokelau,reports/figures/flower_new/flower_Tokelau.png
-157,Phoenix Islands (Kiribati),reports/figures/flower_new/flower_PhoenixIslands(Kiribati).png
-158,Howland Island and Baker Island,reports/figures/flower_new/flower_HowlandIslandandBakerIsland.png
-159,Johnston Atoll,reports/figures/flower_new/flower_JohnstonAtoll.png
-161,Wallis and Futuna,reports/figures/flower_new/flower_WallisandFutuna.png
-162,New Zealand,reports/figures/flower_new/flower_NewZealand.png
-163,United States,reports/figures/flower_new/flower_UnitedStates.png
-164,Belize,reports/figures/flower_new/flower_Belize.png
-166,Jamaica,reports/figures/flower_new/flower_Jamaica.png
-167,Guyana,reports/figures/flower_new/flower_Guyana.png
-168,Suriname,reports/figures/flower_new/flower_Suriname.png
-169,French Guiana,reports/figures/flower_new/flower_FrenchGuiana.png
-171,Brazil,reports/figures/flower_new/flower_Brazil.png
-172,Argentina,reports/figures/flower_new/flower_Argentina.png
-173,Uruguay,reports/figures/flower_new/flower_Uruguay.png
-174,Finland,reports/figures/flower_new/flower_Finland.png
-175,Denmark,reports/figures/flower_new/flower_Denmark.png
-176,Germany,reports/figures/flower_new/flower_Germany.png
-177,Netherlands,reports/figures/flower_new/flower_Netherlands.png
-178,Poland,reports/figures/flower_new/flower_Poland.png
-179,France,reports/figures/flower_new/flower_France.png
-180,United Kingdom,reports/figures/flower_new/flower_UnitedKingdom.png
-181,Ireland,reports/figures/flower_new/flower_Ireland.png
-182,Spain,reports/figures/flower_new/flower_Spain.png
-183,Portugal,reports/figures/flower_new/flower_Portugal.png
-184,Italy,reports/figures/flower_new/flower_Italy.png
-185,Monaco,reports/figures/flower_new/flower_Monaco.png
-186,Montenegro,reports/figures/flower_new/flower_Montenegro.png
-187,Croatia,reports/figures/flower_new/flower_Croatia.png
-188,Slovenia,reports/figures/flower_new/flower_Slovenia.png
-189,Lithuania,reports/figures/flower_new/flower_Lithuania.png
-190,Qatar,reports/figures/flower_new/flower_Qatar.png
-191,Iran,reports/figures/flower_new/flower_Iran.png
-192,Iraq,reports/figures/flower_new/flower_Iraq.png
-193,Guinea Bissau,reports/figures/flower_new/flower_GuineaBissau.png
-194,Guinea,reports/figures/flower_new/flower_Guinea.png
-195,Ivory Coast,reports/figures/flower_new/flower_IvoryCoast.png
-196,Nigeria,reports/figures/flower_new/flower_Nigeria.png
-197,Cameroon,reports/figures/flower_new/flower_Cameroon.png
-198,Gabon,reports/figures/flower_new/flower_Gabon.png
-199,Democratic Republic of the Congo,reports/figures/flower_new/flower_DemocraticRepublicoftheCongo.png
-200,Angola,reports/figures/flower_new/flower_Angola.png
-202,Tanzania,reports/figures/flower_new/flower_Tanzania.png
-203,India,reports/figures/flower_new/flower_India.png
-204,Bangladesh,reports/figures/flower_new/flower_Bangladesh.png
-205,Myanmar,reports/figures/flower_new/flower_Myanmar.png
-206,Malaysia,reports/figures/flower_new/flower_Malaysia.png
-207,Vietnam,reports/figures/flower_new/flower_Vietnam.png
-208,Singapore,reports/figures/flower_new/flower_Singapore.png
-209,China,reports/figures/flower_new/flower_China.png
-210,Japan,reports/figures/flower_new/flower_Japan.png
-212,Gilbert Islands (Kiribati),reports/figures/flower_new/flower_GilbertIslands(Kiribati).png
-213,Antarctica,reports/figures/flower_new/flower_Antarctica.png
-214,Egypt,reports/figures/flower_new/flower_Egypt.png
-215,Jordan,reports/figures/flower_new/flower_Jordan.png
-216,Indonesia,reports/figures/flower_new/flower_Indonesia.png
-218,Canada,reports/figures/flower_new/flower_Canada.png
-219,Saint Pierre and Miquelon,reports/figures/flower_new/flower_SaintPierreandMiquelon.png
-220,Sint Maarten,reports/figures/flower_new/flower_SintMaarten.png
-221,Northern Saint-Martin,reports/figures/flower_new/flower_NorthernSaint-Martin.png
-222,Sweden,reports/figures/flower_new/flower_Sweden.png
-223,Norway,reports/figures/flower_new/flower_Norway.png
-224,Chile,reports/figures/flower_new/flower_Chile.png
-227,Jersey,reports/figures/flower_new/flower_Jersey.png
-228,Guernsey,reports/figures/flower_new/flower_Guernsey.png
-231,East Timor,reports/figures/flower_new/flower_EastTimor.png
-232,Bosnia and Herzegovina,reports/figures/flower_new/flower_BosniaandHerzegovina.png
-237,Oecussi Ambeno,reports/figures/flower_new/flower_OecussiAmbeno.png
-244,Curacao,reports/figures/flower_new/flower_Curacao.png
-245,Bonaire,reports/figures/flower_new/flower_Bonaire.png
-247,Brunei,reports/figures/flower_new/flower_Brunei.png
-248,Saba,reports/figures/flower_new/flower_Saba.png
-249,Sint Eustatius,reports/figures/flower_new/flower_SintEustatius.png
-250,Aruba,reports/figures/flower_new/flower_Aruba.png
+0,Samoa,reports/figures/flower_Samoa.png
+1,Cocos Islands,reports/figures/flower_CocosIslands.png
+2,Christmas Island,reports/figures/flower_ChristmasIsland.png
+3,Norfolk Island,reports/figures/flower_NorfolkIsland.png
+4,Macquarie Island,reports/figures/flower_MacquarieIsland.png
+5,New Caledonia,reports/figures/flower_NewCaledonia.png
+6,Vanuatu,reports/figures/flower_Vanuatu.png
+7,Solomon Islands,reports/figures/flower_SolomonIslands.png
+8,Palau,reports/figures/flower_Palau.png
+9,Micronesia,reports/figures/flower_Micronesia.png
+10,Nauru,reports/figures/flower_Nauru.png
+11,Marshall Islands,reports/figures/flower_MarshallIslands.png
+12,Wake Island,reports/figures/flower_WakeIsland.png
+13,Northern Mariana Islands and Guam,reports/figures/flower_NorthernMarianaIslandsandGuam.png
+14,Taiwan,reports/figures/flower_Taiwan.png
+15,Philippines,reports/figures/flower_Philippines.png
+16,Australia,reports/figures/flower_Australia.png
+17,Papua New Guinea,reports/figures/flower_PapuaNewGuinea.png
+18,Fiji,reports/figures/flower_Fiji.png
+19,Tuvalu,reports/figures/flower_Tuvalu.png
+20,South Korea,reports/figures/flower_SouthKorea.png
+21,North Korea,reports/figures/flower_NorthKorea.png
+24,Cambodia,reports/figures/flower_Cambodia.png
+25,Thailand,reports/figures/flower_Thailand.png
+26,Andaman and Nicobar,reports/figures/flower_AndamanandNicobar.png
+28,Comoro Islands,reports/figures/flower_ComoroIslands.png
+29,Mayotte,reports/figures/flower_Mayotte.png
+30,Glorioso Islands,reports/figures/flower_GloriosoIslands.png
+31,Seychelles,reports/figures/flower_Seychelles.png
+32,Reunion,reports/figures/flower_Reunion.png
+33,Juan de Nova Island,reports/figures/flower_JuandeNovaIsland.png
+34,Bassas da India,reports/figures/flower_BassasdaIndia.png
+35,Ile Europa,reports/figures/flower_IleEuropa.png
+36,Ile Tromelin,reports/figures/flower_IleTromelin.png
+37,Mauritius,reports/figures/flower_Mauritius.png
+38,British Indian Ocean Territory,reports/figures/flower_BritishIndianOceanTerritory.png
+39,Maldives,reports/figures/flower_Maldives.png
+40,Sri Lanka,reports/figures/flower_SriLanka.png
+41,Mozambique,reports/figures/flower_Mozambique.png
+42,Madagascar,reports/figures/flower_Madagascar.png
+43,Kenya,reports/figures/flower_Kenya.png
+44,Somalia,reports/figures/flower_Somalia.png
+45,Eritrea,reports/figures/flower_Eritrea.png
+46,Djibouti,reports/figures/flower_Djibouti.png
+47,Yemen,reports/figures/flower_Yemen.png
+48,Oman,reports/figures/flower_Oman.png
+49,Sudan,reports/figures/flower_Sudan.png
+50,Saudi Arabia,reports/figures/flower_SaudiArabia.png
+51,Kuwait,reports/figures/flower_Kuwait.png
+52,Bahrain,reports/figures/flower_Bahrain.png
+53,Pakistan,reports/figures/flower_Pakistan.png
+54,United Arab Emirates,reports/figures/flower_UnitedArabEmirates.png
+55,Azores,reports/figures/flower_Azores.png
+56,Cape Verde,reports/figures/flower_CapeVerde.png
+57,Madeira,reports/figures/flower_Madeira.png
+58,Canary Islands,reports/figures/flower_CanaryIslands.png
+59,Belgium,reports/figures/flower_Belgium.png
+60,Gibraltar,reports/figures/flower_Gibraltar.png
+61,Tunisia,reports/figures/flower_Tunisia.png
+62,Morocco,reports/figures/flower_Morocco.png
+63,Western Sahara,reports/figures/flower_WesternSahara.png
+64,Mauritania,reports/figures/flower_Mauritania.png
+65,Gambia,reports/figures/flower_Gambia.png
+66,Senegal,reports/figures/flower_Senegal.png
+67,Libya,reports/figures/flower_Libya.png
+68,Malta,reports/figures/flower_Malta.png
+69,Latvia,reports/figures/flower_Latvia.png
+70,Estonia,reports/figures/flower_Estonia.png
+71,Bulgaria,reports/figures/flower_Bulgaria.png
+72,Romania,reports/figures/flower_Romania.png
+73,Russia,reports/figures/flower_Russia.png
+74,Georgia,reports/figures/flower_Georgia.png
+75,Ukraine,reports/figures/flower_Ukraine.png
+76,Turkey,reports/figures/flower_Turkey.png
+77,Syria,reports/figures/flower_Syria.png
+78,Lebanon,reports/figures/flower_Lebanon.png
+79,Israel,reports/figures/flower_Israel.png
+80,Greece,reports/figures/flower_Greece.png
+81,Cyprus,reports/figures/flower_Cyprus.png
+82,Albania,reports/figures/flower_Albania.png
+84,Algeria,reports/figures/flower_Algeria.png
+85,Ascension,reports/figures/flower_Ascension.png
+86,Saint Helena,reports/figures/flower_SaintHelena.png
+88,Tristan da Cunha,reports/figures/flower_TristandaCunha.png
+89,South Georgia and the South Sandwich Islands,reports/figures/flower_SouthGeorgiaandtheSouthSandwichIslands.png
+90,Prince Edward Islands,reports/figures/flower_PrinceEdwardIslands.png
+91,Crozet Islands,reports/figures/flower_CrozetIslands.png
+92,Amsterdam Island and Saint Paul Island,reports/figures/flower_AmsterdamIslandandSaintPaulIsland.png
+93,Kerguelen Islands,reports/figures/flower_KerguelenIslands.png
+94,Heard and McDonald Islands,reports/figures/flower_HeardandMcDonaldIslands.png
+95,Falkland Islands,reports/figures/flower_FalklandIslands.png
+96,Sierra Leone,reports/figures/flower_SierraLeone.png
+97,Liberia,reports/figures/flower_Liberia.png
+98,Togo,reports/figures/flower_Togo.png
+99,Benin,reports/figures/flower_Benin.png
+100,Republique du Congo,reports/figures/flower_RepubliqueduCongo.png
+101,Namibia,reports/figures/flower_Namibia.png
+102,South Africa,reports/figures/flower_SouthAfrica.png
+103,Sao Tome and Principe,reports/figures/flower_SaoTomeandPrincipe.png
+104,Equatorial Guinea,reports/figures/flower_EquatorialGuinea.png
+105,Bouvet Island,reports/figures/flower_BouvetIsland.png
+106,Ghana,reports/figures/flower_Ghana.png
+107,Clipperton Island,reports/figures/flower_ClippertonIsland.png
+108,Bermuda,reports/figures/flower_Bermuda.png
+110,Bahamas,reports/figures/flower_Bahamas.png
+111,Turks and Caicos Islands,reports/figures/flower_TurksandCaicosIslands.png
+112,Cuba,reports/figures/flower_Cuba.png
+113,Cayman Islands,reports/figures/flower_CaymanIslands.png
+114,Haiti,reports/figures/flower_Haiti.png
+115,Dominican Republic,reports/figures/flower_DominicanRepublic.png
+116,Puerto Rico and Virgin Islands of the United States,reports/figures/flower_PuertoRicoandVirginIslandsoftheUnitedStates.png
+117,British Virgin Islands,reports/figures/flower_BritishVirginIslands.png
+118,Anguilla,reports/figures/flower_Anguilla.png
+119,Saint Kitts and Nevis,reports/figures/flower_SaintKittsandNevis.png
+120,Antigua and Barbuda,reports/figures/flower_AntiguaandBarbuda.png
+121,Montserrat,reports/figures/flower_Montserrat.png
+122,Saint Lucia,reports/figures/flower_SaintLucia.png
+123,Dominica,reports/figures/flower_Dominica.png
+124,Barbados,reports/figures/flower_Barbados.png
+125,Grenada,reports/figures/flower_Grenada.png
+126,Trinidad and Tobago,reports/figures/flower_TrinidadandTobago.png
+127,Saint Vincent and the Grenadines,reports/figures/flower_SaintVincentandtheGrenadines.png
+129,Panama,reports/figures/flower_Panama.png
+130,Costa Rica,reports/figures/flower_CostaRica.png
+131,Nicaragua,reports/figures/flower_Nicaragua.png
+132,Colombia,reports/figures/flower_Colombia.png
+133,Honduras,reports/figures/flower_Honduras.png
+134,El Salvador,reports/figures/flower_ElSalvador.png
+135,Mexico,reports/figures/flower_Mexico.png
+136,Guatemala,reports/figures/flower_Guatemala.png
+137,Ecuador,reports/figures/flower_Ecuador.png
+138,Peru,reports/figures/flower_Peru.png
+139,Venezuela,reports/figures/flower_Venezuela.png
+140,Guadeloupe and Martinique,reports/figures/flower_GuadeloupeandMartinique.png
+141,Faeroe Islands,reports/figures/flower_FaeroeIslands.png
+143,Iceland,reports/figures/flower_Iceland.png
+144,Jan Mayen,reports/figures/flower_JanMayen.png
+145,Greenland,reports/figures/flower_Greenland.png
+146,Pitcairn,reports/figures/flower_Pitcairn.png
+147,French Polynesia,reports/figures/flower_FrenchPolynesia.png
+148,Line Islands (Kiribati),reports/figures/flower_LineIslands(Kiribati).png
+149,Jarvis Island,reports/figures/flower_JarvisIsland.png
+150,Palmyra Atoll,reports/figures/flower_PalmyraAtoll.png
+151,American Samoa,reports/figures/flower_AmericanSamoa.png
+152,Samoa,reports/figures/flower_Samoa.png
+153,Cook Islands,reports/figures/flower_CookIslands.png
+154,Niue,reports/figures/flower_Niue.png
+155,Tonga,reports/figures/flower_Tonga.png
+156,Tokelau,reports/figures/flower_Tokelau.png
+157,Phoenix Islands (Kiribati),reports/figures/flower_PhoenixIslands(Kiribati).png
+158,Howland Island and Baker Island,reports/figures/flower_HowlandIslandandBakerIsland.png
+159,Johnston Atoll,reports/figures/flower_JohnstonAtoll.png
+161,Wallis and Futuna,reports/figures/flower_WallisandFutuna.png
+162,New Zealand,reports/figures/flower_NewZealand.png
+163,United States,reports/figures/flower_UnitedStates.png
+164,Belize,reports/figures/flower_Belize.png
+166,Jamaica,reports/figures/flower_Jamaica.png
+167,Guyana,reports/figures/flower_Guyana.png
+168,Suriname,reports/figures/flower_Suriname.png
+169,French Guiana,reports/figures/flower_FrenchGuiana.png
+171,Brazil,reports/figures/flower_Brazil.png
+172,Argentina,reports/figures/flower_Argentina.png
+173,Uruguay,reports/figures/flower_Uruguay.png
+174,Finland,reports/figures/flower_Finland.png
+175,Denmark,reports/figures/flower_Denmark.png
+176,Germany,reports/figures/flower_Germany.png
+177,Netherlands,reports/figures/flower_Netherlands.png
+178,Poland,reports/figures/flower_Poland.png
+179,France,reports/figures/flower_France.png
+180,United Kingdom,reports/figures/flower_UnitedKingdom.png
+181,Ireland,reports/figures/flower_Ireland.png
+182,Spain,reports/figures/flower_Spain.png
+183,Portugal,reports/figures/flower_Portugal.png
+184,Italy,reports/figures/flower_Italy.png
+185,Monaco,reports/figures/flower_Monaco.png
+186,Montenegro,reports/figures/flower_Montenegro.png
+187,Croatia,reports/figures/flower_Croatia.png
+188,Slovenia,reports/figures/flower_Slovenia.png
+189,Lithuania,reports/figures/flower_Lithuania.png
+190,Qatar,reports/figures/flower_Qatar.png
+191,Iran,reports/figures/flower_Iran.png
+192,Iraq,reports/figures/flower_Iraq.png
+193,Guinea Bissau,reports/figures/flower_GuineaBissau.png
+194,Guinea,reports/figures/flower_Guinea.png
+195,Ivory Coast,reports/figures/flower_IvoryCoast.png
+196,Nigeria,reports/figures/flower_Nigeria.png
+197,Cameroon,reports/figures/flower_Cameroon.png
+198,Gabon,reports/figures/flower_Gabon.png
+199,Democratic Republic of the Congo,reports/figures/flower_DemocraticRepublicoftheCongo.png
+200,Angola,reports/figures/flower_Angola.png
+202,Tanzania,reports/figures/flower_Tanzania.png
+203,India,reports/figures/flower_India.png
+204,Bangladesh,reports/figures/flower_Bangladesh.png
+205,Myanmar,reports/figures/flower_Myanmar.png
+206,Malaysia,reports/figures/flower_Malaysia.png
+207,Vietnam,reports/figures/flower_Vietnam.png
+208,Singapore,reports/figures/flower_Singapore.png
+209,China,reports/figures/flower_China.png
+210,Japan,reports/figures/flower_Japan.png
+212,Gilbert Islands (Kiribati),reports/figures/flower_GilbertIslands(Kiribati).png
+213,Antarctica,reports/figures/flower_Antarctica.png
+214,Egypt,reports/figures/flower_Egypt.png
+215,Jordan,reports/figures/flower_Jordan.png
+216,Indonesia,reports/figures/flower_Indonesia.png
+218,Canada,reports/figures/flower_Canada.png
+219,Saint Pierre and Miquelon,reports/figures/flower_SaintPierreandMiquelon.png
+220,Sint Maarten,reports/figures/flower_SintMaarten.png
+221,Northern Saint-Martin,reports/figures/flower_NorthernSaint-Martin.png
+222,Sweden,reports/figures/flower_Sweden.png
+223,Norway,reports/figures/flower_Norway.png
+224,Chile,reports/figures/flower_Chile.png
+227,Jersey,reports/figures/flower_Jersey.png
+228,Guernsey,reports/figures/flower_Guernsey.png
+231,East Timor,reports/figures/flower_EastTimor.png
+232,Bosnia and Herzegovina,reports/figures/flower_BosniaandHerzegovina.png
+237,Oecussi Ambeno,reports/figures/flower_OecussiAmbeno.png
+244,Curacao,reports/figures/flower_Curacao.png
+245,Bonaire,reports/figures/flower_Bonaire.png
+247,Brunei,reports/figures/flower_Brunei.png
+248,Saba,reports/figures/flower_Saba.png
+249,Sint Eustatius,reports/figures/flower_SintEustatius.png
+250,Aruba,reports/figures/flower_Aruba.png
